@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=../robo.c
+SOURCEFILES_QUOTED_IF_SPACED=../robo.c ../Location.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1472/robo.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1472/robo.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/_ext/1472/robo.o ${OBJECTDIR}/_ext/1472/Location.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/_ext/1472/robo.o.d ${OBJECTDIR}/_ext/1472/Location.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/_ext/1472/robo.o
+OBJECTFILES=${OBJECTDIR}/_ext/1472/robo.o ${OBJECTDIR}/_ext/1472/Location.o
 
 # Source Files
-SOURCEFILES=../robo.c
+SOURCEFILES=../robo.c ../Location.c
 
 
 CFLAGS=
@@ -101,6 +101,13 @@ ${OBJECTDIR}/_ext/1472/robo.o: ../robo.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ../robo.c  -o ${OBJECTDIR}/_ext/1472/robo.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1472/robo.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -mno-eds-warn  -omf=coff -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O0 -I".." -I"." -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/robo.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
+${OBJECTDIR}/_ext/1472/Location.o: ../Location.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
+	@${RM} ${OBJECTDIR}/_ext/1472/Location.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1472/Location.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../Location.c  -o ${OBJECTDIR}/_ext/1472/Location.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1472/Location.o.d"      -g -D__DEBUG -D__MPLAB_DEBUGGER_SIMULATOR=1  -mno-eds-warn  -omf=coff -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O0 -I".." -I"." -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/Location.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
 else
 ${OBJECTDIR}/_ext/1472/robo.o: ../robo.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
@@ -108,6 +115,13 @@ ${OBJECTDIR}/_ext/1472/robo.o: ../robo.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/_ext/1472/robo.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE)  ../robo.c  -o ${OBJECTDIR}/_ext/1472/robo.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1472/robo.o.d"      -mno-eds-warn  -g -omf=coff -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O0 -I".." -I"." -msmart-io=1 -Wall -msfr-warn=off  
 	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/robo.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
+	
+${OBJECTDIR}/_ext/1472/Location.o: ../Location.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/_ext/1472" 
+	@${RM} ${OBJECTDIR}/_ext/1472/Location.o.d 
+	@${RM} ${OBJECTDIR}/_ext/1472/Location.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE)  ../Location.c  -o ${OBJECTDIR}/_ext/1472/Location.o  -c -mcpu=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/_ext/1472/Location.o.d"      -mno-eds-warn  -g -omf=coff -DXPRJ_default=$(CND_CONF)  -no-legacy-libc  $(COMPARISON_BUILD)  -O0 -I".." -I"." -msmart-io=1 -Wall -msfr-warn=off  
+	@${FIXDEPS} "${OBJECTDIR}/_ext/1472/Location.o.d" $(SILENT)  -rsi ${MP_CC_DIR}../ 
 	
 endif
 

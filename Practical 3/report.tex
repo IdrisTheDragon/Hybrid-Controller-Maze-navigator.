@@ -102,11 +102,11 @@ int main(){
 	int power = 0;
 	
 	while(1){  
-		if(FA_ReadSwitch(true)){
+		if(FA_ReadSwitch(0)){
 			FA_LCDClear();
 			encodersDataGathering(power);
 		}
-		if(FA_ReadSwitch(true)){
+		if(FA_ReadSwitch(1)){
 			power++;
 			FA_DelayMillis(200);
 		}
