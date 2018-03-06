@@ -3,6 +3,6 @@
 
 void basicObstacleAvoidence(int LSpeed, int RSpeed);
 
-bool detectObstactle(struct Location location,int side, int distance);
+void detectObstactle(struct RobotState * robotState);
 
 #endif /* ObstacleDetection_H*/

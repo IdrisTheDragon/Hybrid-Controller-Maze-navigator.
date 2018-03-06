@@ -16,6 +16,8 @@ void init(struct RobotState * robotState){
 	robotState->next = getLocation;
 }
 
+
+
 int main(){
 	struct RobotState robotState;
 	robotState.next = init;

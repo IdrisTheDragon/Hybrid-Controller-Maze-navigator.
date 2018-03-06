@@ -1,0 +1,45 @@
+@startuml
+[*] --> init
+init : initialise the robot
+init : set an initial speed.
+init -down-> updateSensorData
+
+
+state updateSensorData {
+  [*] --> getLocation
+  getLocation -> getLight
+  getLight -> getEncoder 
+  getEncoder -> readLine
+  readLine --> [*]
+}
+
+updateSensorData -down-> control
+
+state control {
+  [*] --> detectDarkness
+  detectDarkness -down-> startRobot : inlight and stopped
+  detectDarkness -down-> detectObstacle : inlight and already moving.
+  detectDarkness --> stopRobot : inDark
+  startRobot -> detectObstacle
+  detectObstacle -down-> calibrateSpeed : nonDetected
+  detectObstacle -down-> stopRobot: ahead
+  detectObstacle -down-> moveLeft: onRight
+  detectObstacle -down-> moveRight: onLeft
+  calibrateSpeed --> [*]
+  moveLeft --> [*]
+  moveRight --> [*]
+  stopRobot --> [*]
+}
+
+control -down-> updateHardware
+
+state updateHardware {
+  [*] --> setMotors
+  setMotors -> updateDisplay
+  updateDisplay -> updateLED
+  updateLED --> [*]
+}
+
+updateHardware -> updateSensorData : continue
+updateHardware -down-> [*] : End
+@enduml

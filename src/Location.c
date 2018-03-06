@@ -1,6 +1,7 @@
 #include "lib/allcode_api.h"
 #include <math.h>
 #include "Location.h"
+#include "ObstacleDetection.h"
 
 void printLocation(struct Location location){
 	FA_LCDClear();
@@ -62,5 +63,5 @@ void getLocation(struct RobotState * robotState) {
 	location.rearDistance = 		log10(log10(IRDataAverage[IR_REAR])) 	* M + C;
 	location.rearLeftDistance = 	log10(log10(IRDataAverage[IR_REAR_LEFT])) 	* M + C;
 	robotState->location = &location;
-	robotState->next = detectObstacle;
+	robotState->next = detectObstactle;
 }

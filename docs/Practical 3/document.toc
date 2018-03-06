@@ -1,0 +1,38 @@
+\contentsline {section}{\numberline {1}INTRODUCTION}{2}{section.1}
+\contentsline {subsection}{\numberline {1.1}Purpose of this Document}{2}{subsection.1.1}
+\contentsline {subsection}{\numberline {1.2}Objectives}{2}{subsection.1.2}
+\contentsline {section}{\numberline {2}Infrared Sensors}{2}{section.2}
+\contentsline {subsection}{\numberline {2.1}Programming}{2}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Data Acquistion}{3}{subsection.2.2}
+\contentsline {subsubsection}{\numberline {2.2.1}range of distances}{3}{subsubsection.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.2}Repeatability \& Reliability}{3}{subsubsection.2.2.2}
+\contentsline {subsubsection}{\numberline {2.2.3}Similarity}{3}{subsubsection.2.2.3}
+\contentsline {subsection}{\numberline {2.3}Data Captured}{4}{subsection.2.3}
+\contentsline {subsubsection}{\numberline {2.3.1}range of distances}{4}{subsubsection.2.3.1}
+\contentsline {subsubsection}{\numberline {2.3.2}Repeatability \& Reliability}{5}{subsubsection.2.3.2}
+\contentsline {subsubsection}{\numberline {2.3.3}Similarity}{6}{subsubsection.2.3.3}
+\contentsline {subsection}{\numberline {2.4}Data Visualised}{6}{subsection.2.4}
+\contentsline {subsubsection}{\numberline {2.4.1}range of distances}{6}{subsubsection.2.4.1}
+\contentsline {subsubsection}{\numberline {2.4.2}Repeatability \& Reliability}{6}{subsubsection.2.4.2}
+\contentsline {subsubsection}{\numberline {2.4.3}Similarity}{7}{subsubsection.2.4.3}
+\contentsline {subsection}{\numberline {2.5}Discussion}{7}{subsection.2.5}
+\contentsline {subsubsection}{\numberline {2.5.1}range of distances}{7}{subsubsection.2.5.1}
+\contentsline {subsubsection}{\numberline {2.5.2}Repeatability \& Reliability}{8}{subsubsection.2.5.2}
+\contentsline {subsubsection}{\numberline {2.5.3}Similarity}{8}{subsubsection.2.5.3}
+\contentsline {section}{\numberline {3}Encoders}{8}{section.3}
+\contentsline {subsection}{\numberline {3.1}Programming}{8}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Data Acquistion}{9}{subsection.3.2}
+\contentsline {subsubsection}{\numberline {3.2.1}Range of power}{9}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2}Repeatability \& Similarity}{9}{subsubsection.3.2.2}
+\contentsline {subsection}{\numberline {3.3}Data Captured}{9}{subsection.3.3}
+\contentsline {subsubsection}{\numberline {3.3.1}Range of power}{9}{subsubsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.2}Repeatability \& Similarity}{10}{subsubsection.3.3.2}
+\contentsline {subsection}{\numberline {3.4}Data Visualised}{10}{subsection.3.4}
+\contentsline {subsubsection}{\numberline {3.4.1}Range of power}{10}{subsubsection.3.4.1}
+\contentsline {subsubsection}{\numberline {3.4.2}Repeatability \& Reliability}{11}{subsubsection.3.4.2}
+\contentsline {subsubsection}{\numberline {3.4.3}Similarity}{12}{subsubsection.3.4.3}
+\contentsline {subsection}{\numberline {3.5}Discussion}{12}{subsection.3.5}
+\contentsline {subsubsection}{\numberline {3.5.1}Range of power}{12}{subsubsection.3.5.1}
+\contentsline {subsubsection}{\numberline {3.5.2}Repeatability}{13}{subsubsection.3.5.2}
+\contentsline {subsubsection}{\numberline {3.5.3}Similarity}{13}{subsubsection.3.5.3}
+\contentsline {section}{REFERENCES}{14}{subsubsection.3.5.3}

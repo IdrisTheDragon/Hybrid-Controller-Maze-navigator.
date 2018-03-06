@@ -10,7 +10,7 @@ typedef void state_fn(struct RobotState *);
 struct RobotState {
 	int LSpeed;
 	int RSpeed;
-	struct Location *location;
+	struct Location * location;
 	state_fn * next;
 };
 

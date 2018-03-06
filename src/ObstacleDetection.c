@@ -1,3 +1,7 @@
+#include "lib/allcode_api.h"
+#include "RobotState.h"
+#include "RobotCalibrate.h"
+
 void basicObstacleAvoidence(int LSpeed, int RSpeed){
 	// Go forward
     FA_SetMotors(LSpeed,RSpeed);
@@ -13,61 +17,13 @@ void basicObstacleAvoidence(int LSpeed, int RSpeed){
     }
 }
 
-// 0 = front 1 left 2 back 3 right
-//-1 infinity/out of range
-bool detectObstactle(struct Location location,int side, int distance){
-	bool sum;
-	switch(side){
-		case 0:
-			if(location.frontDistance!= -1){
-				sum = location.frontDistance < distance;
-			} 
-			if(location.frontRightDistance!= -1){
-				sum = sum || location.frontRightDistance < distance;
-			} 
-			if(location.frontLeftDistance!= -1){
-				sum = sum || location.frontLeftDistance < distance;
-			} 
-			return sum;
-			break;
-		case 1:
-			if(location.leftDistance!= -1){
-				sum = location.leftDistance < distance;
-			} 
-			if(location.frontLeftDistance!= -1){
-				sum = sum || location.frontLeftDistance < distance;
-			} 
-			if(location.rearLeftDistance!= -1){
-				sum = sum || location.rearLeftDistance < distance;
-			} 
-			return sum;
-			break;
-		case 2:
-			if(location.rearDistance!= -1){
-				sum = location.rearDistance < distance;
-			} 
-			if(location.rearLeftDistance!= -1){
-				sum = sum || location.rearLeftDistance < distance;
-			} 
-			if(location.rearRightDistance!= -1){
-				sum = sum || location.rearRightDistance < distance;
-			} 
-			return sum;
-			break;
-		case 3:
-			if(location.rightDistance!= -1){
-				sum = location.rightDistance < distance;
-			} 
-			if(location.frontRightDistance!= -1){
-				sum = sum || location.frontRightDistance < distance;
-			} 
-			if(location.rearLeftDistance!= -1){
-				sum = sum || location.rearRightDistance < distance;
-			} 
-			return sum;
-			break;
-		default:
-			return false;
-			break;
+
+void detectObstactle(struct RobotState * robotState){
+	if(robotState->location->frontDistance < 40){
+		robotState->next = getLocation;
+	} else if (robotState->location->leftDistance < 40){
+		robotState->next = getLocation;
+	} else {
+		robotState->next = getLocation;
 	}
 }

@@ -1,3 +1,5 @@
+#include "lib/allcode_api.h"
+
 int encoderPower(int Speed){
 	if(FA_ReadSwitch1Debounced()){
 		FA_DelayMillis(1000);
