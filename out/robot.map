@@ -18,7 +18,10 @@ Command:
   -Lc:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../support/dsPIC33F/gld \
   robo.o \
   Location.o \
-  M:\CS26020\allcode_api.o \
+  ObstacleDetection.o \
+  WallFollow.o \
+  LightReaction.o \
+  M:\CS26020\src\lib\allcode_api.o \
   -Tp33EP256MU810.gld.00 \
   --defsym=__MPLAB_BUILD=1 \
   --defsym=__MPLAB_DEBUG=1 \
@@ -37,13 +40,13 @@ Archive member included because of file (symbol)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-pic30-coff.a(crt0_extendedep.o)
                               (_resetPRI)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-pic30-coff.a(delay32ep.Lo)
-                              M:\CS26020\allcode_api.o (__delay32)
+                              M:\CS26020\src\lib\allcode_api.o (__delay32)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-pic30-coff.a(data_init_extended.o)
                               c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-pic30-coff.a(crt0_extendedep.o) (_data_init_extended)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(floatunsisf.epo)
                               Location.o (__floatunsisf)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(addsf3.epo)
-                              M:\CS26020\allcode_api.o (__subsf3)
+                              M:\CS26020\src\lib\allcode_api.o (__subsf3)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(divsf3.epo)
                               Location.o (__divsf3)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(fgtge.epo)
@@ -55,15 +58,15 @@ c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(mulsf3
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(fixsfsi.epo)
                               Location.o (__fixsfsi)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(udivsi3.epo)
-                              M:\CS26020\allcode_api.o (__udivsi3)
+                              M:\CS26020\src\lib\allcode_api.o (__udivsi3)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(feqltle.epo)
-                              M:\CS26020\allcode_api.o (__ltsf2)
+                              M:\CS26020\src\lib\allcode_api.o (__ltsf2)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(floorf.epo)
-                              M:\CS26020\allcode_api.o (floorf)
+                              M:\CS26020\src\lib\allcode_api.o (floorf)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(floatsisf.epo)
-                              M:\CS26020\allcode_api.o (__floatsisf)
+                              M:\CS26020\src\lib\allcode_api.o (__floatsisf)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(atanf.epo)
-                              M:\CS26020\allcode_api.o (atanf)
+                              M:\CS26020\src\lib\allcode_api.o (atanf)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(floatundisf.epo)
                               c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(floatunsisf.epo) (__floatundisf)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(funpack2.epo)
@@ -112,10 +115,10 @@ section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200               0x94c           0xdf2  (3570)
 .const                       0xb4c               0x264           0x396  (918)
-.text                        0xdb0              0x607c          0x90ba  (37050)
-.dinit                      0x6e2c                0x28            0x3c  (60)
+.text                        0xdb0              0x612a          0x91bf  (37311)
+.dinit                      0x6eda                0x28            0x3c  (60)
 
-                 Total program memory used (bytes):         0xa27e  (41598) 15%
+                 Total program memory used (bytes):         0xa383  (41859) 15%
 
 
 Ivt Memory  [Origin = 0x4, Length = 0x1fc]
@@ -707,10 +710,10 @@ External Symbols in Program Memory (by address):
                   0x006996                  _basicObstacleAvoidence
                   0x0069da                  _encoderPower
                   0x006a72                  _detectObstactle
-                  0x006b36                  _updateState
-                  0x006b46                  _main
-                  0x006c10                  _printLocation
-                  0x006c8c                  _getLocation
+                  0x006be4                  _updateState
+                  0x006bf4                  _main
+                  0x006cbe                  _printLocation
+                  0x006d3a                  _getLocation
                   0xf80004                  __FGS.sec
 
 External Symbols in Program Memory (by name):
@@ -1114,12 +1117,12 @@ External Symbols in Program Memory (by name):
                   0x006a72                  _detectObstactle
                   0x0069da                  _encoderPower
                   0x0007fc                  _floorf
-                  0x006c8c                  _getLocation
+                  0x006d3a                  _getLocation
                   0x000726                  _log10f
                   0x0009ec                  _logf
-                  0x006b46                  _main
-                  0x006c10                  _printLocation
-                  0x006b36                  _updateState
+                  0x006bf4                  _main
+                  0x006cbe                  _printLocation
+                  0x006be4                  _updateState
 
 Memory Configuration
 
@@ -1144,7 +1147,10 @@ Linker script and memory map
 
 LOAD robo.o
 LOAD Location.o
-LOAD M:\CS26020\allcode_api.o
+LOAD ObstacleDetection.o
+LOAD WallFollow.o
+LOAD LightReaction.o
+LOAD M:\CS26020\src\lib\allcode_api.o
 LOAD p33EP256MU810
 LOAD c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libfx-coff.a
                     0xf80004                  __FGS = 0xf80004
@@ -1184,7 +1190,7 @@ LOAD c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libfx-coff.a
  *(.user_init)
  *(.handle)
  *(.isr*)
- .isr.text        0x00030a        0x2d0 M:\CS26020\allcode_api.o
+ .isr.text        0x00030a        0x2d0 M:\CS26020\src\lib\allcode_api.o
                   0x00030a                  _T6Interrupt
                   0x00033a                  _U1RXInterrupt
                   0x0003d0                  _CNInterrupt
@@ -1257,27 +1263,27 @@ __FGS             0xf80004          0x2
 
 __FOSCSEL         0xf80006          0x2
  *(__FOSCSEL.sec*)
- __FOSCSEL.sec    0xf80006          0x2 M:\CS26020\allcode_api.o
+ __FOSCSEL.sec    0xf80006          0x2 M:\CS26020\src\lib\allcode_api.o
 
 __FOSC            0xf80008          0x2
  *(__FOSC.sec*)
- __FOSC.sec       0xf80008          0x2 M:\CS26020\allcode_api.o
+ __FOSC.sec       0xf80008          0x2 M:\CS26020\src\lib\allcode_api.o
 
 __FWDT            0xf8000a          0x2
  *(__FWDT.sec*)
- __FWDT.sec       0xf8000a          0x2 M:\CS26020\allcode_api.o
+ __FWDT.sec       0xf8000a          0x2 M:\CS26020\src\lib\allcode_api.o
 
 __FPOR            0xf8000c          0x2
  *(__FPOR.sec*)
- __FPOR.sec       0xf8000c          0x2 M:\CS26020\allcode_api.o
+ __FPOR.sec       0xf8000c          0x2 M:\CS26020\src\lib\allcode_api.o
 
 __FICD            0xf8000e          0x2
  *(__FICD.sec*)
- __FICD.sec       0xf8000e          0x2 M:\CS26020\allcode_api.o
+ __FICD.sec       0xf8000e          0x2 M:\CS26020\src\lib\allcode_api.o
 
 __FAS             0xf80010          0x2
  *(__FAS.sec*)
- __FAS.sec        0xf80010          0x2 M:\CS26020\allcode_api.o
+ __FAS.sec        0xf80010          0x2 M:\CS26020\src\lib\allcode_api.o
 
 __FUID0
  *(__FUID0.sec*)
@@ -4018,68 +4024,74 @@ LOAD data_init
 LOAD default_isr
 
 __c30_signature
-                  0x000000         0xae
+                  0x000000         0xc0
  __c30_signature
                   0x000000          0x6 robo.o
  __c30_signature
                   0x000006          0x6 Location.o
  __c30_signature
-                  0x00000c          0x6 M:\CS26020\allcode_api.o
+                  0x00000c          0x6 ObstacleDetection.o
  __c30_signature
-                  0x000012          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-pic30-coff.a(crt0_extendedep.o)
+                  0x000012          0x6 WallFollow.o
  __c30_signature
-                  0x000018          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-pic30-coff.a(delay32ep.Lo)
+                  0x000018          0x6 LightReaction.o
  __c30_signature
-                  0x00001e          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-pic30-coff.a(data_init_extended.o)
+                  0x00001e          0x6 M:\CS26020\src\lib\allcode_api.o
  __c30_signature
-                  0x000024          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(floatunsisf.epo)
+                  0x000024          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-pic30-coff.a(crt0_extendedep.o)
  __c30_signature
-                  0x00002a          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(addsf3.epo)
+                  0x00002a          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-pic30-coff.a(delay32ep.Lo)
  __c30_signature
-                  0x000030          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(divsf3.epo)
+                  0x000030          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-pic30-coff.a(data_init_extended.o)
  __c30_signature
-                  0x000036          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(fgtge.epo)
+                  0x000036          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(floatunsisf.epo)
  __c30_signature
-                  0x00003c          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(log10f.epo)
+                  0x00003c          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(addsf3.epo)
  __c30_signature
-                  0x000042          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(mulsf3.epo)
+                  0x000042          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(divsf3.epo)
  __c30_signature
-                  0x000048          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(fixsfsi.epo)
+                  0x000048          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(fgtge.epo)
  __c30_signature
-                  0x00004e          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(udivsi3.epo)
+                  0x00004e          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(log10f.epo)
  __c30_signature
-                  0x000054          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(feqltle.epo)
+                  0x000054          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(mulsf3.epo)
  __c30_signature
-                  0x00005a          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(floorf.epo)
+                  0x00005a          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(fixsfsi.epo)
  __c30_signature
-                  0x000060          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(floatsisf.epo)
+                  0x000060          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(udivsi3.epo)
  __c30_signature
-                  0x000066          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(atanf.epo)
+                  0x000066          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(feqltle.epo)
  __c30_signature
-                  0x00006c          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(floatundisf.epo)
+                  0x00006c          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(floorf.epo)
  __c30_signature
-                  0x000072          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(funpack2.epo)
+                  0x000072          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(floatsisf.epo)
  __c30_signature
-                  0x000078          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(futil.epo)
+                  0x000078          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(atanf.epo)
  __c30_signature
-                  0x00007e          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(fpack.epo)
+                  0x00007e          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(floatundisf.epo)
  __c30_signature
-                  0x000084          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(fcompare.epo)
+                  0x000084          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(funpack2.epo)
  __c30_signature
-                  0x00008a          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(logf.epo)
+                  0x00008a          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(futil.epo)
  __c30_signature
-                  0x000090          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(funpack.epo)
+                  0x000090          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(fpack.epo)
  __c30_signature
-                  0x000096          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(fchop.epo)
+                  0x000096          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(fcompare.epo)
  __c30_signature
-                  0x00009c          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(floatdisf.epo)
+                  0x00009c          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(logf.epo)
  __c30_signature
-                  0x0000a2          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(errno.epo)
+                  0x0000a2          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(funpack.epo)
  __c30_signature
-                  0x0000a8          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(_frexpf.epo)
+                  0x0000a8          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(fchop.epo)
+ __c30_signature
+                  0x0000ae          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(floatdisf.epo)
+ __c30_signature
+                  0x0000b4          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(errno.epo)
+ __c30_signature
+                  0x0000ba          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(_frexpf.epo)
 
 .nbss               0x1000         0x72
- .nbss              0x1000         0x72 M:\CS26020\allcode_api.o
+ .nbss              0x1000         0x72 M:\CS26020\src\lib\allcode_api.o
                     0x1000                  FCI_TMP_INT
                     0x1002                  FCLV_LOOP1
                     0x1003                  FCLV_LOOP2
@@ -4142,7 +4154,7 @@ __c30_signature
                     0x1070                  _CLOCK_MS_HIGH
 
 .ndata              0x1072          0xc
- .ndata             0x1072          0xc M:\CS26020\allcode_api.o
+ .ndata             0x1072          0xc M:\CS26020\src\lib\allcode_api.o
                     0x1072                  FCV_0dcd1_FormulaAllCode1__ANGLERESOLUTION
                     0x1076                  FCV_0dcd1_FormulaAllCode1__ENCODERRESOLUTION
                     0x107a                  FCV_0dcd1_FormulaAllCode1__LOGOSPEED
@@ -4156,7 +4168,7 @@ __c30_signature
                     0x1082                  errno
 
 .bss                0x1084       0x2214
- .bss               0x1084       0x2214 M:\CS26020\allcode_api.o
+ .bss               0x1084       0x2214 M:\CS26020\src\lib\allcode_api.o
                     0x1084                  FCI_TMP_STR
                     0x1098                  FCV_0ab21_gLCD_ST7567_SPI1__LCD_DATA
                     0x1298                  FCV_02b22_CB_AUDIO__DATA
@@ -4165,34 +4177,34 @@ __c30_signature
 .ivt._T6Interrupt
                   0x000072          0x2
  .ivt._T6Interrupt
-                  0x000072          0x2 M:\CS26020\allcode_api.o
+                  0x000072          0x2 M:\CS26020\src\lib\allcode_api.o
 
 .ivt._U1RXInterrupt
                   0x00002a          0x2
  .ivt._U1RXInterrupt
-                  0x00002a          0x2 M:\CS26020\allcode_api.o
+                  0x00002a          0x2 M:\CS26020\src\lib\allcode_api.o
 
 .ivt._CNInterrupt
                   0x00003a          0x2
  .ivt._CNInterrupt
-                  0x00003a          0x2 M:\CS26020\allcode_api.o
+                  0x00003a          0x2 M:\CS26020\src\lib\allcode_api.o
 
 .ivt._T9Interrupt
                   0x00007c          0x2
  .ivt._T9Interrupt
-                  0x00007c          0x2 M:\CS26020\allcode_api.o
+                  0x00007c          0x2 M:\CS26020\src\lib\allcode_api.o
 
 .ivt._T8Interrupt
                   0x00007a          0x2
  .ivt._T8Interrupt
-                  0x00007a          0x2 M:\CS26020\allcode_api.o
+                  0x00007a          0x2 M:\CS26020\src\lib\allcode_api.o
 
 .const              0x8b4c        0x264 load address 0x000b4c  
- .const             0x8b4c        0x264 M:\CS26020\allcode_api.o
+ .const             0x8b4c        0x264 M:\CS26020\src\lib\allcode_api.o
                     0x8b4c                  FCD_00fb1_ASCIIData__INTLIST_LUT
 
-.text             0x000db0       0x607c
- .text            0x000db0       0x5b92 M:\CS26020\allcode_api.o
+.text             0x000db0       0x612a
+ .text            0x000db0       0x5b92 M:\CS26020\src\lib\allcode_api.o
                   0x000db0                  FC_CAL_Port_Out(long long)
                   0x000dd2                  FC_CAL_Port_Out_DDR(long long)
                   0x000e04                  FC_CAL_Port_In(long long)
@@ -4549,16 +4561,16 @@ __c30_signature
                   0x0068e4                  FCD_0dcd1_FormulaAllCode1__LogoSetSpeed
                   0x006908                  FCD_0dcd1_FormulaAllCode1__LogoForwards
                   0x00693a                  FCD_0dcd1_FormulaAllCode1__LCDClear
- .text            0x006942        0x2ce robo.o
+ .text            0x006942        0x37c robo.o
                   0x006942                  calibrateSpeed
                   0x006996                  basicObstacleAvoidence
                   0x0069da                  encoderPower
                   0x006a72                  detectObstactle
-                  0x006b36                  updateState
-                  0x006b46                  main
- .text            0x006c10        0x21c Location.o
-                  0x006c10                  printLocation
-                  0x006c8c                  getLocation
+                  0x006be4                  updateState
+                  0x006bf4                  main
+ .text            0x006cbe        0x21c Location.o
+                  0x006cbe                  printLocation
+                  0x006d3a                  getLocation
 
-.dinit            0x006e2c         0x28
- .dinit           0x006e2c         0x28 data_init
+.dinit            0x006eda         0x28
+ .dinit           0x006eda         0x28 data_init
