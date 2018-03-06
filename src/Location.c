@@ -15,7 +15,7 @@ void printLocation(struct Location location){
 	FA_DelayMillis(100);
 }
 
-struct Location getLocation() {
+void getLocation(struct RobotState * robotState) {
 	struct Location location;
 	double IRDataSum[8] = {0,0,0,0,0,0,0,0};
 	int j;
@@ -61,5 +61,6 @@ struct Location getLocation() {
 	location.rearRightDistance = 	log10(log10(IRDataAverage[IR_REAR_RIGHT])) 	* M + C;
 	location.rearDistance = 		log10(log10(IRDataAverage[IR_REAR])) 	* M + C;
 	location.rearLeftDistance = 	log10(log10(IRDataAverage[IR_REAR_LEFT])) 	* M + C;
-	return location;
+	robotState->location = &location;
+	robotState->next = detectObstacle;
 }

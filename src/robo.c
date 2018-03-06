@@ -4,6 +4,8 @@
 #include "LightReaction.h"
 #include "WallFollow.h"
 #include "dataCollect.h"
+#include "RobotState.h"
+#include "RobotCalibrate.h"
 
 void init(struct RobotState * robotState){
 	FA_RobotInit();
@@ -11,7 +13,7 @@ void init(struct RobotState * robotState){
 	robotState->RSpeed = 30;
 	robotState->LSpeed = 30;
 	
-	robotState->next = bar;
+	robotState->next = getLocation;
 }
 
 int main(){
@@ -19,8 +21,9 @@ int main(){
 	robotState.next = init;
     while(robotState.next) {
 		FA_LCDClear();
-		robotState.next(&robotState)
-	}	           
+		robotState.next(&robotState);
+	}	
+	return 0;	
 }
 
 

@@ -1,4 +1,3 @@
-
 #ifndef Location_H
 #define Location_H
 
@@ -13,7 +12,11 @@ struct Location {
 	int rearLeftDistance;
 };
 
+typedef struct Location Location;
+
 void printLocation(struct Location);
-struct Location getLocation();
+
+#include "RobotState.h"
+void getLocation(struct RobotState * robotState);
 
 #endif /* !Location_H*/
