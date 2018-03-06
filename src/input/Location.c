@@ -1,7 +1,19 @@
-#include "lib/allcode_api.h"
+#include "../lib/allcode_api.h"
 #include <math.h>
 #include "Location.h"
-#include "ObstacleDetection.h"
+#include "../control/ObstacleDetection.h"
+
+//#define debug
+
+//BLACK
+#define Mb -198.057
+#define Cb 110.046
+//WHITE
+#define Mw -279.159
+#define Cw 163.882
+//Averge
+#define M ((Mw+Mb)/2)
+#define C ((Cw+Cb)/2)
 
 void printLocation(struct Location location){
 	FA_LCDClear();
@@ -36,7 +48,7 @@ void getLocation(struct RobotState * robotState) {
 			FA_LEDOff(i);
 		}
 	}
-	/**
+	#ifdef debug
 	FA_LCDClear();
     FA_LCDNumber(IRDataAverage[IR_RIGHT], 		0 , 12, FONT_NORMAL, LCD_OPAQUE);
     FA_LCDNumber(IRDataAverage[IR_REAR_RIGHT], 	0 , 1 , FONT_NORMAL, LCD_OPAQUE);
@@ -47,13 +59,8 @@ void getLocation(struct RobotState * robotState) {
 	FA_LCDNumber(IRDataAverage[IR_FRONT], 		40, 20, FONT_NORMAL, LCD_OPAQUE);
 	FA_LCDNumber(IRDataAverage[IR_FRONT_RIGHT], 0 , 20, FONT_NORMAL, LCD_OPAQUE);
 	FA_DelayMillis(100);
-	/**/
-	//BLACK
-	//double M = -198.057;
-	//double C = 110.046;
-	//WHITE
-	double M = -279.159;
-	double C = 163.882;
+	#endif
+	
 	location.leftDistance = 		log10(log10(IRDataAverage[IR_LEFT])) 	* M + C;
 	location.frontLeftDistance = 	log10(log10(IRDataAverage[IR_FRONT_LEFT])) 	* M + C;
 	location.frontDistance = 		log10(log10(IRDataAverage[IR_FRONT])) 	* M + C;

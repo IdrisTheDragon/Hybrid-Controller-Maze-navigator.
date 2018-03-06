@@ -1,4 +1,4 @@
-#include "lib/allcode_api.h"
+#include "../lib/allcode_api.h"
 
 int encoderPower(int Speed){
 	if(FA_ReadSwitch1Debounced()){

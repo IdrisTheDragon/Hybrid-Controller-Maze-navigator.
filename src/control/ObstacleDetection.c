@@ -1,5 +1,5 @@
-#include "lib/allcode_api.h"
-#include "RobotState.h"
+#include "../lib/allcode_api.h"
+#include "../RobotState.h"
 #include "RobotCalibrate.h"
 
 void basicObstacleAvoidence(int LSpeed, int RSpeed){

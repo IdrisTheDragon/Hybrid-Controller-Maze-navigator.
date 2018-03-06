@@ -1,4 +1,4 @@
-#include "lib/allcode_api.h"
+#include "../lib/allcode_api.h"
 int calibrateSpeed(int LSpeed) {
 	int LEncoder = FA_ReadEncoder(CHANNEL_LEFT);
 	int REncoder = FA_ReadEncoder(CHANNEL_RIGHT);

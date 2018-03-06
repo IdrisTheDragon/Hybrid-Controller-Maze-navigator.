@@ -5,7 +5,7 @@ struct RobotState;
 typedef struct RobotState RobotState;
 typedef void state_fn(struct RobotState *);
 
-#include "Location.h"
+#include "input/Location.h"
 
 struct RobotState {
 	int LSpeed;

@@ -1,11 +1,6 @@
 #include "lib/allcode_api.h"
-#include "Location.h"
-#include "ObstacleDetection.h"
-#include "LightReaction.h"
-#include "WallFollow.h"
-#include "dataCollect.h"
+#include "input/Location.h"
 #include "RobotState.h"
-#include "RobotCalibrate.h"
 
 void init(struct RobotState * robotState){
 	FA_RobotInit();

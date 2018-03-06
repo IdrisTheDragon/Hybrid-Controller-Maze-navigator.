@@ -118,10 +118,10 @@ section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200               0x958           0xe04  (3588)
 .const                       0xb58               0x264           0x396  (918)
-.text                        0xdbc              0x5f4e          0x8ef5  (36597)
-.dinit                      0x6d0a                0x22            0x33  (51)
+.text                        0xdbc              0x5f3e          0x8edd  (36573)
+.dinit                      0x6cfa                0x22            0x33  (51)
 
-                 Total program memory used (bytes):         0xa0c2  (41154) 15%
+                 Total program memory used (bytes):         0xa0aa  (41130) 15%
 
 
 Ivt Memory  [Origin = 0x4, Length = 0x1fc]
@@ -707,12 +707,12 @@ External Symbols in Program Memory (by address):
                   0x006946                  _FCD_0dcd1_FormulaAllCode1__LCDClear
                   0x00694e                  _printLocation
                   0x0069ca                  _getLocation
-                  0x006b68                  _encoderPower
-                  0x006c00                  _basicObstacleAvoidence
-                  0x006c44                  _detectObstactle
-                  0x006c7a                  _calibrateSpeed
-                  0x006cce                  _init
-                  0x006cee                  _main
+                  0x006b58                  _encoderPower
+                  0x006bf0                  _basicObstacleAvoidence
+                  0x006c34                  _detectObstactle
+                  0x006c6a                  _calibrateSpeed
+                  0x006cbe                  _init
+                  0x006cde                  _main
                   0xf80004                  __FGS.sec
 
 External Symbols in Program Memory (by name):
@@ -1111,16 +1111,16 @@ External Symbols in Program Memory (by name):
                   0x000230                  __psv_init
                   0x000200                  __resetPRI
                   0x00081e                  _atanf
-                  0x006c00                  _basicObstacleAvoidence
-                  0x006c7a                  _calibrateSpeed
-                  0x006c44                  _detectObstactle
-                  0x006b68                  _encoderPower
+                  0x006bf0                  _basicObstacleAvoidence
+                  0x006c6a                  _calibrateSpeed
+                  0x006c34                  _detectObstactle
+                  0x006b58                  _encoderPower
                   0x000808                  _floorf
                   0x0069ca                  _getLocation
-                  0x006cce                  _init
+                  0x006cbe                  _init
                   0x000732                  _log10f
                   0x0009f8                  _logf
-                  0x006cee                  _main
+                  0x006cde                  _main
                   0x00694e                  _printLocation
 
 Memory Configuration
@@ -4210,7 +4210,7 @@ __c30_signature
  .const             0x8b58        0x264 M:\CS26020\src\lib\allcode_api.o
                     0x8b58                  FCD_00fb1_ASCIIData__INTLIST_LUT
 
-.text             0x000dbc       0x5f4e
+.text             0x000dbc       0x5f3e
  .text            0x000dbc       0x5b92 M:\CS26020\src\lib\allcode_api.o
                   0x000dbc                  FC_CAL_Port_Out(long long)
                   0x000dde                  FC_CAL_Port_Out_DDR(long long)
@@ -4568,19 +4568,19 @@ __c30_signature
                   0x0068f0                  FCD_0dcd1_FormulaAllCode1__LogoSetSpeed
                   0x006914                  FCD_0dcd1_FormulaAllCode1__LogoForwards
                   0x006946                  FCD_0dcd1_FormulaAllCode1__LCDClear
- .text            0x00694e        0x21a Location.o
+ .text            0x00694e        0x20a Location.o
                   0x00694e                  printLocation
                   0x0069ca                  getLocation
- .text            0x006b68         0x98 dataCollect.o
-                  0x006b68                  encoderPower
- .text            0x006c00         0x7a ObstacleDetection.o
-                  0x006c00                  basicObstacleAvoidence
-                  0x006c44                  detectObstactle
- .text            0x006c7a         0x54 RobotCalibrate.o
-                  0x006c7a                  calibrateSpeed
- .text            0x006cce         0x3c robo.o
-                  0x006cce                  init
-                  0x006cee                  main
+ .text            0x006b58         0x98 dataCollect.o
+                  0x006b58                  encoderPower
+ .text            0x006bf0         0x7a ObstacleDetection.o
+                  0x006bf0                  basicObstacleAvoidence
+                  0x006c34                  detectObstactle
+ .text            0x006c6a         0x54 RobotCalibrate.o
+                  0x006c6a                  calibrateSpeed
+ .text            0x006cbe         0x3c robo.o
+                  0x006cbe                  init
+                  0x006cde                  main
 
-.dinit            0x006d0a         0x22
- .dinit           0x006d0a         0x22 data_init
+.dinit            0x006cfa         0x22
+ .dinit           0x006cfa         0x22 data_init
