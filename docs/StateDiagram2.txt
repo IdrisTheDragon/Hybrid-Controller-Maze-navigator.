@@ -1,0 +1,53 @@
+@startuml
+[*] --> init
+init : initialise the robot
+init -down-> updateSensorData
+
+
+state updateSensorData {
+  [*] --> getLocation
+  getLocation -> getLight
+  getLight -> getEncoder 
+  getEncoder -> readLine
+  readLine --> [*]
+}
+
+updateSensorData -down-> control
+
+state control {
+  [*] -down-> updateCellData : cell not visited.
+  [*] -down-> headForDarkness : all cells visited.
+  [*] -down-> excecteRoute : Robot has instructions.
+
+  updateCellData -down-> moveToAnotherCell
+  updateCellData : mark as visited
+  updateCellData : identify walls
+  updateCellData : get a Light Reading
+
+  moveToAnotherCell -down-> plotRoute : to next not visited cell. 
+
+
+  headForDarkness -down-> plotRoute : to darkest cell.
+
+
+  plotRoute -down-> excecteRoute
+  plotRoute : create a set of instructions to the desired cell.
+
+  excecteRoute : run next instruction.
+  excecteRoute : check for stripes on ground.
+  excecteRoute : check for obstacles
+  excecteRoute -down-> [*]
+}
+
+control -down-> updateHardware
+
+state updateHardware {
+  [*] --> setMotors
+  setMotors -> updateDisplay
+  updateDisplay -> updateLED
+  updateLED -> updateSound 
+  updateSound --> [*]
+}
+
+updateHardware -> updateSensorData : continue
+@enduml

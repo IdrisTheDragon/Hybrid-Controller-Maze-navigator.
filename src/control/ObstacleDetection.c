@@ -5,7 +5,7 @@
 void basicObstacleAvoidence(int LSpeed, int RSpeed){
 	// Go forward
     FA_SetMotors(LSpeed,RSpeed);
-	LSpeed = calibrateSpeed(LSpeed);
+	//LSpeed = calibrateSpeed(LSpeed);
 		
 	if(FA_ReadIR(1) > 600 || FA_ReadIR(2) > 600){  // check front left ir & check front ir
 		FA_Backwards(50);

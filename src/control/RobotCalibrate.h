@@ -2,7 +2,7 @@
 #define RobotCalibrate_H
 
 
-int calibrateSpeed(int LSpeed);
+void calibrateSpeed(struct RobotState * robotState);
 
 
 #endif /* RobotCalibrate_H*/

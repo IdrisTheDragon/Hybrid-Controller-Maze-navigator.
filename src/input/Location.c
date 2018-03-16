@@ -1,7 +1,8 @@
 #include "../lib/allcode_api.h"
+#include "../output/bluetooth.h"
 #include <math.h>
 #include "Location.h"
-#include "../control/ObstacleDetection.h"
+#include "Light.h"
 
 //#define debug
 
@@ -61,14 +62,14 @@ void getLocation(struct RobotState * robotState) {
 	FA_DelayMillis(100);
 	#endif
 	
-	location.leftDistance = 		log10(log10(IRDataAverage[IR_LEFT])) 	* M + C;
-	location.frontLeftDistance = 	log10(log10(IRDataAverage[IR_FRONT_LEFT])) 	* M + C;
-	location.frontDistance = 		log10(log10(IRDataAverage[IR_FRONT])) 	* M + C;
-	location.frontRightDistance = 	log10(log10(IRDataAverage[IR_FRONT_RIGHT]))	* M + C;
-	location.rightDistance = 		log10(log10(IRDataAverage[IR_RIGHT])) 	* M + C;
-	location.rearRightDistance = 	log10(log10(IRDataAverage[IR_REAR_RIGHT])) 	* M + C;
-	location.rearDistance = 		log10(log10(IRDataAverage[IR_REAR])) 	* M + C;
-	location.rearLeftDistance = 	log10(log10(IRDataAverage[IR_REAR_LEFT])) 	* M + C;
+	location.leftDistance = 		log10(log10(IRDataAverage[IR_LEFT])) 	* Mw + C;
+	location.frontLeftDistance = 	log10(log10(IRDataAverage[IR_FRONT_LEFT])) 	* Mw + C;
+	location.frontDistance = 		log10(log10(IRDataAverage[IR_FRONT])) 	* Mw + C;
+	location.frontRightDistance = 	log10(log10(IRDataAverage[IR_FRONT_RIGHT]))	* Mw + C;
+	location.rightDistance = 		log10(log10(IRDataAverage[IR_RIGHT])) 	* Mw + C;
+	location.rearRightDistance = 	log10(log10(IRDataAverage[IR_REAR_RIGHT])) 	* Mw + C;
+	location.rearDistance = 		log10(log10(IRDataAverage[IR_REAR])) 	* Mw + C;
+	location.rearLeftDistance = 	log10(log10(IRDataAverage[IR_REAR_LEFT])) 	* Mw + C;
 	robotState->location = &location;
-	robotState->next = detectObstactle;
+	robotState->next = outputState;
 }

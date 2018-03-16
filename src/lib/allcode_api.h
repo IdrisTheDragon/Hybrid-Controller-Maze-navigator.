@@ -9,15 +9,17 @@
  * 2017-11-16   CPDT Created
  * 2018-02-05   LGT Extended, with FA_* naming convention
  * 2018-02-20   LGT Added millisecond clock
+ * 2018-03-05   LGT Added magnetometer, accelerometer, BlueTooth
+ *                  Fixed up references to FCL_LINE -> FCL_Y
  */
 
 #ifdef	__cplusplus
 extern "C" {
 #endif
 
-#define API_VERSION "1.1"
+#define API_VERSION "1.2"
 #define API_VER_MAJOR   1
-#define AIP_VER_MINOR   1
+#define AIP_VER_MINOR   2
 
 // IR Sensors
 #define IR_LEFT 0
@@ -127,12 +129,12 @@ void FCD_0dcd1_FormulaAllCode1__EncoderReset();
        :
        :Parameters for macro PrintNumber:
        :  Number : Byte or Integer number to send to the display.
-       :  X : X pixel coordinate to set the output string position.
-       :  Line : Line 0-3
+       :  X : X pixel coordinate to set the output string position (0 - 127)
+       :  Y : Y pixel coordinate to set the output string position (0 - 31)
        :  Font : Size of the font - 0 = Normal, 1 = Double Width, 2 = Double Width and Height, 3 = Double Height
        :  Transparent : Specifies if the background of the text is drawn - 0 = Background colour is drawn, 1 = Background colour not drawn.
 \*=----------------------------------------------------------------------=*/
-void FCD_0ab21_gLCD_ST7567_SPI1__PrintNumber(MX_SINT16 FCL_NUMBER, MX_UINT16 FCL_X, MX_UINT16 FCL_LINE, MX_UINT8 FCL_FONT, MX_UINT8 FCL_TRANSPARENT);
+void FCD_0ab21_gLCD_ST7567_SPI1__PrintNumber(MX_SINT16 FCL_NUMBER, MX_UINT16 FCL_X, MX_UINT16 FCL_Y, MX_UINT8 FCL_FONT, MX_UINT8 FCL_TRANSPARENT);
 #define FA_LCDNumber    FCD_0ab21_gLCD_ST7567_SPI1__PrintNumber
 
 // Set one pixel to current foreground colour
@@ -155,6 +157,7 @@ void FCD_0ab21_gLCD_ST7567_SPI1__BPlot(MX_UINT8 FCL_X, MX_UINT8 FCL_Y);
 \*=----------------------------------------------------------------------=*/
 void FCD_0ab21_gLCD_ST7567_SPI1__Print(MX_CHAR *FCL_STR, MX_UINT16 FCLsz_STR, MX_UINT16 FCL_X1, MX_UINT16 FCL_Y1, MX_UINT8 FCL_FONT, MX_UINT8 FCL_TRANSPARENT);
 #define FA_LCDPrint FCD_0ab21_gLCD_ST7567_SPI1__Print
+#define FA_LCDString FCD_0ab21_gLCD_ST7567_SPI1__Print
 
 // Clear LCD display
 void FCD_0ab21_gLCD_ST7567_SPI1__ClearDisplay();
@@ -197,6 +200,9 @@ void FCD_0ab21_gLCD_ST7567_SPI1__DrawLine(MX_UINT8 FCL_X1, MX_UINT8 FCL_Y1, MX_U
 \*=----------------------------------------------------------------------=*/
 void FCD_0ab21_gLCD_ST7567_SPI1__DrawRectangle(MX_UINT8 FCL_X1, MX_UINT8 FCL_Y1, MX_UINT8 FCL_X2, MX_UINT8 FCL_Y2, MX_UINT8 FCL_TRANSPARENT, MX_UINT8 FCL_SOLID);
 #define FA_LCDRectangle FCD_0ab21_gLCD_ST7567_SPI1__DrawRectangle
+
+/* Print a UINT32 (unsigned long) on display */
+void FA_LCDUnsigned(MX_UINT32 FCL_NUMBER, MX_UINT16 FCL_X, MX_UINT16 FCL_Y, MX_UINT8 FCL_FONT, MX_UINT8 FCL_TRANSPARENT);
 
 /*
  * Infra-red obstacle detectors
@@ -315,18 +321,120 @@ void FCI_DELAYINT_S(MX_UINT16 Delay);
 #define FA_DelaySecs    FCI_DELAYINT_S
 
 /*
- * TO BE IMPLEMENTED:
- * 
- * SD card I/O
- * Bluetooth serial
- * USB serial
- * Accelerometer
- * Magnetometer
- * EEPROM
- * 
+ * e-compass (magnetometer & accelerometer)
  */
 
-/* Millisecond system clock */
+/* Initialise magnetometer & accelerometer
+ * 
+ * Default setup:
+ * Mag sample rate: 12.5 Hz
+ * Mag scale: +/- 8 gauss
+ * Acc sample rate: 50 Hz
+ * Acc scale: +/- 2g
+ */
+MX_UINT8 FCD_076d1_LSM303D_Magnetometer1__Initialise();
+#define FA_CompassInit FCD_076d1_LSM303D_Magnetometer1__Initialise
+
+/******************************************
+ * Set sample rate and scale for accelerometer
+ * 
+ * Special case: rate 0 -> disabled
+ * Returns: 0 for success
+ *          1 for parameter out of range
+ *          255 for register write error
+ * 
+ * rate (Hz):
+ * 0: power down
+ * 1: 3.125
+ * 2: 6.25
+ * 3: 12.5
+ * 4: 25
+ * 5: 50
+ * 6: 100
+ * 7: 200
+ * 8: 400
+ * 9: 800
+ * 10: 1600
+ * 
+ * scale:
+ * 0: +/- 2g
+ * 1: +/- 4g
+ * 2: +/- 6g
+ * 3: +/- 8g
+ * 4: +/- 16g
+ * 
+ * Returns:
+ *  0 = okay
+ *  1 = invalid parameter value or combination
+ *  255 = error writing to eCompass
+ * ***************************************/
+MX_UINT8 FA_ConfigureAccel(MX_UINT8 rate, MX_UINT8 scale);
+
+/******************************************
+ * Set sample rate and scale for magnetometer
+ * 
+ * Special case: rate 0 -> disabled
+ * Returns: 0 for success
+ *          1 for parameter out of range
+ *          255 for register write error
+ * 
+ * rate (Hz):
+ * 0: power down
+ * 1: 3.125
+ * 2: 6.25
+ * 3: 12.5
+ * 4: 25
+ * 5: 50
+ * 6: 100*
+ * (* 100 Hz only available if Acc rate > 50 or Acc powered down)
+ * 
+ * scale:
+ * 0: +/- 2 gauss
+ * 1: +/- 4 gauss
+ * 2: +/- 8 gauss
+ * 3: +/- 12 gauss
+ * 
+ * 
+ * Returns:
+ *  0 = okay
+ *  1 = invalid parameter value or combination
+ *  255 = error writing to eCompass
+ * ***************************************/
+MX_UINT8 FA_ConfigureMag(MX_UINT8 rate, MX_UINT8 scale);
+
+/* Read magnetometer data
+ *
+ * Parameters:
+ *  axes: array of 3 ints: X, Y and Z data
+ *      declare as: int axes[3]
+ *      call as: FA_ReadMag(axes)
+ * 
+ * Returns:
+ *  0 if no new data since last read
+ *    (axes not updated)
+ *  1 if new data was available
+ *    (axes array updated)
+ */
+MX_UINT8 FA_ReadMag(int *axes);
+
+/* Read accelerometer data
+ * 
+ * Parameters:
+ *  axes: array of 3 ints: X, Y and Z data
+ *      declare as: int axes[3]
+ *      call as: FA_ReadAccel(axes)
+ * 
+ * Returns:
+ *  0 if no new data since last read
+ *    (axes not updated)
+ *  1 if new data was available
+ *    (axes array updated)
+ */
+ MX_UINT8 FA_ReadAccel(int *axes);
+
+/*
+ * Millisecond system clock
+ */
 
 /* Initialise clock */
 MX_UINT8 XFA_ClockMS_Initialise(void);
@@ -334,8 +442,45 @@ MX_UINT8 XFA_ClockMS_Initialise(void);
 /* Return system time in milliseconds */
 MX_UINT32 FA_ClockMS(void);
 
-/* Convenience routine - print UINT32 on display */
-void XFA_LCDPrintU32(MX_UINT32 FCL_NUMBER, MX_UINT16 FCL_X, MX_UINT16 FCL_LINE, MX_UINT8 FCL_FONT, MX_UINT8 FCL_TRANSPARENT);
+/*
+ * Bluetooth
+ */
+
+/* Check connection - are we paired with something? 0 = no, 1 = yes */
+MX_UINT8 FCD_0dcd1_FormulaAllCode1__BluetoothCheckConnection();
+#define FA_BTConnected FCD_0dcd1_FormulaAllCode1__BluetoothCheckConnection
+
+/* Send one byte */
+void FCD_0dcd1_FormulaAllCode1__BluetoothTransmit(MX_UINT8 FCL_DATA);
+#define FA_BTSendByte FCD_0dcd1_FormulaAllCode1__BluetoothTransmit
+
+/* Send a string */
+void FCD_0dcd1_FormulaAllCode1__BluetoothTransmitString(MX_CHAR *FCL_DATA, MX_UINT16 FCLsz_DATA);
+#define FA_BTSendString FCD_0dcd1_FormulaAllCode1__BluetoothTransmitString
+
+/* Format and send an signed number */
+void FCD_06b71_BlueTooth__SendNumber(MX_SINT32 FCL_NUMBER);
+#define FA_BTSendNumber FCD_06b71_BlueTooth__SendNumber
+
+/* Format and send an unsigned number */
+void FA_BTSendUnsigned(MX_UINT32 FCL_NUMBER);
+
+/* Get byte from BT receive buffer: return -1 if none waiting */
+int FA_BTGetByte();
+
+/* Return number of received bytes waiting, 0 = buffer empty */
+MX_UINT16 FCD_0dcd1_FormulaAllCode1__BluetoothQueueLength();
+#define FA_BTAvailable FCD_0dcd1_FormulaAllCode1__BluetoothQueueLength
+
+/*
+ * TO BE IMPLEMENTED:
+ * 
+ * SD card I/O
+ * USB serial
+ * EEPROM
+ * 
+ */
+
 
 /*****************************/
 

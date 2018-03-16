@@ -2,32 +2,6 @@
 MagicCookie={0b13fe8c-dfe0-40eb-8900-6712719559a7}
 Version=1.0
 [File000]
-Location=M:\CS26020\robo.o
-Folder=Intermediary
-DeviceName=dsPIC33EP256MU810
-LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
-LanguageToolID={B1442D91-FF1F-4E60-9714-C39C1BA9DB62}
-LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-gcc.exe
-PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|robo.c|Location.c||<obj>|allcode_api.o||<lib>||<lkr>||
-SuiteArgsString=
-ToolArgsString=-g -Wall
-TraceCmdString=
-DebugOptions=-D__DEBUG
-[File001]
-Location=M:\CS26020\Location.o
-Folder=Intermediary
-DeviceName=dsPIC33EP256MU810
-LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
-LanguageToolID={B1442D91-FF1F-4E60-9714-C39C1BA9DB62}
-LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-gcc.exe
-PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|robo.c|Location.c||<obj>|allcode_api.o||<lib>||<lkr>||
-SuiteArgsString=
-ToolArgsString=-g -Wall
-TraceCmdString=
-DebugOptions=-D__DEBUG
-[File002]
 Location=M:\CS26020\out\robo.o
 Folder=Intermediary
 DeviceName=dsPIC33EP256MU810
@@ -35,12 +9,12 @@ LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
 LanguageToolID={B1442D91-FF1F-4E60-9714-C39C1BA9DB62}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-gcc.exe
 PPAD=$(BINDIR)|M:\CS26020\out||$(TMPDIR)|M:\CS26020\out||$(AINDIR)||$(INCDIR)|M:\CS26020\src||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|src\robo.c|src\Location.c|src\ObstacleDetection.c|src\WallFollow.c|src\LightReaction.c|src\RobotState.c|src\RobotCalibrate.c|src\dataCollect.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
+SOLK=<src>|src\robo.c|src\input\Location.c|src\control\ObstacleDetection.c|src\control\WallFollow.c|src\control\LightReaction.c|src\RobotState.c|src\control\RobotCalibrate.c|src\input\dataCollect.c|src\input\Light.c|src\input\Encoders.c|src\Cell.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=-g -Wall
+ToolArgsString=-g -Wall -mno-eds-warn
 TraceCmdString=
 DebugOptions=-D__DEBUG
-[File003]
+[File001]
 Location=M:\CS26020\out\Location.o
 Folder=Intermediary
 DeviceName=dsPIC33EP256MU810
@@ -48,12 +22,12 @@ LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
 LanguageToolID={B1442D91-FF1F-4E60-9714-C39C1BA9DB62}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-gcc.exe
 PPAD=$(BINDIR)|M:\CS26020\out||$(TMPDIR)|M:\CS26020\out||$(AINDIR)||$(INCDIR)|M:\CS26020\src||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|src\robo.c|src\Location.c|src\ObstacleDetection.c|src\WallFollow.c|src\LightReaction.c|src\RobotState.c|src\RobotCalibrate.c|src\dataCollect.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
+SOLK=<src>|src\robo.c|src\input\Location.c|src\control\ObstacleDetection.c|src\control\WallFollow.c|src\control\LightReaction.c|src\RobotState.c|src\control\RobotCalibrate.c|src\input\dataCollect.c|src\input\Light.c|src\input\Encoders.c|src\Cell.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=-g -Wall
+ToolArgsString=-g -Wall -mno-eds-warn
 TraceCmdString=
 DebugOptions=-D__DEBUG
-[File004]
+[File002]
 Location=M:\CS26020\out\ObstacleDetection.o
 Folder=Intermediary
 DeviceName=dsPIC33EP256MU810
@@ -61,12 +35,12 @@ LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
 LanguageToolID={B1442D91-FF1F-4E60-9714-C39C1BA9DB62}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-gcc.exe
 PPAD=$(BINDIR)|M:\CS26020\out||$(TMPDIR)|M:\CS26020\out||$(AINDIR)||$(INCDIR)|M:\CS26020\src||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|src\robo.c|src\Location.c|src\ObstacleDetection.c|src\WallFollow.c|src\LightReaction.c|src\RobotState.c|src\RobotCalibrate.c|src\dataCollect.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
+SOLK=<src>|src\robo.c|src\input\Location.c|src\control\ObstacleDetection.c|src\control\WallFollow.c|src\control\LightReaction.c|src\RobotState.c|src\control\RobotCalibrate.c|src\input\dataCollect.c|src\input\Light.c|src\input\Encoders.c|src\Cell.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=-g -Wall
+ToolArgsString=-g -Wall -mno-eds-warn
 TraceCmdString=
 DebugOptions=-D__DEBUG
-[File005]
+[File003]
 Location=M:\CS26020\out\WallFollow.o
 Folder=Intermediary
 DeviceName=dsPIC33EP256MU810
@@ -74,12 +48,12 @@ LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
 LanguageToolID={B1442D91-FF1F-4E60-9714-C39C1BA9DB62}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-gcc.exe
 PPAD=$(BINDIR)|M:\CS26020\out||$(TMPDIR)|M:\CS26020\out||$(AINDIR)||$(INCDIR)|M:\CS26020\src||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|src\robo.c|src\Location.c|src\ObstacleDetection.c|src\WallFollow.c|src\LightReaction.c|src\RobotState.c|src\RobotCalibrate.c|src\dataCollect.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
+SOLK=<src>|src\robo.c|src\input\Location.c|src\control\ObstacleDetection.c|src\control\WallFollow.c|src\control\LightReaction.c|src\RobotState.c|src\control\RobotCalibrate.c|src\input\dataCollect.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=-g -Wall
+ToolArgsString=-g -Wall -mno-eds-warn
 TraceCmdString=
 DebugOptions=-D__DEBUG
-[File006]
+[File004]
 Location=M:\CS26020\out\LightReaction.o
 Folder=Intermediary
 DeviceName=dsPIC33EP256MU810
@@ -87,12 +61,12 @@ LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
 LanguageToolID={B1442D91-FF1F-4E60-9714-C39C1BA9DB62}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-gcc.exe
 PPAD=$(BINDIR)|M:\CS26020\out||$(TMPDIR)|M:\CS26020\out||$(AINDIR)||$(INCDIR)|M:\CS26020\src||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|src\robo.c|src\Location.c|src\ObstacleDetection.c|src\WallFollow.c|src\LightReaction.c|src\RobotState.c|src\RobotCalibrate.c|src\dataCollect.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
+SOLK=<src>|src\robo.c|src\input\Location.c|src\control\ObstacleDetection.c|src\control\WallFollow.c|src\control\LightReaction.c|src\RobotState.c|src\control\RobotCalibrate.c|src\input\dataCollect.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=-g -Wall
+ToolArgsString=-g -Wall -mno-eds-warn
 TraceCmdString=
 DebugOptions=-D__DEBUG
-[File007]
+[File005]
 Location=M:\CS26020\out\RobotState.o
 Folder=Intermediary
 DeviceName=dsPIC33EP256MU810
@@ -102,10 +76,10 @@ LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-gcc.ex
 PPAD=$(BINDIR)|M:\CS26020\out||$(TMPDIR)|M:\CS26020\out||$(AINDIR)||$(INCDIR)|M:\CS26020\src||$(LIBDIR)||$(LKRDIR)||
 SOLK=<src>|src\robo.c|src\Location.c|src\ObstacleDetection.c|src\WallFollow.c|src\LightReaction.c|src\RobotState.c|src\RobotCalibrate.c|src\dataCollect.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=-g -Wall
+ToolArgsString=-g -Wall -mno-eds-warn
 TraceCmdString=
 DebugOptions=-D__DEBUG
-[File008]
+[File006]
 Location=M:\CS26020\out\RobotCalibrate.o
 Folder=Intermediary
 DeviceName=dsPIC33EP256MU810
@@ -113,12 +87,12 @@ LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
 LanguageToolID={B1442D91-FF1F-4E60-9714-C39C1BA9DB62}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-gcc.exe
 PPAD=$(BINDIR)|M:\CS26020\out||$(TMPDIR)|M:\CS26020\out||$(AINDIR)||$(INCDIR)|M:\CS26020\src||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|src\robo.c|src\Location.c|src\ObstacleDetection.c|src\WallFollow.c|src\LightReaction.c|src\RobotState.c|src\RobotCalibrate.c|src\dataCollect.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
+SOLK=<src>|src\robo.c|src\input\Location.c|src\control\ObstacleDetection.c|src\control\WallFollow.c|src\control\LightReaction.c|src\RobotState.c|src\control\RobotCalibrate.c|src\input\dataCollect.c|src\input\Light.c|src\input\Encoders.c|src\Cell.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=-g -Wall
+ToolArgsString=-g -Wall -mno-eds-warn
 TraceCmdString=
 DebugOptions=-D__DEBUG
-[File009]
+[File007]
 Location=M:\CS26020\out\dataCollect.o
 Folder=Intermediary
 DeviceName=dsPIC33EP256MU810
@@ -126,38 +100,51 @@ LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
 LanguageToolID={B1442D91-FF1F-4E60-9714-C39C1BA9DB62}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-gcc.exe
 PPAD=$(BINDIR)|M:\CS26020\out||$(TMPDIR)|M:\CS26020\out||$(AINDIR)||$(INCDIR)|M:\CS26020\src||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|src\robo.c|src\Location.c|src\ObstacleDetection.c|src\WallFollow.c|src\LightReaction.c|src\RobotState.c|src\RobotCalibrate.c|src\dataCollect.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
+SOLK=<src>|src\robo.c|src\input\Location.c|src\control\ObstacleDetection.c|src\control\WallFollow.c|src\control\LightReaction.c|src\RobotState.c|src\control\RobotCalibrate.c|src\input\dataCollect.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=-g -Wall
+ToolArgsString=-g -Wall -mno-eds-warn
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File008]
+Location=M:\CS26020\out\Light.o
+Folder=Intermediary
+DeviceName=dsPIC33EP256MU810
+LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
+LanguageToolID={B1442D91-FF1F-4E60-9714-C39C1BA9DB62}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-gcc.exe
+PPAD=$(BINDIR)|M:\CS26020\out||$(TMPDIR)|M:\CS26020\out||$(AINDIR)||$(INCDIR)|M:\CS26020\src||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|src\robo.c|src\input\Location.c|src\control\ObstacleDetection.c|src\control\WallFollow.c|src\control\LightReaction.c|src\RobotState.c|src\control\RobotCalibrate.c|src\input\dataCollect.c|src\input\Light.c|src\input\Encoders.c|src\Cell.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=-g -Wall -mno-eds-warn
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File009]
+Location=M:\CS26020\out\Encoders.o
+Folder=Intermediary
+DeviceName=dsPIC33EP256MU810
+LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
+LanguageToolID={B1442D91-FF1F-4E60-9714-C39C1BA9DB62}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-gcc.exe
+PPAD=$(BINDIR)|M:\CS26020\out||$(TMPDIR)|M:\CS26020\out||$(AINDIR)||$(INCDIR)|M:\CS26020\src||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|src\robo.c|src\input\Location.c|src\control\ObstacleDetection.c|src\control\WallFollow.c|src\control\LightReaction.c|src\RobotState.c|src\control\RobotCalibrate.c|src\input\dataCollect.c|src\input\Light.c|src\input\Encoders.c|src\Cell.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=-g -Wall -mno-eds-warn
 TraceCmdString=
 DebugOptions=-D__DEBUG
 [File010]
-Location=M:\CS26020\robot.cof
-Folder=Output
+Location=M:\CS26020\out\Cell.o
+Folder=Intermediary
 DeviceName=dsPIC33EP256MU810
 LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
-LanguageToolID={6836D8CA-42BB-48FB-9E77-3F0AA8005073}
-LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-ld.exe
-PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|robo.c|Location.c||<obj>|allcode_api.o||<lib>||<lkr>||
+LanguageToolID={B1442D91-FF1F-4E60-9714-C39C1BA9DB62}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-gcc.exe
+PPAD=$(BINDIR)|M:\CS26020\out||$(TMPDIR)|M:\CS26020\out||$(AINDIR)||$(INCDIR)|M:\CS26020\src||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|src\robo.c|src\input\Location.c|src\control\ObstacleDetection.c|src\control\WallFollow.c|src\control\LightReaction.c|src\RobotState.c|src\control\RobotCalibrate.c|src\input\dataCollect.c|src\input\Light.c|src\input\Encoders.c|src\Cell.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
 SuiteArgsString=
-ToolArgsString=-o"$(BINDIR_)$(TARGETBASE).$(TARGETSUFFIX)" -Map="$(BINDIR_)$(TARGETBASE).map" --report-mem
+ToolArgsString=-g -Wall -mno-eds-warn
 TraceCmdString=
-DebugOptions=--defsym=__MPLAB_DEBUG=1
+DebugOptions=-D__DEBUG
 [File011]
-Location=M:\CS26020\robot.hex
-Folder=Output
-DeviceName=dsPIC33EP256MU810
-LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
-LanguageToolID={6836D8CA-42BB-48FB-9E77-3F0AA8005073}
-LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-ld.exe
-PPAD=$(BINDIR)||$(TMPDIR)||$(AINDIR)||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|robo.c|Location.c||<obj>|allcode_api.o||<lib>||<lkr>||
-SuiteArgsString=
-ToolArgsString=-o"$(BINDIR_)$(TARGETBASE).$(TARGETSUFFIX)" -Map="$(BINDIR_)$(TARGETBASE).map" --report-mem
-TraceCmdString=
-DebugOptions=--defsym=__MPLAB_DEBUG=1
-[File012]
 Location=M:\CS26020\out\robot.cof
 Folder=Output
 DeviceName=dsPIC33EP256MU810
@@ -165,12 +152,12 @@ LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
 LanguageToolID={6836D8CA-42BB-48FB-9E77-3F0AA8005073}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-ld.exe
 PPAD=$(BINDIR)|M:\CS26020\out||$(TMPDIR)|M:\CS26020\out||$(AINDIR)||$(INCDIR)|M:\CS26020\src||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|src\robo.c|src\Location.c|src\ObstacleDetection.c|src\WallFollow.c|src\LightReaction.c|src\RobotState.c|src\RobotCalibrate.c|src\dataCollect.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
+SOLK=<src>|src\robo.c|src\input\Location.c|src\control\ObstacleDetection.c|src\control\WallFollow.c|src\control\LightReaction.c|src\RobotState.c|src\control\RobotCalibrate.c|src\input\dataCollect.c|src\input\Light.c|src\input\Encoders.c|src\Cell.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=-Map="$(BINDIR_)$(TARGETBASE).map" --report-mem -o"$(BINDIR_)$(TARGETBASE).$(TARGETSUFFIX)"
 TraceCmdString=
 DebugOptions=--defsym=__MPLAB_DEBUG=1
-[File013]
+[File012]
 Location=M:\CS26020\out\robot.hex
 Folder=Output
 DeviceName=dsPIC33EP256MU810
@@ -178,7 +165,7 @@ LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
 LanguageToolID={6836D8CA-42BB-48FB-9E77-3F0AA8005073}
 LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-ld.exe
 PPAD=$(BINDIR)|M:\CS26020\out||$(TMPDIR)|M:\CS26020\out||$(AINDIR)||$(INCDIR)|M:\CS26020\src||$(LIBDIR)||$(LKRDIR)||
-SOLK=<src>|src\robo.c|src\Location.c|src\ObstacleDetection.c|src\WallFollow.c|src\LightReaction.c|src\RobotState.c|src\RobotCalibrate.c|src\dataCollect.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
+SOLK=<src>|src\robo.c|src\input\Location.c|src\control\ObstacleDetection.c|src\control\WallFollow.c|src\control\LightReaction.c|src\RobotState.c|src\control\RobotCalibrate.c|src\input\dataCollect.c|src\input\Light.c|src\input\Encoders.c|src\Cell.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
 SuiteArgsString=
 ToolArgsString=-Map="$(BINDIR_)$(TARGETBASE).map" --report-mem -o"$(BINDIR_)$(TARGETBASE).$(TARGETSUFFIX)"
 TraceCmdString=
