@@ -19,18 +19,18 @@ void blue(struct RobotState * robotState){
     }
 }
 
-void outputState(struct RobotState * robotState){
+void broadcastLocation(struct RobotState * robotState){
     if(FA_BTConnected () == 1){
         char string[50];
-        sprintf(string,"%d_%d_%d\n%d_____%d\n%d_%d_%d\n\n",
+        sprintf(string,"SR_%d_%d_%d_%d_%d_%d_%d_%d\n",
             robotState->location->frontLeftDistance,
             robotState->location->frontDistance,
             robotState->location->frontRightDistance,
-            robotState->location->leftDistance,
             robotState->location->rightDistance,
-            robotState->location->rearLeftDistance,
+            robotState->location->rearRightDistance,
             robotState->location->rearDistance,
-            robotState->location->rearRightDistance
+            robotState->location->rearLeftDistance,
+            robotState->location->leftDistance
         );
         FA_BTSendString (string, 50);
     }

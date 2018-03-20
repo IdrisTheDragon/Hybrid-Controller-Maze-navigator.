@@ -71,5 +71,5 @@ void getLocation(struct RobotState * robotState) {
 	location.rearDistance = 		log10(log10(IRDataAverage[IR_REAR])) 	* Mw + C;
 	location.rearLeftDistance = 	log10(log10(IRDataAverage[IR_REAR_LEFT])) 	* Mw + C;
 	robotState->location = &location;
-	robotState->next = outputState;
+	robotState->next = broadcastLocation;
 }
