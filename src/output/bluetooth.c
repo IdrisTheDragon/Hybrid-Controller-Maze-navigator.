@@ -1,28 +1,17 @@
 #include "../RobotState.h"
 #include "../lib/allcode_api.h"
-#include "../input/Location.h"
+#include "../output/setMotors.h"
 #include <stdio.h>
 
-void blue(struct RobotState * robotState){
-    if(FA_BTConnected () == 1){
-        int bytes = FA_BTAvailable ();
-        if(bytes > 0){
-            char * string[50];
-            char input;
-            int i;
-            for(i =0; i <bytes; i++){
-                input = FA_BTGetByte ();
-                string[i] = input;
-            }
-            FA_BTSendString (string, bytes);
-        }    
-    }
-}
-
+unsigned long time;
+unsigned long prevTime = 0;
 void broadcastLocation(struct RobotState * robotState){
-    if(FA_BTConnected () == 1){
-        char string[50];
-        sprintf(string,"SR_%d_%d_%d_%d_%d_%d_%d_%d\n",
+    time = FA_ClockMS();
+    if(time - prevTime > 1000){
+        prevTime = time;
+        if(FA_BTConnected () == 1){
+        char message[100];
+        sprintf(message,"SR_%d_%d_%d_%d_%d_%d_%d_%d\nSL_%d\nSE_%d_%d\n",
             robotState->location->frontLeftDistance,
             robotState->location->frontDistance,
             robotState->location->frontRightDistance,
@@ -30,10 +19,13 @@ void broadcastLocation(struct RobotState * robotState){
             robotState->location->rearRightDistance,
             robotState->location->rearDistance,
             robotState->location->rearLeftDistance,
-            robotState->location->leftDistance
+            robotState->location->leftDistance,
+            robotState->LDR,
+            robotState->LEncoders,
+            robotState->REncoders
         );
-        FA_BTSendString (string, 50);
+        FA_BTSendString (message, 100);
     }
-    FA_DelaySecs(2);
-    robotState->next = getLocation;
+    }
+    robotState->next = setMotors;
 }

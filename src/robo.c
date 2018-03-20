@@ -6,6 +6,7 @@
 
 void init(struct RobotState * robotState){
 	FA_RobotInit();
+	XFA_ClockMS_Initialise();
 	FA_LCDBacklight(50);
 	robotState->next = getLocation;
 }
@@ -67,6 +68,9 @@ int main(){
 	struct RobotState robotState;          //create a robot State to store the sensor speed data etc.
 	robotState.next = init;                //add the first function to the state machine: initialise the robot.
 	robotState.orientation = NORTH;        //set it's genral orientation to North
+	robotState.REncoders = 0;
+	robotState.LEncoders = 0;
+	robotState.cellsVisited = 0;
 	robotState.curCell = &map[1][0];       //set it's current cell location
     while(robotState.next) {               //begin the state machine while loop.
 		robotState.next(&robotState);      //excute the code for the next state.

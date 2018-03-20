@@ -2,6 +2,9 @@
 #define RobotState_H
 
 struct RobotState;
+struct Instruction;
+
+typedef struct Instruction Instruction;
 typedef struct RobotState RobotState;
 typedef void state_fn(struct RobotState *);
 
@@ -14,13 +17,22 @@ typedef void state_fn(struct RobotState *);
 #define SOUTH 2
 #define WEST 3
 
+struct Instruction {
+	struct Instruction * nextInstruction;
+	state_fn * next;
+};
+
 struct RobotState {
 	int LSpeed;
 	int RSpeed;
-	int LEncoders[10];
-	int REncoders[10];
+	int LEncoders;
+	int REncoders;
+	int prevREncoder;
+	int prevLEncoder;
 	int LDR;
 	int orientation;
+	int cellsVisited;
+	struct Instruction * instruction;
 	struct Cell * curCell;
 	struct Location * location;
 	state_fn * next;

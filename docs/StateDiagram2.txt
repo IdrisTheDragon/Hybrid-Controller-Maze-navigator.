@@ -24,19 +24,27 @@ state control {
   updateCellData : identify walls
   updateCellData : get a Light Reading
 
-  moveToAnotherCell -down-> plotRoute : to next not visited cell. 
+  moveToAnotherCell -down-> searchCells
+  
+  searchCells -down-> [*] : cell notVisited
 
+  searchCells : "Build set of instructions \n to next not searched cell, using recursion."
 
-  headForDarkness -down-> plotRoute : to darkest cell.
+  searchCells -down-> eastCheck : robot facing South
+  searchCells -down-> southCheck : robot facing West
+  searchCells -down-> westCheck : robot facing North  
+  searchCells -down-> northCheck : robot facing East 
 
+  eastCheck -> searchCells : wall doesn't exist
+  eastCheck -down-> southCheck : wall in way
+  southCheck -> searchCells : wall doesn't exist
+  southCheck -down-> westCheck : wall in way
+  westCheck -> searchCells :  wall doesn't exist
+  westCheck -down-> northCheck : wall in way
+  northCheck -> searchCells :  wall doesn't exist
+  northCheck -down-> eastCheck : wall in way
 
-  plotRoute -down-> excecteRoute
-  plotRoute : create a set of instructions to the desired cell.
-
-  excecteRoute : run next instruction.
-  excecteRoute : check for stripes on ground.
-  excecteRoute : check for obstacles
-  excecteRoute -down-> [*]
+  headForDarkness -down-> [*] : to darkest cell.
 }
 
 control -down-> updateHardware
