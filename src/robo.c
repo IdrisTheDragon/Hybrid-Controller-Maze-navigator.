@@ -3,6 +3,7 @@
 #include "output/bluetooth.h"
 #include "RobotState.h"
 #include "Cell.h"
+#include "stdlib.h"
 
 void init(struct RobotState * robotState){
 	FA_RobotInit();
@@ -16,18 +17,24 @@ void init(struct RobotState * robotState){
 int main(){
 	int x,y; //loop variables for x and y directions
 	struct Cell map[4][4]; //create 16 Cells.
+
+	for(x=0;x<4;x++){
+		for(y=0;y<4;y++){
+			map[x][y].visited = false;
+		}
+	}
 	
 	//put in the vertical walls
 	for(y=0;y<4;y++){
 		//west walls
 		struct VWall wall;
 		wall.eastCell = &map[0][y];
-		wall.wallExists = true;
+		wall.wallExists = 2000;
 		map[0][y].wallWest = &wall;
 		//east walls
 		struct VWall wall1;
 		wall1.westCell = &map[3][y];
-		wall1.wallExists = true;
+		wall1.wallExists = 2000;
 		map[3][y].wallEast = &wall1;
 	}
 	//middle walls
@@ -45,13 +52,13 @@ int main(){
 		//southern wall
 		struct HWall wall;
 		wall.northCell = &map[x][0];
-		wall.wallExists = true;
+		wall.wallExists = 2000;
 		map[x][3].wallSouth = &wall;
 		
 		//northern wall
 		struct HWall wall1;
 		wall1.southCell = &map[x][3];
-		wall1.wallExists = true;
+		wall1.wallExists = 2000;
 		map[x][3].wallNorth = &wall1;
 	}
 	//middle walls
@@ -70,11 +77,18 @@ int main(){
 	robotState.orientation = NORTH;        //set it's genral orientation to North
 	robotState.REncoders = 0;
 	robotState.LEncoders = 0;
+	robotState.prevLEncoder = 0;
+	robotState.prevLEncoder = 0;
 	robotState.cellsVisited = 0;
+	robotState.instruction = NULL;
 	robotState.curCell = &map[1][0];       //set it's current cell location
+
+
     while(robotState.next) {               //begin the state machine while loop.
 		robotState.next(&robotState);      //excute the code for the next state.
-	}	
+	}
+
+
 	return 0;
 }
 
