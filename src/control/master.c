@@ -25,60 +25,60 @@ void updateCell(struct RobotState * robotState){
     robotState->curCell->visited = true;
     robotState->curCell->lightLevel = robotState->LDR;
     robotState->cellsVisited++;
-    switch(robotState->orientation == NORTH){
+    switch(robotState->orientation){
         case NORTH:
-            if(robotState->location->frontDistance != 2000){
+            if(robotState->curCell->wallNorth->wallExists != 2000){
                 robotState->curCell->wallNorth->wallExists = robotState->location->frontDistance;
             }
-            if(robotState->location->rearDistance != 2000){
+            if(robotState->curCell->wallSouth->wallExists != 2000){
                 robotState->curCell->wallSouth->wallExists =  robotState->location->rearDistance;
             }
-            if(robotState->location->rightDistance != 2000){
+            if(robotState->curCell->wallEast->wallExists != 2000){
                 robotState->curCell->wallEast->wallExists = robotState->location->rightDistance;
             }
-            if(robotState->location->leftDistance != 2000){
+            if(robotState->curCell->wallWest->wallExists != 2000){
                 robotState->curCell->wallWest->wallExists =  robotState->location->leftDistance;
             }
             break;
         case EAST:
-            if(robotState->location->frontDistance != 2000){
+            if(robotState->curCell->wallEast->wallExists != 2000){
                 robotState->curCell->wallEast->wallExists = robotState->location->frontDistance;
             }
-            if(robotState->location->rearDistance != 2000){
+            if(robotState->curCell->wallWest->wallExists != 2000){
                 robotState->curCell->wallWest->wallExists =  robotState->location->rearDistance;
             }
-            if(robotState->location->rightDistance != 2000){
+            if(robotState->curCell->wallSouth->wallExists != 2000){
                 robotState->curCell->wallSouth->wallExists = robotState->location->rightDistance;
             }
-            if(robotState->location->leftDistance != 2000){
+            if(robotState->curCell->wallNorth->wallExists != 2000){
                 robotState->curCell->wallNorth->wallExists =  robotState->location->leftDistance;
             }
             break;
         case SOUTH:
-            if(robotState->location->frontDistance != 2000){
+            if(robotState->curCell->wallSouth->wallExists != 2000){
                 robotState->curCell->wallSouth->wallExists = robotState->location->frontDistance;
             }
-            if(robotState->location->rearDistance != 2000){
+            if(robotState->curCell->wallNorth->wallExists != 2000){
                 robotState->curCell->wallNorth->wallExists =  robotState->location->rearDistance;
             }
-            if(robotState->location->rightDistance != 2000){
+            if(robotState->curCell->wallWest->wallExists != 2000){
             robotState->curCell->wallWest->wallExists = robotState->location->rightDistance;
             }
-            if(robotState->location->leftDistance != 2000){
+            if(robotState->curCell->wallEast->wallExists != 2000){
                 robotState->curCell->wallEast->wallExists =  robotState->location->leftDistance;
             }
             break;
         case WEST:
-            if(robotState->location->frontDistance != 2000){
+            if(robotState->curCell->wallWest->wallExists != 2000){
                 robotState->curCell->wallWest->wallExists = robotState->location->frontDistance;
             }
-            if(robotState->location->rearDistance != 2000){
+            if(robotState->curCell->wallEast->wallExists != 2000){
                 robotState->curCell->wallEast->wallExists =  robotState->location->rearDistance;
             }
-            if(robotState->location->rightDistance != 2000){
+            if(robotState->curCell->wallNorth->wallExists != 2000){
                 robotState->curCell->wallNorth->wallExists = robotState->location->rightDistance;
             }
-            if(robotState->location->leftDistance != 2000){
+            if(robotState->curCell->wallSouth->wallExists != 2000){
                 robotState->curCell->wallSouth->wallExists =  robotState->location->leftDistance;
             }
             break;
@@ -123,6 +123,7 @@ struct Instruction * searchCells(struct RobotState * robotState, struct Cell * c
     } else {
         FA_BTSendString ("atNonVistedCell\n", 17);
         FA_DelayMillis(30);
+        robotState->curCell = curCell;
         return NULL;
     }
 }

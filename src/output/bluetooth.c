@@ -1,6 +1,5 @@
 #include "../RobotState.h"
 #include "../lib/allcode_api.h"
-#include "../output/setMotors.h"
 #include "../control/master.h"
 #include <stdio.h>
 
@@ -33,7 +32,7 @@ void broadcastLocation(struct RobotState * robotState){
         FA_DelayMillis(10);
     }
     }
-    robotState->next = setMotors;
+    robotState->next = masterControl;
 }
 
 void broadcastCell(struct RobotState * robotState){
@@ -41,10 +40,10 @@ void broadcastCell(struct RobotState * robotState){
         char message[50];
         sprintf(message,"C_%d_%d_%d_%d_%d\n",
             robotState->curCell->lightLevel,
-            robotState->curCell->wallNorth,
-            robotState->curCell->wallSouth,
-            robotState->curCell->wallEast,
-            robotState->curCell->wallWest
+            robotState->curCell->wallNorth->wallExists,
+            robotState->curCell->wallSouth->wallExists,
+            robotState->curCell->wallEast->wallExists,
+            robotState->curCell->wallWest->wallExists
         );
         FA_BTSendString (message, 50);
         FA_DelayMillis(10);

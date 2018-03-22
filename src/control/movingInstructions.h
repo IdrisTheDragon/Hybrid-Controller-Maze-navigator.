@@ -4,9 +4,15 @@
 
 #include "../RobotState.h"
 
+
 void gotoCellWest(struct RobotState * robotState);
 void gotoCellNorth(struct RobotState * robotState);
 void gotoCellEast(struct RobotState * robotState);
 void gotoCellSouth(struct RobotState * robotState);
+
+
+//Helper states
+void turn(int orientation, struct RobotState * robotState);
+void foreward(int distance, struct RobotState * robotState);
 
 #endif /* !MovingI_H*/
