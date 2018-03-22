@@ -16,21 +16,21 @@
 #define M ((Mw+Mb)/2)
 #define C ((Cw+Cb)/2)
 
-void printLocation(struct Location location){
+void printLocation(struct Location * location){
 	FA_LCDClear();
-    FA_LCDNumber(location.rightDistance, 		0 , 12, FONT_NORMAL, LCD_OPAQUE);
-    FA_LCDNumber(location.rearRightDistance, 	0 , 1 , FONT_NORMAL, LCD_OPAQUE);
-	FA_LCDNumber(location.rearDistance, 		40, 1 , FONT_NORMAL, LCD_OPAQUE);
-	FA_LCDNumber(location.rearLeftDistance, 	80, 1 , FONT_NORMAL, LCD_OPAQUE);
-	FA_LCDNumber(location.leftDistance, 		80, 12, FONT_NORMAL, LCD_OPAQUE);
-	FA_LCDNumber(location.frontLeftDistance, 	80, 20, FONT_NORMAL, LCD_OPAQUE);
-	FA_LCDNumber(location.frontDistance, 		40, 20, FONT_NORMAL, LCD_OPAQUE);
-	FA_LCDNumber(location.frontRightDistance, 	0 , 20, FONT_NORMAL, LCD_OPAQUE);
+    FA_LCDNumber(location->rightDistance, 		0 , 12, FONT_NORMAL, LCD_OPAQUE);
+    FA_LCDNumber(location->rearRightDistance, 	0 , 1 , FONT_NORMAL, LCD_OPAQUE);
+	FA_LCDNumber(location->rearDistance, 		40, 1 , FONT_NORMAL, LCD_OPAQUE);
+	FA_LCDNumber(location->rearLeftDistance, 	80, 1 , FONT_NORMAL, LCD_OPAQUE);
+	FA_LCDNumber(location->leftDistance, 		80, 12, FONT_NORMAL, LCD_OPAQUE);
+	FA_LCDNumber(location->frontLeftDistance, 	80, 20, FONT_NORMAL, LCD_OPAQUE);
+	FA_LCDNumber(location->frontDistance, 		40, 20, FONT_NORMAL, LCD_OPAQUE);
+	FA_LCDNumber(location->frontRightDistance, 	0 , 20, FONT_NORMAL, LCD_OPAQUE);
 	FA_DelayMillis(100);
 }
 
 void getLocation(struct RobotState * robotState) {
-	struct Location location;
+	struct Location * location = robotState->location;
 	double IRDataSum[8] = {0,0,0,0,0,0,0,0};
 	int j;
 	for ( j =0; j < 10; j++) {
@@ -62,15 +62,14 @@ void getLocation(struct RobotState * robotState) {
 	FA_DelayMillis(100);
 	#endif
 	
-	location.leftDistance = 		log10(log10(IRDataAverage[IR_LEFT])) 	* M + C;
-	location.frontLeftDistance = 	log10(log10(IRDataAverage[IR_FRONT_LEFT])) 	* M + C;
-	location.frontDistance = 		log10(log10(IRDataAverage[IR_FRONT])) 	* M + C;
-	location.frontRightDistance = 	log10(log10(IRDataAverage[IR_FRONT_RIGHT]))	* M + C;
-	location.rightDistance = 		log10(log10(IRDataAverage[IR_RIGHT])) 	* M + C;
-	location.rearRightDistance = 	log10(log10(IRDataAverage[IR_REAR_RIGHT])) 	* M + C;
-	location.rearDistance = 		log10(log10(IRDataAverage[IR_REAR])) 	* M + C;
-	location.rearLeftDistance = 	log10(log10(IRDataAverage[IR_REAR_LEFT])) 	* M + C;
-	//printLocation(location);
-	robotState->location = &location;
+	location->leftDistance = 		log10(log10(IRDataAverage[IR_LEFT])) 	* M + C;
+	location->frontLeftDistance = 	log10(log10(IRDataAverage[IR_FRONT_LEFT])) 	* M + C;
+	location->frontDistance = 		log10(log10(IRDataAverage[IR_FRONT])) 	* M + C;
+	location->frontRightDistance = 	log10(log10(IRDataAverage[IR_FRONT_RIGHT]))	* M + C;
+	location->rightDistance = 		log10(log10(IRDataAverage[IR_RIGHT])) 	* M + C;
+	location->rearRightDistance = 	log10(log10(IRDataAverage[IR_REAR_RIGHT])) 	* M + C;
+	location->rearDistance = 		log10(log10(IRDataAverage[IR_REAR])) 	* M + C;
+	location->rearLeftDistance = 	log10(log10(IRDataAverage[IR_REAR_LEFT])) 	* M + C;
+	printLocation(location);
 	robotState->next = getLight;
 }

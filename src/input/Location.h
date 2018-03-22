@@ -14,7 +14,7 @@ struct Location {
 
 typedef struct Location Location;
 
-void printLocation(struct Location);
+void printLocation(struct Location *);
 
 #include "../RobotState.h"
 void getLocation(struct RobotState * robotState);

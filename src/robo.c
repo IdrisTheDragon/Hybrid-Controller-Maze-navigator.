@@ -73,6 +73,7 @@ int main(){
 	}
 	
 	struct RobotState robotState;          //create a robot State to store the sensor speed data etc.
+	struct Location location;
 	robotState.next = init;                //add the first function to the state machine: initialise the robot.
 	robotState.orientation = NORTH;        //set it's genral orientation to North
 	robotState.REncoders = 0;
@@ -82,7 +83,7 @@ int main(){
 	robotState.cellsVisited = 0;
 	robotState.instruction = NULL;
 	robotState.curCell = &map[1][0];       //set it's current cell location
-
+	robotState.location = &location;
 
     while(robotState.next) {               //begin the state machine while loop.
 		robotState.next(&robotState);      //excute the code for the next state.

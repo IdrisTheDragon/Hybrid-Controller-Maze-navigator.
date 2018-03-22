@@ -6,20 +6,18 @@
 #include <stdlib.h>
 
 void masterControl(struct RobotState * robotState){
-    FA_BTSendString ("here\n", 5);
-    FA_DelayMillis(30);
     if(!robotState->instruction == NULL){
-        FA_BTSendString ("here1\n", 7);
-        FA_DelayMillis(30);
+        FA_BTSendString ("followInstruction\n", 19);
+        FA_DelayMillis(10);
         robotState->next = robotState->instruction->next;
-    } else if(robotState->cellsVisited == 16) {
-        FA_BTSendString ("here2\n", 7);
-        FA_DelayMillis(30);
-        robotState->next = headToDarkness;
-    } else {
-        FA_BTSendString ("here3\n", 7);
-        FA_DelayMillis(30);
+    } else if(robotState->cellsVisited != 16) {
+        FA_BTSendString ("PlotRouteToNextCell\n", 21);
+        FA_DelayMillis(10);
         robotState->next = updateCell;
+    } else {
+        FA_BTSendString ("HeadToDarness\n", 15);
+        FA_DelayMillis(10);
+        robotState->next = headToDarkness;
     }
 }
 
@@ -29,39 +27,69 @@ void updateCell(struct RobotState * robotState){
     robotState->cellsVisited++;
     switch(robotState->orientation == NORTH){
         case NORTH:
-            robotState->curCell->wallNorth->wallExists = robotState->location->frontDistance;
-            robotState->curCell->wallSouth->wallExists =  robotState->location->rearDistance;
-            robotState->curCell->wallEast->wallExists = robotState->location->rightDistance;
-            robotState->curCell->wallWest->wallExists =  robotState->location->leftDistance;
+            if(robotState->location->frontDistance != 2000){
+                robotState->curCell->wallNorth->wallExists = robotState->location->frontDistance;
+            }
+            if(robotState->location->rearDistance != 2000){
+                robotState->curCell->wallSouth->wallExists =  robotState->location->rearDistance;
+            }
+            if(robotState->location->rightDistance != 2000){
+                robotState->curCell->wallEast->wallExists = robotState->location->rightDistance;
+            }
+            if(robotState->location->leftDistance != 2000){
+                robotState->curCell->wallWest->wallExists =  robotState->location->leftDistance;
+            }
             break;
         case EAST:
-            robotState->curCell->wallEast->wallExists = robotState->location->frontDistance;
-            robotState->curCell->wallWest->wallExists =  robotState->location->rearDistance;
-            robotState->curCell->wallSouth->wallExists = robotState->location->rightDistance;
-            robotState->curCell->wallNorth->wallExists =  robotState->location->leftDistance;
+            if(robotState->location->frontDistance != 2000){
+                robotState->curCell->wallEast->wallExists = robotState->location->frontDistance;
+            }
+            if(robotState->location->rearDistance != 2000){
+                robotState->curCell->wallWest->wallExists =  robotState->location->rearDistance;
+            }
+            if(robotState->location->rightDistance != 2000){
+                robotState->curCell->wallSouth->wallExists = robotState->location->rightDistance;
+            }
+            if(robotState->location->leftDistance != 2000){
+                robotState->curCell->wallNorth->wallExists =  robotState->location->leftDistance;
+            }
             break;
         case SOUTH:
-            robotState->curCell->wallSouth->wallExists = robotState->location->frontDistance;
-            robotState->curCell->wallNorth->wallExists =  robotState->location->rearDistance;
+            if(robotState->location->frontDistance != 2000){
+                robotState->curCell->wallSouth->wallExists = robotState->location->frontDistance;
+            }
+            if(robotState->location->rearDistance != 2000){
+                robotState->curCell->wallNorth->wallExists =  robotState->location->rearDistance;
+            }
+            if(robotState->location->rightDistance != 2000){
             robotState->curCell->wallWest->wallExists = robotState->location->rightDistance;
-            robotState->curCell->wallEast->wallExists =  robotState->location->leftDistance;
+            }
+            if(robotState->location->leftDistance != 2000){
+                robotState->curCell->wallEast->wallExists =  robotState->location->leftDistance;
+            }
             break;
         case WEST:
-            robotState->curCell->wallWest->wallExists = robotState->location->frontDistance;
-            robotState->curCell->wallEast->wallExists =  robotState->location->rearDistance;
-            robotState->curCell->wallNorth->wallExists = robotState->location->rightDistance;
-            robotState->curCell->wallSouth->wallExists =  robotState->location->leftDistance;
+            if(robotState->location->frontDistance != 2000){
+                robotState->curCell->wallWest->wallExists = robotState->location->frontDistance;
+            }
+            if(robotState->location->rearDistance != 2000){
+                robotState->curCell->wallEast->wallExists =  robotState->location->rearDistance;
+            }
+            if(robotState->location->rightDistance != 2000){
+                robotState->curCell->wallNorth->wallExists = robotState->location->rightDistance;
+            }
+            if(robotState->location->leftDistance != 2000){
+                robotState->curCell->wallSouth->wallExists =  robotState->location->leftDistance;
+            }
             break;
     }
-    robotState->next = headToNextCell;
+    robotState->next = broadcastCell;
 }
 
 void headToNextCell(struct RobotState * robotState){
     FA_BTSendString ("nextCell\n", 9);
     FA_DelayMillis(30);
-    
     robotState->instruction = searchCells(robotState,robotState->curCell,robotState->orientation);
-
     robotState->next = getLocation;
 }
 
