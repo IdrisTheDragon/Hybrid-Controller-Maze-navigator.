@@ -3,12 +3,12 @@ magic_cookie={66E99B07-E706-4689-9E80-9B2582898A13}
 file_version=1.0
 device=dsPIC33EP256MU810
 [PATH_INFO]
-BuildDirPolicy=BuildDirIsSourceDir
+BuildDirPolicy=BuildDirIsProjectDir
 dir_src=
-dir_bin=M:\CS26020\out
-dir_tmp=M:\CS26020\out
-dir_sin=
-dir_inc=M:\CS26020\src
+dir_bin=out
+dir_tmp=out
+dir_sin=C:\Program Files (x86)\Microchip\xc16\v1.33\src\libm
+dir_inc=
 dir_lib=
 dir_lkr=
 [CAT_FILTERS]

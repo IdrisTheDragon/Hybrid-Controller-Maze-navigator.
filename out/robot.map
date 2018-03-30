@@ -6,7 +6,7 @@ Tool Name:
 Command:
   -p33EP256MU810 \
   -o \
-  robot.cof \
+  out\robot.cof \
   -Lc:/program files (x86)/microchip/xc16/v1.33/bin/bin/.. \
   -Lc:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib \
   -Lc:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../support/PIC24E/gld \
@@ -16,27 +16,26 @@ Command:
   -Lc:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../support/dsPIC33C/gld \
   -Lc:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../support/dsPIC33E/gld \
   -Lc:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../support/dsPIC33F/gld \
-  robo.o \
-  Location.o \
-  ObstacleDetection.o \
-  WallFollow.o \
-  LightReaction.o \
-  RobotState.o \
-  RobotCalibrate.o \
-  dataCollect.o \
-  Light.o \
-  Encoders.o \
-  Cell.o \
-  bluetooth.o \
-  master.o \
-  movingInstructions.o \
-  setMotors.o \
-  M:\CS26020\src\lib\allcode_api.o \
+  out\robo.o \
+  out\Location.o \
+  out\ObstacleDetection.o \
+  out\WallFollow.o \
+  out\LightReaction.o \
+  out\RobotState.o \
+  out\RobotCalibrate.o \
+  out\dataCollect.o \
+  out\Light.o \
+  out\Encoders.o \
+  out\Cell.o \
+  out\bluetooth.o \
+  out\master.o \
+  out\movingInstructions.o \
+  out\setMotors.o \
+  C:\Users\Nathan\Documents\Git Hub\robotCode\src\lib\allcode_api.o \
   -Tp33EP256MU810.gld.00 \
   --defsym=__MPLAB_BUILD=1 \
-  --defsym=__MPLAB_DEBUG=1 \
   --heap=10000 \
-  -Map=robot.map \
+  -Map=out\robot.map \
   --report-mem \
   -start-group \
   --library=lega-pic30-coff \
@@ -51,33 +50,33 @@ Archive member included because of file (symbol)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-pic30-coff.a(crt0_extendedep.o)
                               (_resetPRI)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-pic30-coff.a(delay32ep.Lo)
-                              M:\CS26020\src\lib\allcode_api.o (__delay32)
+                              C:\Users\Nathan\Documents\Git Hub\robotCode\src\lib\allcode_api.o (__delay32)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-pic30-coff.a(data_init_extended.o)
                               c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-pic30-coff.a(crt0_extendedep.o) (_data_init_extended)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(floatunsisf.epo)
-                              Location.o (__floatunsisf)
+                              out\Location.o (__floatunsisf)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(addsf3.epo)
-                              M:\CS26020\src\lib\allcode_api.o (__subsf3)
+                              C:\Users\Nathan\Documents\Git Hub\robotCode\src\lib\allcode_api.o (__subsf3)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(divsf3.epo)
-                              Location.o (__divsf3)
+                              out\Location.o (__divsf3)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(fgtge.epo)
-                              Location.o (__gtsf2)
+                              out\Location.o (__gtsf2)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(log10f.epo)
-                              Location.o (log10f)
+                              out\Location.o (log10f)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(mulsf3.epo)
-                              Location.o (__mulsf3)
+                              out\Location.o (__mulsf3)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(fixsfsi.epo)
-                              Location.o (__fixsfsi)
+                              out\Location.o (__fixsfsi)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(udivsi3.epo)
-                              M:\CS26020\src\lib\allcode_api.o (__udivsi3)
+                              C:\Users\Nathan\Documents\Git Hub\robotCode\src\lib\allcode_api.o (__udivsi3)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(feqltle.epo)
-                              M:\CS26020\src\lib\allcode_api.o (__ltsf2)
+                              C:\Users\Nathan\Documents\Git Hub\robotCode\src\lib\allcode_api.o (__ltsf2)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(floorf.epo)
-                              M:\CS26020\src\lib\allcode_api.o (floorf)
+                              C:\Users\Nathan\Documents\Git Hub\robotCode\src\lib\allcode_api.o (floorf)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(floatsisf.epo)
-                              M:\CS26020\src\lib\allcode_api.o (__floatsisf)
+                              C:\Users\Nathan\Documents\Git Hub\robotCode\src\lib\allcode_api.o (__floatsisf)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(atanf.epo)
-                              M:\CS26020\src\lib\allcode_api.o (atanf)
+                              C:\Users\Nathan\Documents\Git Hub\robotCode\src\lib\allcode_api.o (atanf)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(floatundisf.epo)
                               c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(floatunsisf.epo) (__floatundisf)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(funpack2.epo)
@@ -101,11 +100,11 @@ c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(errno.
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(_frexpf.epo)
                               c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(logf.epo) (_frexpf)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(malloc.EP_o)
-                              robo.o (malloc)
+                              out\robo.o (malloc)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(sprintf_cdnopuxX.EPo)
-                              bluetooth.o (_sprintf_cdnopuxX)
+                              out\bluetooth.o (_sprintf_cdnopuxX)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(calloc.EP_o)
-                              master.o (calloc)
+                              out\master.o (calloc)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(xgetmem.EP_o)
                               c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(malloc.EP_o) (_Getmem)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(free.EP_o)
@@ -1312,22 +1311,22 @@ aivt             0x000000           0xffffffff
 
 Linker script and memory map
 
-LOAD robo.o
-LOAD Location.o
-LOAD ObstacleDetection.o
-LOAD WallFollow.o
-LOAD LightReaction.o
-LOAD RobotState.o
-LOAD RobotCalibrate.o
-LOAD dataCollect.o
-LOAD Light.o
-LOAD Encoders.o
-LOAD Cell.o
-LOAD bluetooth.o
-LOAD master.o
-LOAD movingInstructions.o
-LOAD setMotors.o
-LOAD M:\CS26020\src\lib\allcode_api.o
+LOAD out\robo.o
+LOAD out\Location.o
+LOAD out\ObstacleDetection.o
+LOAD out\WallFollow.o
+LOAD out\LightReaction.o
+LOAD out\RobotState.o
+LOAD out\RobotCalibrate.o
+LOAD out\dataCollect.o
+LOAD out\Light.o
+LOAD out\Encoders.o
+LOAD out\Cell.o
+LOAD out\bluetooth.o
+LOAD out\master.o
+LOAD out\movingInstructions.o
+LOAD out\setMotors.o
+LOAD C:\Users\Nathan\Documents\Git Hub\robotCode\src\lib\allcode_api.o
 LOAD p33EP256MU810
 LOAD c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libfx-coff.a
                     0xf80004                  __FGS = 0xf80004
@@ -1368,7 +1367,7 @@ LOAD c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libfx-coff.a
  *(.handle)
  .handle          0x00030a         0x40 jump_table
  *(.isr*)
- .isr.text        0x00034a        0x2d0 M:\CS26020\src\lib\allcode_api.o
+ .isr.text        0x00034a        0x2d0 C:\Users\Nathan\Documents\Git Hub\robotCode\src\lib\allcode_api.o
                   0x00034a                  _T6Interrupt
                   0x00037a                  _U1RXInterrupt
                   0x000410                  _CNInterrupt
@@ -1482,27 +1481,27 @@ __FGS             0xf80004          0x2
 
 __FOSCSEL         0xf80006          0x2
  *(__FOSCSEL.sec*)
- __FOSCSEL.sec    0xf80006          0x2 M:\CS26020\src\lib\allcode_api.o
+ __FOSCSEL.sec    0xf80006          0x2 C:\Users\Nathan\Documents\Git Hub\robotCode\src\lib\allcode_api.o
 
 __FOSC            0xf80008          0x2
  *(__FOSC.sec*)
- __FOSC.sec       0xf80008          0x2 M:\CS26020\src\lib\allcode_api.o
+ __FOSC.sec       0xf80008          0x2 C:\Users\Nathan\Documents\Git Hub\robotCode\src\lib\allcode_api.o
 
 __FWDT            0xf8000a          0x2
  *(__FWDT.sec*)
- __FWDT.sec       0xf8000a          0x2 M:\CS26020\src\lib\allcode_api.o
+ __FWDT.sec       0xf8000a          0x2 C:\Users\Nathan\Documents\Git Hub\robotCode\src\lib\allcode_api.o
 
 __FPOR            0xf8000c          0x2
  *(__FPOR.sec*)
- __FPOR.sec       0xf8000c          0x2 M:\CS26020\src\lib\allcode_api.o
+ __FPOR.sec       0xf8000c          0x2 C:\Users\Nathan\Documents\Git Hub\robotCode\src\lib\allcode_api.o
 
 __FICD            0xf8000e          0x2
  *(__FICD.sec*)
- __FICD.sec       0xf8000e          0x2 M:\CS26020\src\lib\allcode_api.o
+ __FICD.sec       0xf8000e          0x2 C:\Users\Nathan\Documents\Git Hub\robotCode\src\lib\allcode_api.o
 
 __FAS             0xf80010          0x2
  *(__FAS.sec*)
- __FAS.sec        0xf80010          0x2 M:\CS26020\src\lib\allcode_api.o
+ __FAS.sec        0xf80010          0x2 C:\Users\Nathan\Documents\Git Hub\robotCode\src\lib\allcode_api.o
 
 __FUID0
  *(__FUID0.sec*)
@@ -4231,13 +4230,12 @@ __FUID0
                     0x0230                  UART2 = 0x230
                     0x0230                  _UART2 = 0x230
                     0x0001                  __MPLAB_BUILD = 0x1
-                    0x0001                  __MPLAB_DEBUG = 0x1
 START GROUP
 LOAD c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-pic30-coff.a
 LOAD c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a
 LOAD c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a
 END GROUP
-OUTPUT(robot.cof coff-pic30)
+OUTPUT(out\robot.cof coff-pic30)
 LOAD FGS
 LOAD jump_table
 LOAD data_init
@@ -4247,37 +4245,37 @@ LOAD heap
 __c30_signature
                   0x000000        0x168
  __c30_signature
-                  0x000000          0x6 robo.o
+                  0x000000          0x6 out\robo.o
  __c30_signature
-                  0x000006          0x6 Location.o
+                  0x000006          0x6 out\Location.o
  __c30_signature
-                  0x00000c          0x6 ObstacleDetection.o
+                  0x00000c          0x6 out\ObstacleDetection.o
  __c30_signature
-                  0x000012          0x6 WallFollow.o
+                  0x000012          0x6 out\WallFollow.o
  __c30_signature
-                  0x000018          0x6 LightReaction.o
+                  0x000018          0x6 out\LightReaction.o
  __c30_signature
-                  0x00001e          0x6 RobotState.o
+                  0x00001e          0x6 out\RobotState.o
  __c30_signature
-                  0x000024          0x6 RobotCalibrate.o
+                  0x000024          0x6 out\RobotCalibrate.o
  __c30_signature
-                  0x00002a          0x6 dataCollect.o
+                  0x00002a          0x6 out\dataCollect.o
  __c30_signature
-                  0x000030          0x6 Light.o
+                  0x000030          0x6 out\Light.o
  __c30_signature
-                  0x000036          0x6 Encoders.o
+                  0x000036          0x6 out\Encoders.o
  __c30_signature
-                  0x00003c          0x6 Cell.o
+                  0x00003c          0x6 out\Cell.o
  __c30_signature
-                  0x000042          0x6 bluetooth.o
+                  0x000042          0x6 out\bluetooth.o
  __c30_signature
-                  0x000048          0x6 master.o
+                  0x000048          0x6 out\master.o
  __c30_signature
-                  0x00004e          0x6 movingInstructions.o
+                  0x00004e          0x6 out\movingInstructions.o
  __c30_signature
-                  0x000054          0x6 setMotors.o
+                  0x000054          0x6 out\setMotors.o
  __c30_signature
-                  0x00005a          0x6 M:\CS26020\src\lib\allcode_api.o
+                  0x00005a          0x6 C:\Users\Nathan\Documents\Git Hub\robotCode\src\lib\allcode_api.o
  __c30_signature
                   0x000060          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-pic30-coff.a(crt0_extendedep.o)
  __c30_signature
@@ -4368,7 +4366,7 @@ __c30_signature
                   0x000162          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(divmoddi3.epo)
 
 .nbss               0x1000         0x76
- .nbss              0x1000         0x76 M:\CS26020\src\lib\allcode_api.o
+ .nbss              0x1000         0x76 C:\Users\Nathan\Documents\Git Hub\robotCode\src\lib\allcode_api.o
                     0x1000                  FCI_TMP_INT
                     0x1002                  FCLV_LOOP1
                     0x1003                  FCLV_LOOP2
@@ -4435,28 +4433,28 @@ __c30_signature
                     0x1074                  _CLOCK_MS_HIGH
 
 .ndata              0x1076          0xc
- .ndata             0x1076          0xc M:\CS26020\src\lib\allcode_api.o
+ .ndata             0x1076          0xc C:\Users\Nathan\Documents\Git Hub\robotCode\src\lib\allcode_api.o
                     0x1076                  FCV_0dcd1_FormulaAllCode1__ANGLERESOLUTION
                     0x107a                  FCV_0dcd1_FormulaAllCode1__ENCODERRESOLUTION
                     0x107e                  FCV_0dcd1_FormulaAllCode1__LOGOSPEED
                     0x1080                  FCV_076d1_LSM303D_Magnetometer1__CURRENT_ADDRESS
 
 .nbss               0x1082          0xc
- .nbss              0x1082          0x8 bluetooth.o
+ .nbss              0x1082          0x8 out\bluetooth.o
                     0x1082                  time
                     0x1086                  prevTime
- .nbss              0x108a          0x2 movingInstructions.o
+ .nbss              0x108a          0x2 out\movingInstructions.o
                     0x108a                  flag
  .nbss              0x108c          0x2 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(errno.epo)
                     0x108c                  errno
 
 .bss                0x108e       0x22d4
- .bss               0x108e       0x2214 M:\CS26020\src\lib\allcode_api.o
+ .bss               0x108e       0x2214 C:\Users\Nathan\Documents\Git Hub\robotCode\src\lib\allcode_api.o
                     0x108e                  FCI_TMP_STR
                     0x10a2                  FCV_0ab21_gLCD_ST7567_SPI1__LCD_DATA
                     0x12a2                  FCV_02b22_CB_AUDIO__DATA
                     0x22a2                  FCV_02b21_CB_BT__DATA
- .bss               0x32a2         0xc0 robo.o
+ .bss               0x32a2         0xc0 out\robo.o
                     0x32a2                  map
 
 .data               0x3362         0x3c
@@ -4481,37 +4479,37 @@ __c30_signature
 .ivt._T6Interrupt
                   0x000072          0x2
  .ivt._T6Interrupt
-                  0x000072          0x2 M:\CS26020\src\lib\allcode_api.o
+                  0x000072          0x2 C:\Users\Nathan\Documents\Git Hub\robotCode\src\lib\allcode_api.o
 
 .ivt._U1RXInterrupt
                   0x00002a          0x2
  .ivt._U1RXInterrupt
-                  0x00002a          0x2 M:\CS26020\src\lib\allcode_api.o
+                  0x00002a          0x2 C:\Users\Nathan\Documents\Git Hub\robotCode\src\lib\allcode_api.o
 
 .ivt._CNInterrupt
                   0x00003a          0x2
  .ivt._CNInterrupt
-                  0x00003a          0x2 M:\CS26020\src\lib\allcode_api.o
+                  0x00003a          0x2 C:\Users\Nathan\Documents\Git Hub\robotCode\src\lib\allcode_api.o
 
 .ivt._T9Interrupt
                   0x00007c          0x2
  .ivt._T9Interrupt
-                  0x00007c          0x2 M:\CS26020\src\lib\allcode_api.o
+                  0x00007c          0x2 C:\Users\Nathan\Documents\Git Hub\robotCode\src\lib\allcode_api.o
 
 .ivt._T8Interrupt
                   0x00007a          0x2
  .ivt._T8Interrupt
-                  0x00007a          0x2 M:\CS26020\src\lib\allcode_api.o
+                  0x00007a          0x2 C:\Users\Nathan\Documents\Git Hub\robotCode\src\lib\allcode_api.o
 
 .const              0x972a        0x37e load address 0x00172a  
- .const             0x972a        0x264 M:\CS26020\src\lib\allcode_api.o
+ .const             0x972a        0x264 C:\Users\Nathan\Documents\Git Hub\robotCode\src\lib\allcode_api.o
                     0x972a                  FCD_00fb1_ASCIIData__INTLIST_LUT
- .const             0x998e         0x9a master.o
- .const             0x9a28         0x42 movingInstructions.o
- .const             0x9a6a         0x3e bluetooth.o
+ .const             0x998e         0x9a out\master.o
+ .const             0x9a28         0x42 out\movingInstructions.o
+ .const             0x9a6a         0x3e out\bluetooth.o
 
 .text             0x001aa8       0x69f0
- .text            0x001aa8       0x5d74 M:\CS26020\src\lib\allcode_api.o
+ .text            0x001aa8       0x5d74 C:\Users\Nathan\Documents\Git Hub\robotCode\src\lib\allcode_api.o
                   0x001aa8                  FC_CAL_Port_Out(long long)
                   0x001aca                  FC_CAL_Port_Out_DDR(long long)
                   0x001afc                  FC_CAL_Port_In(long long)
@@ -4874,7 +4872,7 @@ __c30_signature
                   0x0077be                  FCD_0dcd1_FormulaAllCode1__LogoSetSpeed
                   0x0077e2                  FCD_0dcd1_FormulaAllCode1__LogoForwards
                   0x007814                  FCD_0dcd1_FormulaAllCode1__LCDClear
- .text            0x00781c        0x48c master.o
+ .text            0x00781c        0x48c out\master.o
                   0x00781c                  masterControl
                   0x00786c                  updateCell
                   0x007a88                  headToNextCell
@@ -4885,37 +4883,37 @@ __c30_signature
                   0x007bbe                  northCheck
                   0x007c0c                  eastCheck
                   0x007c5a                  southCheck
- .text            0x007ca8        0x264 robo.o
+ .text            0x007ca8        0x264 out\robo.o
                   0x007ca8                  init
                   0x007ef2                  main
- .text            0x007f0c        0x220 Location.o
+ .text            0x007f0c        0x220 out\Location.o
                   0x007f0c                  printLocation
                   0x007f8a                  getLocation
- .text            0x00812c        0x1ca movingInstructions.o
+ .text            0x00812c        0x1ca out\movingInstructions.o
                   0x00812c                  gotoCellWest
                   0x008168                  gotoCellNorth
                   0x0081a4                  gotoCellEast
                   0x0081e0                  gotoCellSouth
                   0x00821c                  turn
                   0x008296                  foreward
- .text            0x0082f6        0x10a bluetooth.o
+ .text            0x0082f6        0x10a out\bluetooth.o
                   0x0082f6                  broadcastLocation
                   0x0083a8                  broadcastCell
- .text            0x008400         0x98 dataCollect.o
+ .text            0x008400         0x98 out\dataCollect.o
                   0x008400                  encoderPower
 
 .dinit            0x008498         0x7e
  .dinit           0x008498         0x7e data_init
 
 .text             0x008516        0x112
- .text            0x008516         0x74 ObstacleDetection.o
+ .text            0x008516         0x74 out\ObstacleDetection.o
                   0x008516                  basicObstacleAvoidence
                   0x008554                  detectObstactle
- .text            0x00858a         0x4e RobotCalibrate.o
+ .text            0x00858a         0x4e out\RobotCalibrate.o
                   0x00858a                  calibrateSpeed
- .text            0x0085d8         0x22 Encoders.o
+ .text            0x0085d8         0x22 out\Encoders.o
                   0x0085d8                  getEncoders
- .text            0x0085fa         0x18 setMotors.o
+ .text            0x0085fa         0x18 out\setMotors.o
                   0x0085fa                  setMotors
- .text            0x008612         0x16 Light.o
+ .text            0x008612         0x16 out\Light.o
                   0x008612                  getLight
