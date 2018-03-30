@@ -105,10 +105,10 @@ c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(s
                               out\bluetooth.o (_sprintf_cdnopuxX)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(calloc.EP_o)
                               out\master.o (calloc)
+c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(free.EP_o)
+                              out\movingInstructions.o (free)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(xgetmem.EP_o)
                               c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(malloc.EP_o) (_Getmem)
-c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(free.EP_o)
-                              c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(malloc.EP_o) (free)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(memcpy.EP_o)
                               c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(sprintf_cdnopuxX.EPo) (memcpy)
 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(xprintf_cdnopuxX.EPo)
@@ -161,11 +161,11 @@ section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200              0x152a          0x1fbf  (8127)
 .const                      0x172a               0x37e           0x53d  (1341)
-.text                       0x1aa8              0x69f0          0x9ee8  (40680)
-.dinit                      0x8498                0x7e            0xbd  (189)
-.text                       0x8516               0x112           0x19b  (411)
+.text                       0x1aa8              0x6a18          0x9f24  (40740)
+.dinit                      0x84c0                0x7e            0xbd  (189)
+.text                       0x853e               0x112           0x19b  (411)
 
-                 Total program memory used (bytes):         0xc63c  (50748) 19%
+                 Total program memory used (bytes):         0xc678  (50808) 19%
 
 
 Ivt Memory  [Origin = 0x4, Length = 0x1fc]
@@ -395,8 +395,8 @@ External Symbols in Program Memory (by address):
                   0x0006d8                  sprintf_cdnopuxX.EPo:_prout
                   0x0006e6                  __sprintf_cdnopuxX
                   0x000704                  _calloc
-                  0x000720                  __Getmem
-                  0x000734                  _free
+                  0x000720                  _free
+                  0x000784                  __Getmem
                   0x000798                  _memcpy
                   0x0007a6                  ___Printf_cdnopuxX
                   0x00090a                  _memset
@@ -818,20 +818,20 @@ External Symbols in Program Memory (by address):
                   0x007f0c                  _printLocation
                   0x007f8a                  _getLocation
                   0x00812c                  _gotoCellWest
-                  0x008168                  _gotoCellNorth
-                  0x0081a4                  _gotoCellEast
-                  0x0081e0                  _gotoCellSouth
-                  0x00821c                  _turn
-                  0x008296                  _foreward
-                  0x0082f6                  _broadcastLocation
-                  0x0083a8                  _broadcastCell
-                  0x008400                  _encoderPower
-                  0x008516                  _basicObstacleAvoidence
-                  0x008554                  _detectObstactle
-                  0x00858a                  _calibrateSpeed
-                  0x0085d8                  _getEncoders
-                  0x0085fa                  _setMotors
-                  0x008612                  _getLight
+                  0x008172                  _gotoCellNorth
+                  0x0081b8                  _gotoCellEast
+                  0x0081fe                  _gotoCellSouth
+                  0x008244                  _turn
+                  0x0082be                  _foreward
+                  0x00831e                  _broadcastLocation
+                  0x0083d0                  _broadcastCell
+                  0x008428                  _encoderPower
+                  0x00853e                  _basicObstacleAvoidence
+                  0x00857c                  _detectObstactle
+                  0x0085b2                  _calibrateSpeed
+                  0x008600                  _getEncoders
+                  0x008622                  _setMotors
+                  0x00863a                  _getLight
                   0xf80004                  __FGS.sec
 
 External Symbols in Program Memory (by name):
@@ -1202,7 +1202,7 @@ External Symbols in Program Memory (by name):
                   0x000410                  __CNInterrupt
                   0x00061a                  __DefaultInterrupt
                   0xf80004                  __FGS.sec
-                  0x000720                  __Getmem
+                  0x000784                  __Getmem
                   0x000cf0                  __Litob
                   0x000b78                  __Puttxt
                   0x00034a                  __T6Interrupt
@@ -1250,23 +1250,23 @@ External Symbols in Program Memory (by name):
                   0x000200                  __resetPRI
                   0x0006e6                  __sprintf_cdnopuxX
                   0x0011e0                  _atanf
-                  0x008516                  _basicObstacleAvoidence
-                  0x0083a8                  _broadcastCell
-                  0x0082f6                  _broadcastLocation
-                  0x00858a                  _calibrateSpeed
+                  0x00853e                  _basicObstacleAvoidence
+                  0x0083d0                  _broadcastCell
+                  0x00831e                  _broadcastLocation
+                  0x0085b2                  _calibrateSpeed
                   0x000704                  _calloc
-                  0x008554                  _detectObstactle
+                  0x00857c                  _detectObstactle
                   0x007c0c                  _eastCheck
-                  0x008400                  _encoderPower
+                  0x008428                  _encoderPower
                   0x0011ca                  _floorf
-                  0x008296                  _foreward
-                  0x000734                  _free
-                  0x0085d8                  _getEncoders
-                  0x008612                  _getLight
+                  0x0082be                  _foreward
+                  0x000720                  _free
+                  0x008600                  _getEncoders
+                  0x00863a                  _getLight
                   0x007f8a                  _getLocation
-                  0x0081a4                  _gotoCellEast
-                  0x008168                  _gotoCellNorth
-                  0x0081e0                  _gotoCellSouth
+                  0x0081b8                  _gotoCellEast
+                  0x008172                  _gotoCellNorth
+                  0x0081fe                  _gotoCellSouth
                   0x00812c                  _gotoCellWest
                   0x007ad6                  _gotoDarkest
                   0x007ab4                  _headToDarkness
@@ -1282,10 +1282,10 @@ External Symbols in Program Memory (by name):
                   0x007bbe                  _northCheck
                   0x007f0c                  _printLocation
                   0x007ae4                  _searchCells
-                  0x0085fa                  _setMotors
+                  0x008622                  _setMotors
                   0x007c5a                  _southCheck
                   0x00091c                  _strchr
-                  0x00821c                  _turn
+                  0x008244                  _turn
                   0x00786c                  _updateCell
                   0x007b62                  _westCheck
                   0x0006d8                  sprintf_cdnopuxX.EPo:_prout
@@ -1383,10 +1383,10 @@ LOAD c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libfx-coff.a
                   0x0006e6                  _sprintf_cdnopuxX
  .libc            0x000704         0x1c c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(calloc.EP_o)
                   0x000704                  calloc
- .libc            0x000720         0x14 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(xgetmem.EP_o)
-                  0x000720                  _Getmem
- .libc            0x000734         0x64 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(free.EP_o)
-                  0x000734                  free
+ .libc            0x000720         0x64 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(free.EP_o)
+                  0x000720                  free
+ .libc            0x000784         0x14 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(xgetmem.EP_o)
+                  0x000784                  _Getmem
  .libc            0x000798          0xe c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(memcpy.EP_o)
                   0x000798                  memcpy
  .libc            0x0007a6        0x164 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(xprintf_cdnopuxX.EPo)
@@ -4335,9 +4335,9 @@ __c30_signature
  __c30_signature
                   0x000108          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(calloc.EP_o)
  __c30_signature
-                  0x00010e          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(xgetmem.EP_o)
+                  0x00010e          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(free.EP_o)
  __c30_signature
-                  0x000114          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(free.EP_o)
+                  0x000114          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(xgetmem.EP_o)
  __c30_signature
                   0x00011a          0x6 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(memcpy.EP_o)
  __c30_signature
@@ -4508,7 +4508,7 @@ __c30_signature
  .const             0x9a28         0x42 out\movingInstructions.o
  .const             0x9a6a         0x3e out\bluetooth.o
 
-.text             0x001aa8       0x69f0
+.text             0x001aa8       0x6a18
  .text            0x001aa8       0x5d74 C:\Users\Nathan\Documents\Git Hub\robotCode\src\lib\allcode_api.o
                   0x001aa8                  FC_CAL_Port_Out(long long)
                   0x001aca                  FC_CAL_Port_Out_DDR(long long)
@@ -4889,31 +4889,31 @@ __c30_signature
  .text            0x007f0c        0x220 out\Location.o
                   0x007f0c                  printLocation
                   0x007f8a                  getLocation
- .text            0x00812c        0x1ca out\movingInstructions.o
+ .text            0x00812c        0x1f2 out\movingInstructions.o
                   0x00812c                  gotoCellWest
-                  0x008168                  gotoCellNorth
-                  0x0081a4                  gotoCellEast
-                  0x0081e0                  gotoCellSouth
-                  0x00821c                  turn
-                  0x008296                  foreward
- .text            0x0082f6        0x10a out\bluetooth.o
-                  0x0082f6                  broadcastLocation
-                  0x0083a8                  broadcastCell
- .text            0x008400         0x98 out\dataCollect.o
-                  0x008400                  encoderPower
+                  0x008172                  gotoCellNorth
+                  0x0081b8                  gotoCellEast
+                  0x0081fe                  gotoCellSouth
+                  0x008244                  turn
+                  0x0082be                  foreward
+ .text            0x00831e        0x10a out\bluetooth.o
+                  0x00831e                  broadcastLocation
+                  0x0083d0                  broadcastCell
+ .text            0x008428         0x98 out\dataCollect.o
+                  0x008428                  encoderPower
 
-.dinit            0x008498         0x7e
- .dinit           0x008498         0x7e data_init
+.dinit            0x0084c0         0x7e
+ .dinit           0x0084c0         0x7e data_init
 
-.text             0x008516        0x112
- .text            0x008516         0x74 out\ObstacleDetection.o
-                  0x008516                  basicObstacleAvoidence
-                  0x008554                  detectObstactle
- .text            0x00858a         0x4e out\RobotCalibrate.o
-                  0x00858a                  calibrateSpeed
- .text            0x0085d8         0x22 out\Encoders.o
-                  0x0085d8                  getEncoders
- .text            0x0085fa         0x18 out\setMotors.o
-                  0x0085fa                  setMotors
- .text            0x008612         0x16 out\Light.o
-                  0x008612                  getLight
+.text             0x00853e        0x112
+ .text            0x00853e         0x74 out\ObstacleDetection.o
+                  0x00853e                  basicObstacleAvoidence
+                  0x00857c                  detectObstactle
+ .text            0x0085b2         0x4e out\RobotCalibrate.o
+                  0x0085b2                  calibrateSpeed
+ .text            0x008600         0x22 out\Encoders.o
+                  0x008600                  getEncoders
+ .text            0x008622         0x18 out\setMotors.o
+                  0x008622                  setMotors
+ .text            0x00863a         0x16 out\Light.o
+                  0x00863a                  getLight

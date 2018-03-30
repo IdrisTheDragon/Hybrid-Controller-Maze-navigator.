@@ -2,6 +2,7 @@
 #include "movingInstructions.h"
 #include "../output/setMotors.h"
 #include "../lib/allcode_api.h"
+#include "stdlib.h"
 
 int flag = false;
 void gotoCellWest(struct RobotState * robotState){
@@ -14,7 +15,9 @@ void gotoCellWest(struct RobotState * robotState){
         foreward(150*3,robotState);
     } else {
         //must be done go to next instruction
+        struct Instruction * i = robotState->instruction;
         robotState->instruction = robotState->instruction->nextInstruction;
+        free(i);
     }
     robotState->next = setMotors;
 }
@@ -29,7 +32,9 @@ void gotoCellNorth(struct RobotState * robotState){
         foreward(150*3,robotState);
     } else {
         //must be done go to next instruction
+        struct Instruction * i = robotState->instruction;
         robotState->instruction = robotState->instruction->nextInstruction;
+        free(i);
     }
     robotState->next = setMotors;
 }
@@ -44,7 +49,9 @@ void gotoCellEast(struct RobotState * robotState){
         foreward(150*3,robotState);
     } else {
         //must be done go to next instruction
+        struct Instruction * i = robotState->instruction;
         robotState->instruction = robotState->instruction->nextInstruction;
+        free(i);
     }
     robotState->next = setMotors;
 }
@@ -59,7 +66,9 @@ void gotoCellSouth(struct RobotState * robotState){
         foreward(150*3,robotState);
     } else {
         //must be done go to next instruction
+        struct Instruction * i = robotState->instruction;
         robotState->instruction = robotState->instruction->nextInstruction;
+        free(i);
     }
     robotState->next = setMotors;
 }
