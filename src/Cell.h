@@ -13,6 +13,8 @@ typedef struct Cell Cell;
 
 struct Cell {
 	int visited;
+	int x;
+	int y;
 	struct HWall * wallNorth;
 	struct HWall * wallSouth;
 	struct VWall * wallEast;

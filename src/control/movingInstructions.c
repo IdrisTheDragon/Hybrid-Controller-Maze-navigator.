@@ -12,7 +12,7 @@ void gotoCellWest(struct RobotState * robotState){
         turn(WEST,robotState);
     } else if (flag == true){
         //
-        foreward(150*3,robotState);
+        foreward(140*3,robotState);
     } else {
         //must be done go to next instruction
         struct Instruction * i = robotState->instruction;
@@ -29,7 +29,7 @@ void gotoCellNorth(struct RobotState * robotState){
         turn(NORTH,robotState);
     } else if (flag == true){
         //
-        foreward(150*3,robotState);
+        foreward(140*3,robotState);
     } else {
         //must be done go to next instruction
         struct Instruction * i = robotState->instruction;
@@ -46,7 +46,7 @@ void gotoCellEast(struct RobotState * robotState){
         turn(EAST,robotState);
     } else if (flag == true){
         //
-        foreward(150*3,robotState);
+        foreward(140*3,robotState);
     } else {
         //must be done go to next instruction
         struct Instruction * i = robotState->instruction;
@@ -63,7 +63,7 @@ void gotoCellSouth(struct RobotState * robotState){
         turn(SOUTH,robotState);
     } else if (flag == true){
         //
-        foreward(150*3,robotState);
+        foreward(140*3,robotState);
     } else {
         //must be done go to next instruction
         struct Instruction * i = robotState->instruction;
@@ -90,8 +90,8 @@ void turn(int orientation, struct RobotState * robotState){
         flag = true;
         FA_ResetEncoders();
     } else {
-        robotState->LSpeed = -20;
-        robotState->RSpeed = 20;
+        robotState->LSpeed = -30;
+        robotState->RSpeed = 30;
     }
 }
 
@@ -107,8 +107,8 @@ void foreward(int distance, struct RobotState * robotState){
         flag=false;
         FA_ResetEncoders();
     } else {
-        robotState->LSpeed = 20;
-        robotState->RSpeed = 20;
+        robotState->LSpeed = 30;
+        robotState->RSpeed = 30;
     }
 }
 

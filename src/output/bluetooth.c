@@ -38,7 +38,9 @@ void broadcastLocation(struct RobotState * robotState){
 void broadcastCell(struct RobotState * robotState){
     if(FA_BTConnected()== 1){
         char message[50];
-        sprintf(message,"C_%d_%d_%d_%d_%d\n",
+        sprintf(message,"C_%d_%d_%d_%d_%d_%d_%d\n",
+            robotState->curCell->x,
+            robotState->curCell->y,
             robotState->curCell->lightLevel,
             robotState->curCell->wallNorth->wallExists,
             robotState->curCell->wallSouth->wallExists,

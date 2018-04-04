@@ -17,6 +17,8 @@ void init(struct RobotState * robotState){
 	for(x=0;x<4;x++){
 		for(y=0;y<4;y++){
 			map[x][y].visited = false;
+			map[x][y].x = x;
+			map[x][y].y = y;
 		}
 	}
 	
