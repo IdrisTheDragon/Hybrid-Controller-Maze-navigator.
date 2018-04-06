@@ -38,17 +38,35 @@ void broadcastLocation(struct RobotState * robotState){
 void broadcastCell(struct RobotState * robotState){
     if(FA_BTConnected()== 1){
         char message[50];
+        int n = 0;
+        int s = 0;
+        int w = 0;
+        int e = 0;
+        if(robotState->curCell->wallNorth != NULL){
+            n = robotState->curCell->wallNorth->wallExists;
+        }
+        if(robotState->curCell->wallSouth != NULL){
+            s = robotState->curCell->wallSouth->wallExists;
+        }
+        if(robotState->curCell->wallWest != NULL){
+            w = robotState->curCell->wallWest->wallExists;
+        }
+        if(robotState->curCell->wallEast != NULL){
+            e = robotState->curCell->wallEast->wallExists;
+        }
+
+
         sprintf(message,"C_%d_%d_%d_%d_%d_%d_%d\n",
             robotState->curCell->x,
             robotState->curCell->y,
             robotState->curCell->lightLevel,
-            robotState->curCell->wallNorth->wallExists,
-            robotState->curCell->wallSouth->wallExists,
-            robotState->curCell->wallEast->wallExists,
-            robotState->curCell->wallWest->wallExists
+            n,
+            s,
+            e,
+            w
         );
         FA_BTSendString (message, 50);
         FA_DelayMillis(10);
     }
-    robotState->next = headToNextCell;
+    robotState->next = getLocation;
 }

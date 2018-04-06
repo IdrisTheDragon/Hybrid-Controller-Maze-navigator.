@@ -5,17 +5,25 @@
 #include "movingInstructions.h"
 #include <stdlib.h>
 
+int flag = false;
+
 void masterControl(struct RobotState * robotState){
     if(!robotState->instruction == NULL){
         FA_BTSendString ("followInstruction\n", 19);
         FA_DelayMillis(10);
         robotState->next = robotState->instruction->next;
+    } else if (flag && robotState->cellsVisited !=16) {
+        FA_BTSendString ("plotRoutetoNextCell\n", 21);
+        FA_DelayMillis(10);
+        robotState->next = headToNextCell;
+        flag = false;
     } else if(robotState->cellsVisited != 16) {
-        FA_BTSendString ("PlotRouteToNextCell\n", 21);
+        FA_BTSendString ("updateCell\n", 12);
         FA_DelayMillis(10);
         robotState->next = updateCell;
+        flag = true;
     } else {
-        FA_BTSendString ("HeadToDarness\n", 15);
+        FA_BTSendString ("HeadToDarkness\n", 16);
         FA_DelayMillis(10);
         robotState->next = headToDarkness;
     }
@@ -27,58 +35,58 @@ void updateCell(struct RobotState * robotState){
     robotState->cellsVisited++;
     switch(robotState->orientation){
         case NORTH:
-            if(robotState->curCell->wallNorth->wallExists != 2000){
+            if(robotState->curCell->wallNorth != NULL){
                 robotState->curCell->wallNorth->wallExists = robotState->location->frontDistance;
             }
-            if(robotState->curCell->wallSouth->wallExists != 2000){
+            if(robotState->curCell->wallSouth != NULL){
                 robotState->curCell->wallSouth->wallExists =  robotState->location->rearDistance;
             }
-            if(robotState->curCell->wallEast->wallExists != 2000){
+            if(robotState->curCell->wallEast != NULL){
                 robotState->curCell->wallEast->wallExists = robotState->location->rightDistance;
             }
-            if(robotState->curCell->wallWest->wallExists != 2000){
+            if(robotState->curCell->wallWest != NULL){
                 robotState->curCell->wallWest->wallExists =  robotState->location->leftDistance;
             }
             break;
         case EAST:
-            if(robotState->curCell->wallEast->wallExists != 2000){
+            if(robotState->curCell->wallEast != NULL){
                 robotState->curCell->wallEast->wallExists = robotState->location->frontDistance;
             }
-            if(robotState->curCell->wallWest->wallExists != 2000){
+            if(robotState->curCell->wallWest != NULL){
                 robotState->curCell->wallWest->wallExists =  robotState->location->rearDistance;
             }
-            if(robotState->curCell->wallSouth->wallExists != 2000){
+            if(robotState->curCell->wallSouth != NULL){
                 robotState->curCell->wallSouth->wallExists = robotState->location->rightDistance;
             }
-            if(robotState->curCell->wallNorth->wallExists != 2000){
+            if(robotState->curCell->wallNorth != NULL){
                 robotState->curCell->wallNorth->wallExists =  robotState->location->leftDistance;
             }
             break;
         case SOUTH:
-            if(robotState->curCell->wallSouth->wallExists != 2000){
+            if(robotState->curCell->wallSouth != NULL){
                 robotState->curCell->wallSouth->wallExists = robotState->location->frontDistance;
             }
-            if(robotState->curCell->wallNorth->wallExists != 2000){
+            if(robotState->curCell->wallNorth != NULL){
                 robotState->curCell->wallNorth->wallExists =  robotState->location->rearDistance;
             }
-            if(robotState->curCell->wallWest->wallExists != 2000){
+            if(robotState->curCell->wallWest != NULL){
             robotState->curCell->wallWest->wallExists = robotState->location->rightDistance;
             }
-            if(robotState->curCell->wallEast->wallExists != 2000){
+            if(robotState->curCell->wallEast != NULL){
                 robotState->curCell->wallEast->wallExists =  robotState->location->leftDistance;
             }
             break;
         case WEST:
-            if(robotState->curCell->wallWest->wallExists != 2000){
+            if(robotState->curCell->wallWest != NULL){
                 robotState->curCell->wallWest->wallExists = robotState->location->frontDistance;
             }
-            if(robotState->curCell->wallEast->wallExists != 2000){
+            if(robotState->curCell->wallEast != NULL){
                 robotState->curCell->wallEast->wallExists =  robotState->location->rearDistance;
             }
-            if(robotState->curCell->wallNorth->wallExists != 2000){
+            if(robotState->curCell->wallNorth != NULL){
                 robotState->curCell->wallNorth->wallExists = robotState->location->rightDistance;
             }
-            if(robotState->curCell->wallSouth->wallExists != 2000){
+            if(robotState->curCell->wallSouth != NULL){
                 robotState->curCell->wallSouth->wallExists =  robotState->location->leftDistance;
             }
             break;
@@ -129,8 +137,8 @@ struct Instruction * searchCells(struct RobotState * robotState, struct Cell * c
 }
 
 struct Instruction * westCheck(struct RobotState * robotState, struct Cell * curCell, int orientation){
-        if(curCell->wallWest->wallExists > 100){
-            struct Instruction * instruction = (Instruction *)malloc(sizeof(Instruction));
+        if(curCell->wallWest != NULL && curCell->wallWest->wallExists > 100){
+            struct Instruction * instruction = malloc(sizeof(struct Instruction));
             if(instruction==NULL){
             FA_BTSendString ("error\n", 7);
             FA_DelayMillis(30);
@@ -146,8 +154,12 @@ struct Instruction * westCheck(struct RobotState * robotState, struct Cell * cur
 }
 
 struct Instruction * northCheck(struct RobotState * robotState, struct Cell * curCell, int orientation){
-        if(curCell->wallNorth->wallExists > 100){
-            struct Instruction * instruction = (Instruction *)calloc(1,sizeof(Instruction));
+        if(curCell->wallNorth != NULL && curCell->wallNorth->wallExists > 100){
+            struct Instruction * instruction = malloc(sizeof(struct Instruction));
+            if(instruction==NULL){
+            FA_BTSendString ("error\n", 7);
+            FA_DelayMillis(30);
+            }
             FA_BTSendString ("TurnNorth\n", 11);
             FA_DelayMillis(30);
             instruction->nextInstruction = searchCells(robotState, curCell->wallNorth->northCell,NORTH);
@@ -159,8 +171,12 @@ struct Instruction * northCheck(struct RobotState * robotState, struct Cell * cu
 }
 
 struct Instruction * eastCheck(struct RobotState * robotState, struct Cell * curCell, int orientation){ 
-        if(curCell->wallEast->wallExists >100){
-            struct Instruction * instruction = (Instruction *)calloc(1,sizeof(Instruction));
+        if(curCell->wallEast != NULL && curCell->wallEast->wallExists >100){
+            struct Instruction * instruction = malloc(sizeof(struct Instruction));
+            if(instruction==NULL){
+            FA_BTSendString ("error\n", 7);
+            FA_DelayMillis(30);
+            }
             FA_BTSendString ("TurnEast\n", 10);
             FA_DelayMillis(30);
             instruction->nextInstruction = searchCells(robotState, curCell->wallEast->eastCell,EAST);
@@ -172,8 +188,12 @@ struct Instruction * eastCheck(struct RobotState * robotState, struct Cell * cur
 }
 
 struct Instruction * southCheck(struct RobotState * robotState, struct Cell * curCell, int orientation){
-        if(curCell->wallSouth->wallExists > 100){
-            struct Instruction * instruction = (Instruction *)calloc(1,sizeof(Instruction));
+        if(curCell->wallSouth != NULL && curCell->wallSouth->wallExists > 100){
+            struct Instruction * instruction = malloc(sizeof(struct Instruction));
+            if(instruction==NULL){
+            FA_BTSendString ("error\n", 7);
+            FA_DelayMillis(30);
+            }
             FA_BTSendString ("TurnSouth\n", 10);
             FA_DelayMillis(30);
             instruction->nextInstruction = searchCells(robotState, curCell->wallSouth->southCell,SOUTH);

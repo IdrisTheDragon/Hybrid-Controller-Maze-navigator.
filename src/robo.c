@@ -5,7 +5,9 @@
 #include "Cell.h"
 #include "stdlib.h"
 
-struct Cell map[4][4]; //create 16 Cells.
+#define MAPSIZE 4
+
+struct Cell map[MAPSIZE][MAPSIZE]; //create 16 Cells.
 
 void init(struct RobotState * robotState){
 	FA_RobotInit();
@@ -14,59 +16,54 @@ void init(struct RobotState * robotState){
 
 	int x,y; //loop variables for x and y directions
 
-	for(x=0;x<4;x++){
-		for(y=0;y<4;y++){
+	for(x=0;x<MAPSIZE;x++){
+		for(y=0;y<MAPSIZE;y++){
 			map[x][y].visited = false;
 			map[x][y].x = x;
 			map[x][y].y = y;
 		}
 	}
 	
-	//put in the vertical walls
-	for(y=0;y<4;y++){
+	//put in the outside vertical walls
+	for(y=0;y<MAPSIZE;y++){
 		//west walls
-		struct VWall * wall = malloc(sizeof(VWall));
-		wall->eastCell = &map[0][y];
-		wall->wallExists = 2000;
-		map[0][y].wallWest = wall;
+		map[0][y].wallWest = NULL;
 		//east walls
-		struct VWall * wall1 = malloc(sizeof(VWall));
-		wall1->westCell = &map[3][y];
-		wall1->wallExists = 2000;
-		map[3][y].wallEast = wall1;
+		map[3][y].wallEast = NULL;
 	}
 	//middle walls
-	for(x=0;x<3; x++){
-		for(y=0;y<4;y++){
-			struct VWall * wall = malloc(sizeof(VWall));
-			wall->westCell = &map[x-1][y];
-			wall->eastCell = &map[x][y];
-			map[x][y].wallWest = wall;
-			map[x-1][y].wallEast = wall;
+	for(x=0;x<MAPSIZE-1; x++){
+		for(y=0;y<MAPSIZE;y++){
+			struct VWall * wall = malloc(sizeof(struct VWall));
+			if(wall==NULL){
+            FA_BTSendString ("error allocation wall memory\n", 30);
+            FA_DelayMillis(30);
+            }
+			wall->westCell = &map[x][y];
+			wall->eastCell = &map[x+1][y];
+			map[x][y].wallEast = wall;
+			map[x+1][y].wallWest = wall;
 		}
 	}
 	//put in the horizotal walls
-	for(x=0;x<4;x++){
+	for(x=0;x<MAPSIZE;x++){
 		//southern wall
-		struct HWall * wall  = malloc(sizeof(HWall));
-		wall->northCell = &map[x][0];
-		wall->wallExists = 2000;
-		map[x][3].wallSouth = wall;
-		
+		map[x][0].wallSouth = NULL;
 		//northern wall
-		struct HWall * wall1 = malloc(sizeof(HWall));
-		wall1->southCell = &map[x][3];
-		wall1->wallExists = 2000;
-		map[x][3].wallNorth = wall1;
+		map[x][3].wallNorth = NULL;
 	}
 	//middle walls
-	for(x=0;x<4; x++){
-		for(y=0;y<3;y++){
-			struct HWall * wall = malloc(sizeof(HWall));
-			wall->southCell = &map[x][y-1];
-			wall->northCell = &map[x][y];
-			map[x][y].wallSouth = wall;
-			map[x][y-1].wallNorth = wall;
+	for(x=0;x<MAPSIZE; x++){
+		for(y=0;y<MAPSIZE-1;y++){
+			struct HWall * wall = malloc(sizeof(struct HWall));
+			if(wall==NULL){
+            FA_BTSendString ("error allocation wall memory\n", 30);
+            FA_DelayMillis(30);
+            }
+			wall->southCell = &map[x][y];
+			wall->northCell = &map[x][y+1];
+			map[x][y].wallNorth = wall;
+			map[x][y+1].wallSouth = wall;
 		}
 	}
 
@@ -81,7 +78,11 @@ void init(struct RobotState * robotState){
 	robotState->cellsVisited = 0;
 	robotState->instruction = NULL;
 	robotState->curCell = &map[1][0];       //set it's current cell location
-	struct Location * location = malloc(sizeof(Location));
+	struct Location * location = malloc(sizeof(struct Location));
+	if(location==NULL){
+        FA_BTSendString ("error allocation location memory\n", 34);
+        FA_DelayMillis(30);
+    }
 	robotState->location = location;
 	robotState->next = getLocation;
 }

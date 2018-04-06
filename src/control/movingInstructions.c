@@ -4,73 +4,49 @@
 #include "../lib/allcode_api.h"
 #include "stdlib.h"
 
-int flag = false;
+int goneForward = false;
 void gotoCellWest(struct RobotState * robotState){
     //turn the robot to west and drive forward
     FA_BTSendString ("WestAction\n", 12);
-    if(robotState->orientation != WEST){
-        turn(WEST,robotState);
-    } else if (flag == true){
-        //
-        foreward(140*3,robotState);
-    } else {
-        //must be done go to next instruction
-        struct Instruction * i = robotState->instruction;
-        robotState->instruction = robotState->instruction->nextInstruction;
-        free(i);
-    }
+    turnThenStraight(WEST,robotState);
     robotState->next = setMotors;
 }
 
 void gotoCellNorth(struct RobotState * robotState){
     //turn the robot to North and drive foreward
     FA_BTSendString ("NorthAction\n", 13);
-    if(robotState->orientation != NORTH){
-        turn(NORTH,robotState);
-    } else if (flag == true){
-        //
-        foreward(140*3,robotState);
-    } else {
-        //must be done go to next instruction
-        struct Instruction * i = robotState->instruction;
-        robotState->instruction = robotState->instruction->nextInstruction;
-        free(i);
-    }
+    turnThenStraight(NORTH,robotState);
     robotState->next = setMotors;
 }
 
 void gotoCellEast(struct RobotState * robotState){
     //turn the robot to East and drive foreward
     FA_BTSendString ("EASTAction\n", 12);
-    if(robotState->orientation != EAST){
-        turn(EAST,robotState);
-    } else if (flag == true){
-        //
-        foreward(140*3,robotState);
-    } else {
-        //must be done go to next instruction
-        struct Instruction * i = robotState->instruction;
-        robotState->instruction = robotState->instruction->nextInstruction;
-        free(i);
-    }
+    turnThenStraight(EAST,robotState);
     robotState->next = setMotors;
 }
 
 void gotoCellSouth(struct RobotState * robotState){
     //turn the robot south and drive foreward
     FA_BTSendString ("SouthAction\n", 13);
-    if(robotState->orientation != SOUTH){
-        turn(SOUTH,robotState);
-    } else if (flag == true){
-        //
-        foreward(140*3,robotState);
-    } else {
-        //must be done go to next instruction
-        struct Instruction * i = robotState->instruction;
-        robotState->instruction = robotState->instruction->nextInstruction;
-        free(i);
-    }
+    turnThenStraight(SOUTH,robotState);
     robotState->next = setMotors;
+}
+
+void turnThenStraight(int direction, struct RobotState * robotState){
+    if(robotState->orientation != direction) 
+        turn(direction,robotState); 
+    else {
+        if(goneForward != true){
+            foreward(140*3,robotState);
+        } else {
+            //must be done go to next instruction
+            struct Instruction * i = robotState->instruction;
+            robotState->instruction = robotState->instruction->nextInstruction;
+            free(i);
+            goneForward = false;
+        }
+    }
 }
 
 void turn(int orientation, struct RobotState * robotState){
@@ -87,8 +63,6 @@ void turn(int orientation, struct RobotState * robotState){
         robotState->prevREncoder = 0;
         robotState->LSpeed = 0;
         robotState->RSpeed = 0;
-        flag = true;
-        FA_ResetEncoders();
     } else {
         robotState->LSpeed = -30;
         robotState->RSpeed = 30;
@@ -104,8 +78,7 @@ void foreward(int distance, struct RobotState * robotState){
         robotState->prevREncoder = 0;
         robotState->LSpeed = 0;
         robotState->RSpeed = 0;
-        flag=false;
-        FA_ResetEncoders();
+        goneForward = true;
     } else {
         robotState->LSpeed = 30;
         robotState->RSpeed = 30;

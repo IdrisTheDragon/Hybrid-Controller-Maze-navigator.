@@ -20,7 +20,7 @@ struct Cell {
 	struct VWall * wallEast;
 	struct VWall * wallWest;
 	int lightLevel;
-};
+} __attribute__ ((packed));
 
 
 struct VWall {
@@ -28,13 +28,13 @@ struct VWall {
 	int stripeExists;
 	struct Cell * eastCell;
 	struct Cell * westCell;
-};
+} __attribute__ ((packed));
 
 struct HWall {
 	int wallExists;
 	int stripeExists;
 	struct Cell * northCell;
 	struct Cell * southCell;
-};
+} __attribute__ ((packed));
 
 #endif /* RobotState_H*/

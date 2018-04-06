@@ -14,5 +14,6 @@ void gotoCellSouth(struct RobotState * robotState);
 //Helper states
 void turn(int orientation, struct RobotState * robotState);
 void foreward(int distance, struct RobotState * robotState);
+void turnThenStraight(int direction, struct RobotState * robotState);
 
 #endif /* !MovingI_H*/

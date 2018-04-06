@@ -20,7 +20,7 @@ typedef void state_fn(struct RobotState *);
 struct Instruction {
 	struct Instruction * nextInstruction;
 	state_fn * next;
-};
+} __attribute__ ((packed));
 
 struct RobotState {
 	int LSpeed;
@@ -36,6 +36,6 @@ struct RobotState {
 	struct Cell * curCell;
 	struct Location * location;
 	state_fn * next;
-};
+} __attribute__ ((packed));
 
 #endif /* RobotState_H*/

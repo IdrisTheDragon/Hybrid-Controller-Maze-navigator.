@@ -61,15 +61,24 @@ void getLocation(struct RobotState * robotState) {
 	FA_LCDNumber(IRDataAverage[IR_FRONT_RIGHT], 0 , 20, FONT_NORMAL, LCD_OPAQUE);
 	FA_DelayMillis(100);
 	#endif
-	
+	//calculate an approximate distance form the robot.
+	//if formula breaks and returns -1 assume there isn't anything.
 	location->leftDistance = 		log10(log10(IRDataAverage[IR_LEFT])) 	* M + C;
+	if(location->leftDistance == -1) location->leftDistance = 200;
 	location->frontLeftDistance = 	log10(log10(IRDataAverage[IR_FRONT_LEFT])) 	* M + C;
+	if(location->frontLeftDistance == -1) location->frontLeftDistance = 200;
 	location->frontDistance = 		log10(log10(IRDataAverage[IR_FRONT])) 	* M + C;
+	if(location->frontDistance == -1) location->frontDistance = 200;
 	location->frontRightDistance = 	log10(log10(IRDataAverage[IR_FRONT_RIGHT]))	* M + C;
+	if(location->frontRightDistance == -1) location->frontRightDistance = 200;
 	location->rightDistance = 		log10(log10(IRDataAverage[IR_RIGHT])) 	* M + C;
+	if(location->rightDistance == -1) location->rightDistance = 200;
 	location->rearRightDistance = 	log10(log10(IRDataAverage[IR_REAR_RIGHT])) 	* M + C;
+	if(location->rearRightDistance == -1) location->rearRightDistance = 200;
 	location->rearDistance = 		log10(log10(IRDataAverage[IR_REAR])) 	* M + C;
+	if(location->rearDistance == -1) location->rearDistance = 200;
 	location->rearLeftDistance = 	log10(log10(IRDataAverage[IR_REAR_LEFT])) 	* M + C;
+	if(location->rearLeftDistance == -1) location->rearLeftDistance = 200;
 	printLocation(location);
 	robotState->next = getLight;
 }
