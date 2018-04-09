@@ -158,11 +158,11 @@ section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200              0x1500          0x1f80  (8064)
 .const                      0x1700               0x3d0           0x5b8  (1464)
-.text                       0x1ad0              0x7720          0xb2b0  (45744)
-.dinit                      0x91f0                0x84            0xc6  (198)
-.text                       0x9274               0x170           0x228  (552)
+.text                       0x1ad0              0x78ee          0xb565  (46437)
+.dinit                      0x93be                0x84            0xc6  (198)
+.text                       0x9442               0x170           0x228  (552)
 
-                 Total program memory used (bytes):         0xdad6  (56022) 21%
+                 Total program memory used (bytes):         0xdd8b  (56715) 21%
 
 
 Ivt Memory  [Origin = 0x4, Length = 0x1fc]
@@ -406,15 +406,15 @@ External Symbols in Program Memory (by address):
                   0x000f86                  ___subsf3
                   0x000f88                  ___addsf3
                   0x001042                  ___divsf3
-                  0x0010c6                  ___gesf2
                   0x0010c6                  ___gtsf2
+                  0x0010c6                  ___gesf2
                   0x0010ca                  _log10f
                   0x0010d2                  ___mulsf3
                   0x00113a                  ___fixsfsi
                   0x00117c                  ___udivsi3
-                  0x00119c                  ___lesf2
-                  0x00119c                  ___eqsf2
                   0x00119c                  ___ltsf2
+                  0x00119c                  ___eqsf2
+                  0x00119c                  ___lesf2
                   0x0011a0                  _floorf
                   0x0011b0                  ___floatsisf
                   0x0011b6                  _atanf
@@ -810,26 +810,27 @@ External Symbols in Program Memory (by address):
                   0x00822a                  _northCheck
                   0x0082ea                  _eastCheck
                   0x0083aa                  _southCheck
-                  0x00846a                  _init
-                  0x0087e8                  _main
-                  0x008802                  _broadcastLocation
-                  0x00893e                  _broadcastCell
-                  0x008b02                  _gotoCellWest
-                  0x008b30                  _gotoCellNorth
-                  0x008b5e                  _gotoCellEast
-                  0x008b8c                  _gotoCellSouth
-                  0x008bba                  _turnThenStraight
-                  0x008c38                  _turn
-                  0x008d2a                  _foreward
-                  0x008de6                  _printLocation
-                  0x008e64                  _getLocation
-                  0x009094                  _basicObstacleAvoidence
-                  0x0090d2                  _detectObstactle
-                  0x009158                  _encoderPower
-                  0x009274                  _calibrateSpeed
-                  0x0092f6                  _getEncoders
-                  0x009354                  _setMotors
-                  0x0093a6                  _getLight
+                  0x00846a                  _gotoCellWest
+                  0x008498                  _gotoCellNorth
+                  0x0084c6                  _gotoCellEast
+                  0x0084f4                  _gotoCellSouth
+                  0x008522                  _turnThenStraight
+                  0x0085ce                  _turnA
+                  0x0086c8                  _turn
+                  0x0087ba                  _foreward
+                  0x00891c                  _init
+                  0x008c9a                  _main
+                  0x008cb4                  _broadcastLocation
+                  0x008df0                  _broadcastCell
+                  0x008fb4                  _printLocation
+                  0x009032                  _getLocation
+                  0x009262                  _basicObstacleAvoidence
+                  0x0092a0                  _detectObstactle
+                  0x009326                  _encoderPower
+                  0x009442                  _calibrateSpeed
+                  0x0094c4                  _getEncoders
+                  0x009522                  _setMotors
+                  0x009574                  _getLight
                   0xf80004                  __FGS.sec
 
 External Symbols in Program Memory (by name):
@@ -1248,41 +1249,42 @@ External Symbols in Program Memory (by name):
                   0x000200                  __resetPRI
                   0x0006e6                  __sprintf_cdnopuxX
                   0x0011b6                  _atanf
-                  0x009094                  _basicObstacleAvoidence
-                  0x00893e                  _broadcastCell
-                  0x008802                  _broadcastLocation
-                  0x009274                  _calibrateSpeed
-                  0x0090d2                  _detectObstactle
+                  0x009262                  _basicObstacleAvoidence
+                  0x008df0                  _broadcastCell
+                  0x008cb4                  _broadcastLocation
+                  0x009442                  _calibrateSpeed
+                  0x0092a0                  _detectObstactle
                   0x0082ea                  _eastCheck
-                  0x009158                  _encoderPower
+                  0x009326                  _encoderPower
                   0x0011a0                  _floorf
-                  0x008d2a                  _foreward
+                  0x0087ba                  _foreward
                   0x000704                  _free
-                  0x0092f6                  _getEncoders
-                  0x0093a6                  _getLight
-                  0x008e64                  _getLocation
-                  0x008b5e                  _gotoCellEast
-                  0x008b30                  _gotoCellNorth
-                  0x008b8c                  _gotoCellSouth
-                  0x008b02                  _gotoCellWest
+                  0x0094c4                  _getEncoders
+                  0x009574                  _getLight
+                  0x009032                  _getLocation
+                  0x0084c6                  _gotoCellEast
+                  0x008498                  _gotoCellNorth
+                  0x0084f4                  _gotoCellSouth
+                  0x00846a                  _gotoCellWest
                   0x0080c0                  _gotoDarkest
                   0x00805e                  _headToDarkness
                   0x007ff2                  _headToNextCell
-                  0x00846a                  _init
+                  0x00891c                  _init
                   0x0010ca                  _log10f
                   0x001390                  _logf
-                  0x0087e8                  _main
+                  0x008c9a                  _main
                   0x000684                  _malloc
                   0x007844                  _masterControl
                   0x00077c                  _memcpy
                   0x00822a                  _northCheck
-                  0x008de6                  _printLocation
+                  0x008fb4                  _printLocation
                   0x0080ce                  _searchCells
-                  0x009354                  _setMotors
+                  0x009522                  _setMotors
                   0x0083aa                  _southCheck
                   0x0008f2                  _strchr
-                  0x008c38                  _turn
-                  0x008bba                  _turnThenStraight
+                  0x0086c8                  _turn
+                  0x0085ce                  _turnA
+                  0x008522                  _turnThenStraight
                   0x00793e                  _updateCell
                   0x00816a                  _westCheck
                   0x0006d8                  sprintf_cdnopuxX.EPo:_prout
@@ -4501,7 +4503,7 @@ __c30_signature
  .const             0x9a4e         0x42 out\movingInstructions.o
  .const             0x9a90         0x40 out\robo.o
 
-.text             0x001ad0       0x7720
+.text             0x001ad0       0x78ee
  .text            0x001ad0       0x5d74 C:\Users\Nathan\Documents\Git Hub\robotCode\src\lib\allcode_api.o
                   0x001ad0                  FC_CAL_Port_Out(long long)
                   0x001af2                  FC_CAL_Port_Out_DDR(long long)
@@ -4876,38 +4878,39 @@ __c30_signature
                   0x00822a                  northCheck
                   0x0082ea                  eastCheck
                   0x0083aa                  southCheck
- .text            0x00846a        0x398 out\robo.o
-                  0x00846a                  init
-                  0x0087e8                  main
- .text            0x008802        0x300 out\bluetooth.o
-                  0x008802                  broadcastLocation
-                  0x00893e                  broadcastCell
- .text            0x008b02        0x2e4 out\movingInstructions.o
-                  0x008b02                  gotoCellWest
-                  0x008b30                  gotoCellNorth
-                  0x008b5e                  gotoCellEast
-                  0x008b8c                  gotoCellSouth
-                  0x008bba                  turnThenStraight
-                  0x008c38                  turn
-                  0x008d2a                  foreward
- .text            0x008de6        0x2ae out\Location.o
-                  0x008de6                  printLocation
-                  0x008e64                  getLocation
- .text            0x009094         0xc4 out\ObstacleDetection.o
-                  0x009094                  basicObstacleAvoidence
-                  0x0090d2                  detectObstactle
- .text            0x009158         0x98 out\dataCollect.o
-                  0x009158                  encoderPower
+ .text            0x00846a        0x4b2 out\movingInstructions.o
+                  0x00846a                  gotoCellWest
+                  0x008498                  gotoCellNorth
+                  0x0084c6                  gotoCellEast
+                  0x0084f4                  gotoCellSouth
+                  0x008522                  turnThenStraight
+                  0x0085ce                  turnA
+                  0x0086c8                  turn
+                  0x0087ba                  foreward
+ .text            0x00891c        0x398 out\robo.o
+                  0x00891c                  init
+                  0x008c9a                  main
+ .text            0x008cb4        0x300 out\bluetooth.o
+                  0x008cb4                  broadcastLocation
+                  0x008df0                  broadcastCell
+ .text            0x008fb4        0x2ae out\Location.o
+                  0x008fb4                  printLocation
+                  0x009032                  getLocation
+ .text            0x009262         0xc4 out\ObstacleDetection.o
+                  0x009262                  basicObstacleAvoidence
+                  0x0092a0                  detectObstactle
+ .text            0x009326         0x98 out\dataCollect.o
+                  0x009326                  encoderPower
 
-.dinit            0x0091f0         0x84
- .dinit           0x0091f0         0x84 data_init
+.dinit            0x0093be         0x84
+ .dinit           0x0093be         0x84 data_init
 
-.text             0x009274        0x170
- .text            0x009274         0x82 out\RobotCalibrate.o
-                  0x009274                  calibrateSpeed
- .text            0x0092f6         0x5e out\Encoders.o
-                  0x0092f6                  getEncoders
- .text            0x009354         0x52 out\setMotors.o
-                  0x009354                  setMotors
- .text            0x0093a6         0x3e out\Light.o
-                  0x0093a6                  getLight
+.text             0x009442        0x170
+ .text            0x009442         0x82 out\RobotCalibrate.o
+                  0x009442                  calibrateSpeed
+ .text            0x0094c4         0x5e out\Encoders.o
+                  0x0094c4                  getEncoders
+ .text            0x009522         0x52 out\setMotors.o
+                  0x009522                  setMotors
+ .text            0x009574         0x3e out\Light.o
+                  0x009574                  getLight

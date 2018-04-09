@@ -4,6 +4,9 @@
 #include "../lib/allcode_api.h"
 #include "stdlib.h"
 
+#define CM15 (130*3) 
+#define TURNDURATION 110
+
 int goneForward = false;
 void gotoCellWest(struct RobotState * robotState){
     //turn the robot to west and drive forward
@@ -35,10 +38,11 @@ void gotoCellSouth(struct RobotState * robotState){
 
 void turnThenStraight(int direction, struct RobotState * robotState){
     if(robotState->orientation != direction) 
-        turn(direction,robotState); 
+        if((robotState->orientation+1)%4 == direction) turnA(direction,robotState);
+        else turn(direction,robotState); 
     else {
         if(goneForward != true){
-            foreward(140*3,robotState);
+            foreward(robotState);
         } else {
             //must be done go to next instruction
             struct Instruction * i = robotState->instruction;
@@ -49,11 +53,30 @@ void turnThenStraight(int direction, struct RobotState * robotState){
     }
 }
 
+
+
+void turnA(int orientation, struct RobotState * robotState){
+    int L = robotState->LEncoders;
+    int R = robotState->REncoders;
+    FA_BTSendString ("Turn\n", 6);
+    if(L - robotState->prevLEncoder > TURNDURATION && R - robotState->prevREncoder > TURNDURATION ){
+        int i = (robotState->orientation + 1)%4;
+        robotState->orientation = i;
+        robotState->prevLEncoder = 0;
+        robotState->prevREncoder = 0;
+        robotState->LSpeed = 0;
+        robotState->RSpeed = 0;
+    } else {
+        robotState->LSpeed = 30;
+        robotState->RSpeed = -30;
+    }
+}
+
 void turn(int orientation, struct RobotState * robotState){
     int L = robotState->LEncoders;
     int R = robotState->REncoders;
     FA_BTSendString ("Turn\n", 6);
-    if(L - robotState->prevLEncoder > 100 && R - robotState->prevREncoder > 100 ){
+    if(L - robotState->prevLEncoder > TURNDURATION && R - robotState->prevREncoder > TURNDURATION ){
         int i = robotState->orientation - 1;
         if(i <0){
             i=3;
@@ -69,19 +92,28 @@ void turn(int orientation, struct RobotState * robotState){
     }
 }
 
-void foreward(int distance, struct RobotState * robotState){
+void foreward(struct RobotState * robotState){
     int L = robotState->LEncoders;
     int R = robotState->REncoders;
     FA_BTSendString ("foreward\n", 10);
-    if(L - robotState->prevLEncoder > distance && R - robotState->prevREncoder >distance ){
+    if(L - robotState->prevLEncoder > CM15 && R - robotState->prevREncoder > CM15 ){
         robotState->prevLEncoder = 0;
         robotState->prevREncoder = 0;
         robotState->LSpeed = 0;
         robotState->RSpeed = 0;
         goneForward = true;
     } else {
-        robotState->LSpeed = 30;
-        robotState->RSpeed = 30;
+        if(robotState->LSpeed == 0){
+            robotState->LSpeed = 30;
+            robotState->RSpeed = 30;
+        } else {
+            //Go in a straight line.
+            if(robotState->LEncoders > robotState->REncoders){
+                robotState->RSpeed++;
+            } else if(robotState->LEncoders < robotState->REncoders) {
+                robotState->RSpeed--;
+            }
+        }  
     }
 }
 
