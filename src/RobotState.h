@@ -34,6 +34,7 @@ struct RobotState {
 	int cellsVisited;
 	struct Instruction * instruction;
 	struct Cell * curCell;
+	struct Cell * nest;
 	struct Location * location;
 	state_fn * next;
 } __attribute__ ((packed));

@@ -23,6 +23,7 @@ void masterControl(struct RobotState * robotState){
         robotState->next = updateCell;
         flag = true;
     } else {
+        //todo do a dance or make noise before heading to darkest cell.
         FA_BTSendString ("HeadToDarkness\n", 16);
         FA_DelayMillis(10);
         robotState->next = headToDarkness;
@@ -90,6 +91,9 @@ void updateCell(struct RobotState * robotState){
                 robotState->curCell->wallSouth->wallExists =  robotState->location->leftDistance;
             }
             break;
+    }
+    if(robotState->nest == NULL || robotState->curCell->lightLevel < robotState->nest->lightLevel){
+         robotState->nest = robotState->curCell;
     }
     robotState->next = broadcastCell;
 }
