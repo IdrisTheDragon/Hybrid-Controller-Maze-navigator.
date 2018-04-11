@@ -105,7 +105,7 @@ void foreward(struct RobotState * robotState){
     } else {
         if(robotState->LSpeed == 0){
             robotState->LSpeed = 30;
-            robotState->RSpeed = 33;
+            robotState->RSpeed = 35;
         } else {
             //Go in a straight line.
             if(robotState->LEncoders > robotState->REncoders){
