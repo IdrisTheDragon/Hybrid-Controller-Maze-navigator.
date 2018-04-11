@@ -105,13 +105,83 @@ void headToNextCell(struct RobotState * robotState){
     robotState->next = getLocation;
 }
 
+int distance(int curX, int curY, int desX, int desY){
+ int deltaX = curX-desX;
+ if(deltaX < 0) deltaX =  deltaX *-1;
+ int deltaY = curY-desX;
+ if(deltaY < 0) deltaY = deltaY * -1;
+ return deltaX+deltaY;
+};
+ struct Data {
+        struct Cell * cell;
+        struct Data * parent;
+        int scoreF;
+        int costG;
+        int costH;
+    } __attribute__ ((packed));
+
+void AStar(struct Cell * t,struct Data * open,struct Data ** closed,struct RobotState * robotState,int * openStart,int * openEnd,int * closedStart,int * closedEnd){
+     if(contains(closed,t,closedStart,closedEnd)){ //if already closed
+        //ignore it
+    } else {
+        struct Data * d = get(open,t,openStart,openEnd);
+        if(d == NULL){ //if not in open
+            open[*openEnd].cell = t; //add it and compute score
+            open[*openEnd].parent = closed[*closedEnd];
+            open[*openEnd].costG = closed[*closedEnd]->costG + 1;
+            open[*openEnd].costH = distance(t->x,t->y,robotState->nest->x,robotState->nest->y); 
+            open[*openEnd].scoreF = open[*openEnd].costG + open[*openEnd].costH;
+            openEnd++;
+        } else {
+            int newF = closed[*closedEnd]->costG + 1 + d->costH;
+            if(newF < d->scoreF){
+                d->scoreF = newF;
+                d->costG = closed[*closedEnd]->costG + 1;
+                d->parent = closed[*closedEnd];
+            }
+        }
+            
+    }
+}
+
 void headToDarkness(struct RobotState * robotState){
-    robotState->instruction = gotoDarkest(robotState,robotState->curCell,robotState->orientation);
+    struct Data * closed[16];
+    struct Data open[16];
+    int openStart = 0, openEnd = 0, closedStart = 0, closedEnd =0;
+
+    open[openEnd].cell = robotState->curCell;
+    open[openEnd].parent = NULL;
+    open[openEnd].costG = 0;
+    open[openEnd].costH = distance(open[openEnd].cell->x,open[openEnd].cell->y,robotState->nest->x,robotState->nest->y); 
+    open[openEnd].scoreF= open[openEnd].costG + open[openEnd].costH;
+    openEnd++;
+    do{
+        struct Data * curLowest = getLowest(open,openStart,openEnd);
+        closed[closedEnd] = curLowest;
+        //check each neighbour
+        if(curLowest->cell->wallEast!=NULL && curLowest->cell->wallEast->wallExists > 100 && curLowest->cell->wallEast->eastCell != NULL){
+           AStar(curLowest->cell->wallEast->eastCell,&open[0],closed,robotState,&openStart,&openEnd,&closedStart,&closedEnd); 
+        }
+        if(curLowest->cell->wallWest!=NULL && curLowest->cell->wallWest->wallExists > 100 && curLowest->cell->wallWest->westCell != NULL){
+           AStar(curLowest->cell->wallWest->westCell,&open[0],closed,robotState,&openStart,&openEnd,&closedStart,&closedEnd); 
+        } 
+        if(curLowest->cell->wallNorth!=NULL && curLowest->cell->wallNorth->wallExists > 100 && curLowest->cell->wallNorth->northCell != NULL){
+           AStar(curLowest->cell->wallNorth->northCell,&open[0],closed,robotState,&openStart,&openEnd,&closedStart,&closedEnd); 
+        } 
+        if(curLowest->cell->wallSouth!=NULL && curLowest->cell->wallSouth->wallExists > 100 && curLowest->cell->wallSouth->southCell){
+           AStar(curLowest->cell->wallSouth->southCell,&open[0],closed,robotState,&openStart,&openEnd,&closedStart,&closedEnd); 
+        }  
+    }while(isElementsIn(open) && closed[closedEnd]->cell != robotState->nest);
+    //build up path of cells in reverse order into correct order using parent of the data point
+    int path = closed[closedEnd];
+
+    robotState->instruction = gotoDarkest(robotState,robotState->curCell,robotState->orientation,path);
     robotState->next = masterControl;
 }
 
-struct Instruction * gotoDarkest(struct RobotState * robotState, struct Cell * curCell, int orientation){
-    //plot route to darkest cell
+struct Instruction * gotoDarkest(struct RobotState * robotState, struct Cell * curCell, int orientation, struct Cell ** path){
+    
+    //build instruction set to navigate through the cells.
     return NULL;
 }
 

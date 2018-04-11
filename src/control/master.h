@@ -13,7 +13,7 @@ void headToDarkness(struct RobotState * robotState);
 
 
 
-struct Instruction * gotoDarkest(struct RobotState * robotState, struct Cell * curCell, int orientation);
+struct Instruction * gotoDarkest(struct RobotState * robotState, struct Cell * curCell, int orientation, struct Cell **path);
 struct Instruction * searchCells(struct RobotState * robotState, struct Cell * curCell, int orientation);
 
 
