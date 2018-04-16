@@ -4,10 +4,8 @@
 #include "../lib/allcode_api.h"
 #include "stdlib.h"
 
-#define CM15 (150*3) 
-#define TURNDURATION 140
-#define left 0
-#define right 1
+#define CM15 (140*3) 
+#define TURNDURATION 155
 
 int goneForward = false;
 void gotoCellWest(struct RobotState * robotState){
@@ -108,20 +106,22 @@ void foreward(struct RobotState * robotState){
         } else {
             //Go in a straight line.
             if(robotState->LEncoders < robotState->REncoders){
-                robotState->RSpeed = robotState->RSpeed + 3;
+                robotState->RSpeed = robotState->RSpeed +  3;
             } else if(robotState->LEncoders > robotState->REncoders) {
                 robotState->RSpeed = robotState->RSpeed - 3;
             }
-            /**/
+            /**
+            int Lline = FA_ReadLine(CHANNEL_LEFT);
+            int Rline = FA_ReadLine(CHANNEL_RIGHT);
             char message[30];
             sprintf(message,"L_%d_%d\n",
-                FA_ReadLine(left),FA_ReadLine(right)
+                Lline,Rline
             );
             FA_BTSendString(message,30);
-            if(FA_ReadLine(left) > FA_ReadLine(right)){
-                robotState->LSpeed--;
-            } else if (FA_ReadLine(left) < FA_ReadLine(right)) {
-                robotState->LSpeed++;
+            if(Lline < 100 && Lline > Rline ){
+                robotState->LSpeed = robotState->LSpeed - 3;
+            } else if (Rline < 100 && Lline < Rline) {
+                robotState->LSpeed = robotState->LSpeed + 3;
             }
             /**/
         }  
