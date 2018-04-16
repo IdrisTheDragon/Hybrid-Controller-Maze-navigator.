@@ -22,14 +22,13 @@ void broadcastLocation(struct RobotState * robotState){
             robotState->location->leftDistance 
         );
         FA_BTSendString (message, 50);
-        FA_DelayMillis(10);
+        FA_DelayMillis(2);
         sprintf(message,"SL_%d\nSE_%d_%d\n",
             robotState->LDR,
             robotState->LEncoders,
             robotState->REncoders
         );
         FA_BTSendString (message, 50);
-        FA_DelayMillis(10);
     }
     }
     robotState->next = masterControl;
@@ -66,7 +65,6 @@ void broadcastCell(struct RobotState * robotState){
             w
         );
         FA_BTSendString (message, 50);
-        FA_DelayMillis(10);
     }
     robotState->next = getLocation;
 }

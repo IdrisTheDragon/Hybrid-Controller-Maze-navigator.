@@ -4,8 +4,10 @@
 #include "../lib/allcode_api.h"
 #include "stdlib.h"
 
-#define CM15 (130*3) 
-#define TURNDURATION 110
+#define CM15 (150*3) 
+#define TURNDURATION 140
+#define left 0
+#define right 1
 
 int goneForward = false;
 void gotoCellWest(struct RobotState * robotState){
@@ -44,6 +46,7 @@ void turnThenStraight(int direction, struct RobotState * robotState){
         if(goneForward != true){
             foreward(robotState);
         } else {
+            FA_DelaySecs(1);
             //must be done go to next instruction
             struct Instruction * i = robotState->instruction;
             robotState->instruction = robotState->instruction->nextInstruction;
@@ -76,19 +79,17 @@ void turn(int orientation, struct RobotState * robotState){
     int L = robotState->LEncoders;
     int R = robotState->REncoders;
     FA_BTSendString ("Turn\n", 6);
-    if(L - robotState->prevLEncoder > TURNDURATION && R - robotState->prevREncoder > TURNDURATION ){
+    if(L > TURNDURATION && R > TURNDURATION ){
         int i = robotState->orientation - 1;
         if(i <0){
             i=3;
         }
         robotState->orientation = i;
-        robotState->prevLEncoder = 0;
-        robotState->prevREncoder = 0;
         robotState->LSpeed = 0;
         robotState->RSpeed = 0;
     } else {
         robotState->LSpeed = -30;
-        robotState->RSpeed = 30;
+        robotState->RSpeed = 35;
     }
 }
 
@@ -96,9 +97,7 @@ void foreward(struct RobotState * robotState){
     int L = robotState->LEncoders;
     int R = robotState->REncoders;
     FA_BTSendString ("foreward\n", 10);
-    if(L - robotState->prevLEncoder > CM15 && R - robotState->prevREncoder > CM15 ){
-        robotState->prevLEncoder = 0;
-        robotState->prevREncoder = 0;
+    if( robotState->location->frontDistance < 30 || (L > CM15 && R > CM15) ){
         robotState->LSpeed = 0;
         robotState->RSpeed = 0;
         goneForward = true;
@@ -108,11 +107,23 @@ void foreward(struct RobotState * robotState){
             robotState->RSpeed = 35;
         } else {
             //Go in a straight line.
-            if(robotState->LEncoders > robotState->REncoders){
-                robotState->RSpeed++;
-            } else if(robotState->LEncoders < robotState->REncoders) {
-                robotState->RSpeed--;
+            if(robotState->LEncoders < robotState->REncoders){
+                robotState->RSpeed = robotState->RSpeed + 3;
+            } else if(robotState->LEncoders > robotState->REncoders) {
+                robotState->RSpeed = robotState->RSpeed - 3;
             }
+            /**/
+            char message[30];
+            sprintf(message,"L_%d_%d\n",
+                FA_ReadLine(left),FA_ReadLine(right)
+            );
+            FA_BTSendString(message,30);
+            if(FA_ReadLine(left) > FA_ReadLine(right)){
+                robotState->LSpeed--;
+            } else if (FA_ReadLine(left) < FA_ReadLine(right)) {
+                robotState->LSpeed++;
+            }
+            /**/
         }  
     }
 }

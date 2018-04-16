@@ -10,7 +10,6 @@ int flag = false;
 void masterControl(struct RobotState * robotState){
     if(!robotState->instruction == NULL){
         FA_BTSendString ("followInstruction\n", 19);
-        FA_DelayMillis(10);
         robotState->next = robotState->instruction->next;
     } else if (flag && robotState->cellsVisited !=16) {
         FA_BTSendString ("plotRoutetoNextCell\n", 21);
@@ -100,7 +99,7 @@ void updateCell(struct RobotState * robotState){
 
 void headToNextCell(struct RobotState * robotState){
     FA_BTSendString ("nextCell\n", 9);
-    FA_DelayMillis(30);
+    FA_DelayMillis(10);
     robotState->instruction = searchCells(robotState,robotState->curCell,robotState->orientation);
     robotState->next = getLocation;
 }
@@ -117,7 +116,7 @@ struct Instruction * gotoDarkest(struct RobotState * robotState, struct Cell * c
 
 struct Instruction * searchCells(struct RobotState * robotState, struct Cell * curCell, int orientation){
     FA_BTSendString ("nextCells\n", 10);
-    FA_DelayMillis(30);
+    FA_DelayMillis(10);
     if(curCell->visited == true){
         if(orientation == NORTH){
             return westCheck(robotState, curCell, orientation);
@@ -129,12 +128,12 @@ struct Instruction * searchCells(struct RobotState * robotState, struct Cell * c
             return southCheck(robotState, curCell, orientation);
         } else {
             FA_BTSendString ("notValidO\n", 11);
-            FA_DelayMillis(30); 
+            FA_DelayMillis(5); 
             return NULL;
         }
     } else {
         FA_BTSendString ("atNonVistedCell\n", 17);
-        FA_DelayMillis(30);
+        FA_DelayMillis(5);
         robotState->curCell = curCell;
         return NULL;
     }
@@ -145,10 +144,10 @@ struct Instruction * westCheck(struct RobotState * robotState, struct Cell * cur
             struct Instruction * instruction = malloc(sizeof(struct Instruction));
             if(instruction==NULL){
             FA_BTSendString ("error\n", 7);
-            FA_DelayMillis(30);
+            FA_DelayMillis(5);
             }
             FA_BTSendString ("TurnWest\n", 10);
-            FA_DelayMillis(30);
+            FA_DelayMillis(5);
             instruction->nextInstruction = searchCells(robotState, curCell->wallWest->westCell,WEST);
             instruction->next = gotoCellWest; 
             return instruction;
@@ -162,10 +161,10 @@ struct Instruction * northCheck(struct RobotState * robotState, struct Cell * cu
             struct Instruction * instruction = malloc(sizeof(struct Instruction));
             if(instruction==NULL){
             FA_BTSendString ("error\n", 7);
-            FA_DelayMillis(30);
+            FA_DelayMillis(5);
             }
             FA_BTSendString ("TurnNorth\n", 11);
-            FA_DelayMillis(30);
+            FA_DelayMillis(5);
             instruction->nextInstruction = searchCells(robotState, curCell->wallNorth->northCell,NORTH);
             instruction->next = gotoCellNorth; 
             return instruction;
@@ -179,10 +178,10 @@ struct Instruction * eastCheck(struct RobotState * robotState, struct Cell * cur
             struct Instruction * instruction = malloc(sizeof(struct Instruction));
             if(instruction==NULL){
             FA_BTSendString ("error\n", 7);
-            FA_DelayMillis(30);
+            FA_DelayMillis(5);
             }
             FA_BTSendString ("TurnEast\n", 10);
-            FA_DelayMillis(30);
+            FA_DelayMillis(5);
             instruction->nextInstruction = searchCells(robotState, curCell->wallEast->eastCell,EAST);
             instruction->next = gotoCellEast; 
             return instruction;
@@ -196,10 +195,10 @@ struct Instruction * southCheck(struct RobotState * robotState, struct Cell * cu
             struct Instruction * instruction = malloc(sizeof(struct Instruction));
             if(instruction==NULL){
             FA_BTSendString ("error\n", 7);
-            FA_DelayMillis(30);
+            FA_DelayMillis(5);
             }
             FA_BTSendString ("TurnSouth\n", 10);
-            FA_DelayMillis(30);
+            FA_DelayMillis(5);
             instruction->nextInstruction = searchCells(robotState, curCell->wallSouth->southCell,SOUTH);
             instruction->next = gotoCellSouth; 
             return instruction;
