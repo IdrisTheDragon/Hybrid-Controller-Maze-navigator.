@@ -11,28 +11,28 @@ int goneForward = false;
 
 void gotoCellWest(struct RobotState * robotState){
     //turn the robot to west and drive forward
-    FA_BTSendString ("WestAction\n", 12);
+    //FA_BTSendString ("WestAction\n", 12);
     turnThenStraight(WEST,robotState);
     robotState->next = setMotors;
 }
 
 void gotoCellNorth(struct RobotState * robotState){
     //turn the robot to North and drive foreward
-    FA_BTSendString ("NorthAction\n", 13);
+    //FA_BTSendString ("NorthAction\n", 13);
     turnThenStraight(NORTH,robotState);
     robotState->next = setMotors;
 }
 
 void gotoCellEast(struct RobotState * robotState){
     //turn the robot to East and drive foreward
-    FA_BTSendString ("EASTAction\n", 12);
+   //FA_BTSendString ("EASTAction\n", 12);
     turnThenStraight(EAST,robotState);
     robotState->next = setMotors;
 }
 
 void gotoCellSouth(struct RobotState * robotState){
     //turn the robot south and drive foreward
-    FA_BTSendString ("SouthAction\n", 13);
+    //FA_BTSendString ("SouthAction\n", 13);
     turnThenStraight(SOUTH,robotState);
     robotState->next = setMotors;
 }
@@ -60,7 +60,7 @@ void turnThenStraight(int direction, struct RobotState * robotState){
 void turnA(int orientation, struct RobotState * robotState){
     int L = robotState->LEncoders;
     int R = robotState->REncoders;
-    FA_BTSendString ("TurnA\n", 7);
+    //FA_BTSendString ("TurnA\n", 7);
     if(L> TURNDURATION && R > TURNDURATION ){
         int i = (robotState->orientation + 1)%4;
         robotState->orientation = i;
@@ -75,7 +75,7 @@ void turnA(int orientation, struct RobotState * robotState){
 void turn(int orientation, struct RobotState * robotState){
     int L = robotState->LEncoders;
     int R = robotState->REncoders;
-    FA_BTSendString ("Turn\n", 6);
+    //FA_BTSendString ("Turn\n", 6);
     if(L > TURNDURATION && R > TURNDURATION ){
         int i = robotState->orientation - 1;
         if(i <0){
@@ -93,7 +93,7 @@ void turn(int orientation, struct RobotState * robotState){
 void foreward(struct RobotState * robotState){
     int L = robotState->LEncoders;
     int R = robotState->REncoders;
-    FA_BTSendString ("foreward\n", 10);
+    //FA_BTSendString ("foreward\n", 10);
     if( robotState->location->frontDistance < 30 || (L > CM15 && R > CM15) ){
         robotState->LSpeed = 0;
         robotState->RSpeed = 0;

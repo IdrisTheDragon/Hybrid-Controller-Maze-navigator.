@@ -10,7 +10,7 @@ int flag = false;
 
 void masterControl(struct RobotState * robotState){
     if(!robotState->instruction == NULL){
-        FA_BTSendString ("followInstruction\n", 19);
+        //FA_BTSendString ("followInstruction\n", 19);
         robotState->next = robotState->instruction->next;
     } else if (flag && robotState->cellsVisited !=16) {
         FA_BTSendString ("plotRoutetoNextCell\n", 21);
@@ -99,8 +99,8 @@ void updateCell(struct RobotState * robotState){
 }
 
 void headToNextCell(struct RobotState * robotState){
-    FA_BTSendString ("nextCell\n", 9);
-    FA_DelayMillis(10);
+    //FA_BTSendString ("nextCell\n", 9);
+    //FA_DelayMillis(10);
     robotState->instruction = searchCells(robotState,robotState->curCell,robotState->orientation);
     robotState->next = getLocation;
 }
@@ -111,30 +111,38 @@ void headToDarkness(struct RobotState * robotState){
     struct Data * closed[16];
     struct Data open[16];
     int openStart = 0, openEnd = 0, closedStart = 0, closedEnd =0;
-
+    FA_BTSendString("array\n",7);
     open[openEnd].cell = robotState->curCell;
     open[openEnd].parent = NULL;
     open[openEnd].costG = 0;
     open[openEnd].costH = distance(open[openEnd].cell->x,open[openEnd].cell->y,robotState->nest->x,robotState->nest->y); 
     open[openEnd].scoreF= open[openEnd].costG + open[openEnd].costH;
     openEnd++;
+    FA_BTSendString("init\n",6);
     do{
-        struct Data * curLowest = getLowest(open,openStart,openEnd);
+        struct Data * curLowest = getLowest(open,&openStart,&openEnd);
+        char message[30];
+        sprintf(message, "curLow_%d_%d\n",
+            curLowest->cell->x,
+            curLowest->cell->y
+        );
+        FA_BTSendString(message,30);
         closed[closedEnd] = curLowest;
         //check each neighbour
         if(curLowest->cell->wallEast!=NULL && curLowest->cell->wallEast->wallExists > 100 && curLowest->cell->wallEast->eastCell != NULL){
-           AStar(curLowest->cell->wallEast->eastCell,&open[0],closed,robotState,&openStart,&openEnd,&closedStart,&closedEnd); 
+           AStar(curLowest->cell->wallEast->eastCell,open,closed,robotState,&openStart,&openEnd,&closedStart,&closedEnd); 
         }
         if(curLowest->cell->wallWest!=NULL && curLowest->cell->wallWest->wallExists > 100 && curLowest->cell->wallWest->westCell != NULL){
-           AStar(curLowest->cell->wallWest->westCell,&open[0],closed,robotState,&openStart,&openEnd,&closedStart,&closedEnd); 
+           AStar(curLowest->cell->wallWest->westCell,open,closed,robotState,&openStart,&openEnd,&closedStart,&closedEnd); 
         } 
         if(curLowest->cell->wallNorth!=NULL && curLowest->cell->wallNorth->wallExists > 100 && curLowest->cell->wallNorth->northCell != NULL){
-           AStar(curLowest->cell->wallNorth->northCell,&open[0],closed,robotState,&openStart,&openEnd,&closedStart,&closedEnd); 
+           AStar(curLowest->cell->wallNorth->northCell,open,closed,robotState,&openStart,&openEnd,&closedStart,&closedEnd); 
         } 
-        if(curLowest->cell->wallSouth!=NULL && curLowest->cell->wallSouth->wallExists > 100 && curLowest->cell->wallSouth->southCell){
-           AStar(curLowest->cell->wallSouth->southCell,&open[0],closed,robotState,&openStart,&openEnd,&closedStart,&closedEnd); 
-        }  
-    }while(openEnd-openStart > 0 && closed[closedEnd]->cell != robotState->nest);
+        if(curLowest->cell->wallSouth!=NULL && curLowest->cell->wallSouth->wallExists > 100 && curLowest->cell->wallSouth->southCell != NULL){
+           AStar(curLowest->cell->wallSouth->southCell,open,closed,robotState,&openStart,&openEnd,&closedStart,&closedEnd); 
+        }
+        FA_BTSendString("Done\n",7);
+    }while(openEnd-openStart > 0 || closed[closedEnd]->cell != robotState->nest);
     //build up path of cells in reverse order into correct order using parent of the data point
     struct Data * d = closed[closedEnd];
     do {
@@ -158,8 +166,8 @@ struct Instruction * gotoDarkest(struct RobotState * robotState, struct Cell * c
 }
 
 struct Instruction * searchCells(struct RobotState * robotState, struct Cell * curCell, int orientation){
-    FA_BTSendString ("nextCells\n", 10);
-    FA_DelayMillis(10);
+    //FA_BTSendString ("nextCells\n", 10);
+    //FA_DelayMillis(10);
     if(curCell->visited == true){
         if(orientation == NORTH){
             return westCheck(robotState, curCell, orientation);
@@ -170,13 +178,13 @@ struct Instruction * searchCells(struct RobotState * robotState, struct Cell * c
         } else if(orientation == WEST){
             return southCheck(robotState, curCell, orientation);
         } else {
-            FA_BTSendString ("notValidO\n", 11);
-            FA_DelayMillis(5); 
+            //FA_BTSendString ("notValidO\n", 11);
+            //FA_DelayMillis(5); 
             return NULL;
         }
     } else {
-        FA_BTSendString ("atNonVistedCell\n", 17);
-        FA_DelayMillis(5);
+        //FA_BTSendString ("atNonVistedCell\n", 17);
+       //FA_DelayMillis(5);
         robotState->curCell = curCell;
         return NULL;
     }
@@ -189,8 +197,8 @@ struct Instruction * westCheck(struct RobotState * robotState, struct Cell * cur
             FA_BTSendString ("error\n", 7);
             FA_DelayMillis(5);
             }
-            FA_BTSendString ("TurnWest\n", 10);
-            FA_DelayMillis(5);
+            //FA_BTSendString ("TurnWest\n", 10);
+            //FA_DelayMillis(5);
             instruction->nextInstruction = searchCells(robotState, curCell->wallWest->westCell,WEST);
             instruction->next = gotoCellWest; 
             return instruction;
@@ -206,8 +214,8 @@ struct Instruction * northCheck(struct RobotState * robotState, struct Cell * cu
             FA_BTSendString ("error\n", 7);
             FA_DelayMillis(5);
             }
-            FA_BTSendString ("TurnNorth\n", 11);
-            FA_DelayMillis(5);
+            //FA_BTSendString ("TurnNorth\n", 11);
+            //FA_DelayMillis(5);
             instruction->nextInstruction = searchCells(robotState, curCell->wallNorth->northCell,NORTH);
             instruction->next = gotoCellNorth; 
             return instruction;
@@ -223,8 +231,8 @@ struct Instruction * eastCheck(struct RobotState * robotState, struct Cell * cur
             FA_BTSendString ("error\n", 7);
             FA_DelayMillis(5);
             }
-            FA_BTSendString ("TurnEast\n", 10);
-            FA_DelayMillis(5);
+            //FA_BTSendString ("TurnEast\n", 10);
+            //FA_DelayMillis(5);
             instruction->nextInstruction = searchCells(robotState, curCell->wallEast->eastCell,EAST);
             instruction->next = gotoCellEast; 
             return instruction;
@@ -240,8 +248,8 @@ struct Instruction * southCheck(struct RobotState * robotState, struct Cell * cu
             FA_BTSendString ("error\n", 7);
             FA_DelayMillis(5);
             }
-            FA_BTSendString ("TurnSouth\n", 10);
-            FA_DelayMillis(5);
+            //FA_BTSendString ("TurnSouth\n", 10);
+            //FA_DelayMillis(5);
             instruction->nextInstruction = searchCells(robotState, curCell->wallSouth->southCell,SOUTH);
             instruction->next = gotoCellSouth; 
             return instruction;

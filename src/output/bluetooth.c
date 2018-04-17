@@ -6,6 +6,7 @@
 unsigned long time;
 unsigned long prevTime = 0;
 void broadcastLocation(struct RobotState * robotState){
+    /**
     time = FA_ClockMS();
     if(time - prevTime > 50){
         prevTime = time;
@@ -31,6 +32,7 @@ void broadcastLocation(struct RobotState * robotState){
         FA_BTSendString (message, 50);
     }
     }
+    **/
     robotState->next = masterControl;
 }
 
