@@ -73,8 +73,6 @@ void init(struct RobotState * robotState){
 	robotState->orientation = NORTH;        //set it's genral orientation to North
 	robotState->REncoders = 0;
 	robotState->LEncoders = 0;
-	robotState->prevLEncoder = 0;
-	robotState->prevLEncoder = 0;
 	robotState->cellsVisited = 0;
 	robotState->instruction = NULL;
 	robotState->curCell = &map[1][0];       //set it's current cell location

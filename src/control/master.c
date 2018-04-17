@@ -2,6 +2,7 @@
 #include "../lib/allcode_api.h"
 #include "../output/bluetooth.h"
 #include "master.h"
+#include "AStar.h"
 #include "movingInstructions.h"
 #include <stdlib.h>
 
@@ -105,44 +106,7 @@ void headToNextCell(struct RobotState * robotState){
     robotState->next = getLocation;
 }
 
-int distance(int curX, int curY, int desX, int desY){
- int deltaX = curX-desX;
- if(deltaX < 0) deltaX =  deltaX *-1;
- int deltaY = curY-desX;
- if(deltaY < 0) deltaY = deltaY * -1;
- return deltaX+deltaY;
-};
- struct Data {
-        struct Cell * cell;
-        struct Data * parent;
-        int scoreF;
-        int costG;
-        int costH;
-    } __attribute__ ((packed));
 
-void AStar(struct Cell * t,struct Data * open,struct Data ** closed,struct RobotState * robotState,int * openStart,int * openEnd,int * closedStart,int * closedEnd){
-     if(contains(closed,t,closedStart,closedEnd)){ //if already closed
-        //ignore it
-    } else {
-        struct Data * d = get(open,t,openStart,openEnd);
-        if(d == NULL){ //if not in open
-            open[*openEnd].cell = t; //add it and compute score
-            open[*openEnd].parent = closed[*closedEnd];
-            open[*openEnd].costG = closed[*closedEnd]->costG + 1;
-            open[*openEnd].costH = distance(t->x,t->y,robotState->nest->x,robotState->nest->y); 
-            open[*openEnd].scoreF = open[*openEnd].costG + open[*openEnd].costH;
-            openEnd++;
-        } else {
-            int newF = closed[*closedEnd]->costG + 1 + d->costH;
-            if(newF < d->scoreF){
-                d->scoreF = newF;
-                d->costG = closed[*closedEnd]->costG + 1;
-                d->parent = closed[*closedEnd];
-            }
-        }
-            
-    }
-}
 
 void headToDarkness(struct RobotState * robotState){
     struct Data * closed[16];
@@ -171,12 +135,21 @@ void headToDarkness(struct RobotState * robotState){
         if(curLowest->cell->wallSouth!=NULL && curLowest->cell->wallSouth->wallExists > 100 && curLowest->cell->wallSouth->southCell){
            AStar(curLowest->cell->wallSouth->southCell,&open[0],closed,robotState,&openStart,&openEnd,&closedStart,&closedEnd); 
         }  
-    }while(isElementsIn(open) && closed[closedEnd]->cell != robotState->nest);
+    }while(openEnd-openStart > 0 && closed[closedEnd]->cell != robotState->nest);
     //build up path of cells in reverse order into correct order using parent of the data point
-    int path = closed[closedEnd];
-
-    robotState->instruction = gotoDarkest(robotState,robotState->curCell,robotState->orientation,path);
-    robotState->next = masterControl;
+    struct Data * d = closed[closedEnd];
+    do {
+        char message[30];
+        sprintf(message, "Cell_%d_%d\n",
+            d->cell->x,
+            d->cell->y
+        );
+        FA_BTSendString(message,30);
+        d = d->parent;
+    } while(d != NULL);
+    
+    //robotState->instruction = gotoDarkest(robotState,robotState->curCell,robotState->orientation);
+    robotState->next = NULL;
 }
 
 struct Instruction * gotoDarkest(struct RobotState * robotState, struct Cell * curCell, int orientation, struct Cell ** path){
