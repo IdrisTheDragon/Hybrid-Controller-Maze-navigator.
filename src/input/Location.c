@@ -26,7 +26,7 @@ void printLocation(struct Location * location){
 	FA_LCDNumber(location->frontLeftDistance, 	80, 20, FONT_NORMAL, LCD_OPAQUE);
 	FA_LCDNumber(location->frontDistance, 		40, 20, FONT_NORMAL, LCD_OPAQUE);
 	FA_LCDNumber(location->frontRightDistance, 	0 , 20, FONT_NORMAL, LCD_OPAQUE);
-	FA_DelayMillis(100);
+	FA_DelayMillis(5);
 }
 
 void getLocation(struct RobotState * robotState) {

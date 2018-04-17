@@ -191,25 +191,25 @@ section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
 .nbss                       0x1000                   0            0x76  (118)
 .ndata                      0x1076                   0             0xc  (12)
-.nbss                       0x1082                   0             0xe  (14)
-.bss                        0x1090                   0          0x2314  (8980)
-.data                       0x33a4                   0            0x3c  (60)
-.bss                        0x33e0                   0             0x4  (4)
-.data                       0x33e4                   0             0x2  (2)
-.bss.__curbrk               0x33e6                   0             0x2  (2)
-.heap                       0x33e8                   0          0x32c8  (13000)
+.nbss                       0x1082                   0            0x10  (16)
+.bss                        0x1092                   0          0x2314  (8980)
+.data                       0x33a6                   0            0x3c  (60)
+.bss                        0x33e2                   0             0x4  (4)
+.data                       0x33e6                   0             0x2  (2)
+.bss.__curbrk               0x33e8                   0             0x2  (2)
+.heap                       0x33ea                   0          0x32c8  (13000)
 
-                 Total data memory used (bytes):         0x56b0  (22192) 77%
+                 Total data memory used (bytes):         0x56b2  (22194) 77%
 
 
 Dynamic Memory Usage
 
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
-heap                        0x33e8                              0x32c8  (13000)
-stack                       0x66b0                              0x1950  (6480)
+heap                        0x33ea                              0x32c8  (13000)
+stack                       0x66b2                              0x194e  (6478)
 
-                 Maximum dynamic memory (bytes):         0x4c18  (19480)
+                 Maximum dynamic memory (bytes):         0x4c16  (19478)
 
 
 External Symbols in Data Memory (by address):
@@ -284,21 +284,22 @@ External Symbols in Data Memory (by address):
                     0x1080                  _FCV_076d1_LSM303D_Magnetometer1__CURRENT_ADDRESS
                     0x1082                  _time
                     0x1086                  _prevTime
-                    0x108a                  _flag
-                    0x108c                  _goneForward
-                    0x1090                  _FCI_TMP_STR
-                    0x10a4                  _FCV_0ab21_gLCD_ST7567_SPI1__LCD_DATA
-                    0x12a4                  _FCV_02b22_CB_AUDIO__DATA
-                    0x22a4                  _FCV_02b21_CB_BT__DATA
-                    0x32a4                  _map
-                    0x33e0                  __Aldata
-                    0x33e4                  __Size_block
-                    0x33e6                  ___curbrk
+                    0x108a                  _goneForward
+                    0x108c                  _offset
+                    0x108e                  _flag
+                    0x1092                  _FCI_TMP_STR
+                    0x10a6                  _FCV_0ab21_gLCD_ST7567_SPI1__LCD_DATA
+                    0x12a6                  _FCV_02b22_CB_AUDIO__DATA
+                    0x22a6                  _FCV_02b21_CB_BT__DATA
+                    0x32a6                  _map
+                    0x33e2                  __Aldata
+                    0x33e6                  __Size_block
+                    0x33e8                  ___curbrk
 
 External Symbols in Data Memory (by name):
 
                     0x1000                  _FCI_TMP_INT
-                    0x1090                  _FCI_TMP_STR
+                    0x1092                  _FCI_TMP_STR
                     0x1002                  _FCLV_LOOP1
                     0x1003                  _FCLV_LOOP2
                     0x1004                  _FCLV_LOOP3
@@ -309,12 +310,12 @@ External Symbols in Data Memory (by name):
                     0x1009                  _FCLV_LOOP8
                     0x100a                  _FCLV_LOOP9
                     0x1024                  _FCV_02b21_CB_BT__CONSOLEHANDLE
-                    0x22a4                  _FCV_02b21_CB_BT__DATA
+                    0x22a6                  _FCV_02b21_CB_BT__DATA
                     0x1020                  _FCV_02b21_CB_BT__DATAEND
                     0x1028                  _FCV_02b21_CB_BT__DATASTART
                     0x1022                  _FCV_02b21_CB_BT__LOOKFORCOUNTER
                     0x101a                  _FCV_02b22_CB_AUDIO__CONSOLEHANDLE
-                    0x12a4                  _FCV_02b22_CB_AUDIO__DATA
+                    0x12a6                  _FCV_02b22_CB_AUDIO__DATA
                     0x1016                  _FCV_02b22_CB_AUDIO__DATAEND
                     0x101e                  _FCV_02b22_CB_AUDIO__DATASTART
                     0x1018                  _FCV_02b22_CB_AUDIO__LOOKFORCOUNTER
@@ -335,7 +336,7 @@ External Symbols in Data Memory (by name):
                     0x1010                  _FCV_0ab21_gLCD_ST7567_SPI1__CURRENTX
                     0x100f                  _FCV_0ab21_gLCD_ST7567_SPI1__CURRENTY
                     0x1012                  _FCV_0ab21_gLCD_ST7567_SPI1__FOREGROUND_COL_VAR
-                    0x10a4                  _FCV_0ab21_gLCD_ST7567_SPI1__LCD_DATA
+                    0x10a6                  _FCV_0ab21_gLCD_ST7567_SPI1__LCD_DATA
                     0x1014                  _FCV_0ab21_gLCD_ST7567_SPI1__ORIENTATION
                     0x100e                  _FCV_0ab21_gLCD_ST7567_SPI1__PAGE
                     0x102a                  _FCV_0b5b1_cal_uart__CONSOLE
@@ -364,14 +365,15 @@ External Symbols in Data Memory (by name):
                     0x105a                  _G_XFA_Mag_rate
                     0x105b                  _G_XFA_Mag_scale
                     0x1070                  _MX_Current_Channel
-                    0x33e0                  __Aldata
+                    0x33e2                  __Aldata
                     0x1074                  __CLOCK_MS_HIGH
                     0x1072                  __CLOCK_MS_LOW
-                    0x33e4                  __Size_block
-                    0x33e6                  ___curbrk
-                    0x108a                  _flag
-                    0x108c                  _goneForward
-                    0x32a4                  _map
+                    0x33e6                  __Size_block
+                    0x33e8                  ___curbrk
+                    0x108e                  _flag
+                    0x108a                  _goneForward
+                    0x32a6                  _map
+                    0x108c                  _offset
                     0x106a                  _old_tris
                     0x1086                  _prevTime
                     0x1082                  _time
@@ -4445,44 +4447,45 @@ __c30_signature
                     0x107e                  FCV_0dcd1_FormulaAllCode1__LOGOSPEED
                     0x1080                  FCV_076d1_LSM303D_Magnetometer1__CURRENT_ADDRESS
 
-.nbss               0x1082          0xe
+.nbss               0x1082         0x10
  .nbss              0x1082          0x8 out\bluetooth.o
                     0x1082                  time
                     0x1086                  prevTime
- .nbss              0x108a          0x2 out\master.o
-                    0x108a                  flag
- .nbss              0x108c          0x2 out\movingInstructions.o
-                    0x108c                  goneForward
- .nbss              0x108e          0x2 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(errno.epo)
-                    0x108e                  errno
+ .nbss              0x108a          0x4 out\movingInstructions.o
+                    0x108a                  goneForward
+                    0x108c                  offset
+ .nbss              0x108e          0x2 out\master.o
+                    0x108e                  flag
+ .nbss              0x1090          0x2 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\libm-coff.a(errno.epo)
+                    0x1090                  errno
 
-.bss                0x1090       0x2314
- .bss               0x1090       0x2214 C:\Users\Nathan\Documents\Git Hub\robotCode\src\lib\allcode_api.o
-                    0x1090                  FCI_TMP_STR
-                    0x10a4                  FCV_0ab21_gLCD_ST7567_SPI1__LCD_DATA
-                    0x12a4                  FCV_02b22_CB_AUDIO__DATA
-                    0x22a4                  FCV_02b21_CB_BT__DATA
- .bss               0x32a4        0x100 out\robo.o
-                    0x32a4                  map
+.bss                0x1092       0x2314
+ .bss               0x1092       0x2214 C:\Users\Nathan\Documents\Git Hub\robotCode\src\lib\allcode_api.o
+                    0x1092                  FCI_TMP_STR
+                    0x10a6                  FCV_0ab21_gLCD_ST7567_SPI1__LCD_DATA
+                    0x12a6                  FCV_02b22_CB_AUDIO__DATA
+                    0x22a6                  FCV_02b21_CB_BT__DATA
+ .bss               0x32a6        0x100 out\robo.o
+                    0x32a6                  map
 
-.data               0x33a4         0x3c
- .data              0x33a4         0x22 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(xlitob.EP_o)
- .data              0x33c6         0x1a c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(xprintf_cdnopuxX.EPo)
+.data               0x33a6         0x3c
+ .data              0x33a6         0x22 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(xlitob.EP_o)
+ .data              0x33c8         0x1a c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(xprintf_cdnopuxX.EPo)
 
-.bss                0x33e0          0x4
- .bss               0x33e0          0x4 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(malloc.EP_o)
-                    0x33e0                  _Aldata
+.bss                0x33e2          0x4
+ .bss               0x33e2          0x4 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(malloc.EP_o)
+                    0x33e2                  _Aldata
 
-.data               0x33e4          0x2
- .data              0x33e4          0x2 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(malloc.EP_o)
-                    0x33e4                  _Size_block
+.data               0x33e6          0x2
+ .data              0x33e6          0x2 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-c-coff.a(malloc.EP_o)
+                    0x33e6                  _Size_block
 
-.bss.__curbrk       0x33e6          0x2
- .bss.__curbrk      0x33e6          0x2 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-pic30-coff.a(brkep.Lo)
-                    0x33e6                  __curbrk
+.bss.__curbrk       0x33e8          0x2
+ .bss.__curbrk      0x33e8          0x2 c:/program files (x86)/microchip/xc16/v1.33/bin/bin/../../lib\liblega-pic30-coff.a(brkep.Lo)
+                    0x33e8                  __curbrk
 
-.heap               0x33e8       0x32c8
- .heap              0x33e8       0x32c8 heap
+.heap               0x33ea       0x32c8
+ .heap              0x33ea       0x32c8 heap
 
 .ivt._T6Interrupt
                   0x000072          0x2

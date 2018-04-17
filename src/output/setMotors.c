@@ -4,7 +4,7 @@
 
 void setMotors(struct RobotState * robotState){
     FA_SetMotors(robotState->LSpeed,robotState->RSpeed);
-    if(robotState->LSpeed == 0){
+    if(robotState->LSpeed == 0 && robotState->RSpeed == 0){
         FA_ResetEncoders();
     }
     robotState->next = getLocation;

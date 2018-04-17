@@ -27,8 +27,6 @@ struct RobotState {
 	int RSpeed;
 	int LEncoders;
 	int REncoders;
-	int prevREncoder;
-	int prevLEncoder;
 	int LDR;
 	int orientation;
 	int cellsVisited;
