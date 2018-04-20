@@ -1,6 +1,12 @@
 #include "../lib/allcode_api.h"
+
+
+#define RAINBOW RAINBOW
+#define HAPPY HAPPY
+#define SONG RAINBOW
    
-void happyBirthday(){
+void musicPlayer(){
+
 	int c = 261;
 	int d = 293;
 	int e = 329;
@@ -8,21 +14,43 @@ void happyBirthday(){
 	int fs = 370;
 	int g = 392;
 	int a = 440;
+	int bf = 466;
 	int b = 493;
 	int c2 = 523;
 	int d2 = 587;
+	int e2 = 659;
+	int f2 = 698;
+	int p = 0;
 
-	int L = 400;
+	#if SONG == HAPPY
+	#define L 500
+	#define songLength 25
+	int notes[songLength][2] = {
+		{d,L/2},  {d,L/2},  {e,L},    {d,L},  {g,L},  {fs,2*L},
+		{d,L/2},  {d,L/2},  {e,L},    {d,L},  {a,L},  {g,2*L},
+		{d,L/2},  {d,L/2},  {d2,L},   {b,L},  {g,L},  {fs,L},
+		{e,L},    {c2,L/2}, {c2,L/2}, {b,L},  {g,L},  {a,L},  
+		{g,2*L}
+	};
+	#elif SONG == RAINBOW
+	#define songLength 23
+	#define L 300
+	int notes [songLength][2] = {
+		{f,2*L},{f2,2*L},
+		{e2,L},{c2,L/2},{d2,L/2},{e2,L},{f2,L},
+		{f,2*L},{d2,2*L},
+		{c2,4*L},
+		{d,L*2},{bf,2*L},
+		{a,L},{f,L/2},{g,L/2},{a,L},{bf,L},
+		{a,L},{e,L/2},{f,L/2},{g,L},{a,L},
+		{f,L*4}
+	};
+	#endif
 
-	int notes [25] = {d,d,e,d,g,fs,d,d,e,d,a,g,d,d,d2,b,g,fs,e,c2,c2,b,g,a,g};
-	int lengths[25] = {L/2,L/2,L,L,L,2*L,L/2,L/2,L,L,L,2*L,L/2,L/2,L,L,L,L,L,L/2,L/2,L,L,L,2*L};
 	int i = 0;
-    while(1){
-
-		FA_PlayNote(notes[i],lengths[i]);
-		FA_PlayNote(0,20);
-		i++;
-		if(i > 24){i = 0;}
+    for(i = 0; i < songLength; i++){
+		FA_PlayNote(notes[i][0],notes[i][1]);
+		FA_DelayMillis(20);
 	}
 }
 
