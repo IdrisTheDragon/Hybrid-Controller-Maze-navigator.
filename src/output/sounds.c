@@ -1,9 +1,8 @@
 #include "../lib/allcode_api.h"
+#include "sounds.h"
 
-
-#define RAINBOW RAINBOW
-#define HAPPY HAPPY
-#define SONG RAINBOW
+//#define HAPPY 1
+#define RAINBOW 1
    
 void musicPlayer(){
 
@@ -22,7 +21,7 @@ void musicPlayer(){
 	int f2 = 698;
 	int p = 0;
 
-	#if SONG == HAPPY
+	#ifdef HAPPY
 	#define L 500
 	#define songLength 25
 	int notes[songLength][2] = {
@@ -32,7 +31,8 @@ void musicPlayer(){
 		{e,L},    {c2,L/2}, {c2,L/2}, {b,L},  {g,L},  {a,L},  
 		{g,2*L}
 	};
-	#elif SONG == RAINBOW
+	#endif
+	#ifdef RAINBOW
 	#define songLength 23
 	#define L 300
 	int notes [songLength][2] = {
