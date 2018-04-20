@@ -70,7 +70,7 @@ void turnA(int orientation, struct RobotState * robotState){
         robotState->RSpeed = 0;
     } else {
         robotState->LSpeed = INITIALL;
-        robotState->RSpeed = -INITIALR - (robotState->REncoders - robotState->LEncoders) ;
+        robotState->RSpeed = -INITIALR - (robotState->LEncoders - robotState->REncoders) ;
     }
 }
 
@@ -88,7 +88,7 @@ void turn(int orientation, struct RobotState * robotState){
         robotState->RSpeed = 0;
     } else {
         robotState->LSpeed = -INITIALL;
-        robotState->RSpeed = INITIALR + robotState->REncoders - robotState->LEncoders;
+        robotState->RSpeed = INITIALR + robotState->LEncoders - robotState->REncoders;
     }
 }
 
@@ -106,9 +106,9 @@ void foreward(struct RobotState * robotState){
             robotState->RSpeed =  INITIALR;
         } else {
             //Go in a straight line.
-            //if (robotState->location->leftDistance < 30 ) robotState->LSpeed = INITIALL + 2; else robotState->LSpeed = INITIALL;
-            //if (robotState->location->rightDistance < 30 ) robotState->RSpeed = INITIALR + 2; else robotState->RSpeed = INITIALR;
-            robotState->RSpeed = INITIALR +  robotState->REncoders - robotState->LEncoders;
+            //if (robotState->location->leftDistance < 30 ) robotState->LSpeed = INITIALL + 5; else robotState->LSpeed = INITIALL;
+            //if (robotState->location->rightDistance < 30 ) robotState->RSpeed = INITIALR + 5; else robotState->RSpeed = INITIALR;
+            robotState->RSpeed = INITIALR +  robotState->LEncoders - robotState->REncoders;
             /**/
         }  
     }

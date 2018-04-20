@@ -37,6 +37,8 @@ void masterControl(struct RobotState * robotState){
     }
 }
 
+
+//update the the current cell walls based on the robots orientation
 void updateCell(struct RobotState * robotState){
     robotState->curCell->visited = true;
     robotState->curCell->lightLevel = robotState->LDR;
@@ -99,6 +101,7 @@ void updateCell(struct RobotState * robotState){
             }
             break;
     }
+    //check if this is the nest
     if(robotState->nest == NULL || robotState->curCell->lightLevel < robotState->nest->lightLevel){
         robotState->nest = robotState->curCell;
         //FA_BTSendString ("new_nest\n", 10);
@@ -106,6 +109,7 @@ void updateCell(struct RobotState * robotState){
     robotState->next = broadcastCell;
 }
 
+//Plot a route the the next non visited cell
 void headToNextCell(struct RobotState * robotState){
     //FA_BTSendString ("nextCell\n", 9);
     //FA_DelayMillis(10);
@@ -113,8 +117,7 @@ void headToNextCell(struct RobotState * robotState){
     robotState->next = getLocation;
 }
 
-
-
+//plot a optimal route to the darkest cell
 void headToDarkness(struct RobotState * robotState){
     robotState->instruction = searchDarkness(robotState,robotState->curCell,robotState->orientation);
     robotState->next = getLocation;

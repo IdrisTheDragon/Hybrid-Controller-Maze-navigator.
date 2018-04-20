@@ -10,7 +10,7 @@
 struct Cell map[MAPSIZE][MAPSIZE]; //create 16 Cells.
 
 void init(struct RobotState * robotState){
-	FA_RobotInit();
+	
 	XFA_ClockMS_Initialise();
 	FA_LCDBacklight(50);
 
@@ -89,12 +89,15 @@ void init(struct RobotState * robotState){
 
 
 int main(){
+	FA_RobotInit();
+	//musicPlayer();
+	/**/
 	struct RobotState robotState;          //create a robot State to store the sensor speed data etc.
 	robotState.next = init;                //add the first function to the state machine: initialise the robot.
     while(robotState.next) {               //begin the state machine while loop.
 		robotState.next(&robotState);      //excute the code for the next state.
 	}
-
+	/**/
 
 	return 0;
 }

@@ -2,25 +2,31 @@
 #include "sounds.h"
 
 //#define HAPPY 1
-#define RAINBOW 1
-   
+//#define RAINBOW 1
+//#define SUN 1
+#define Brahms
+
+
+#define C 261
+#define D 293
+#define E 329
+#define F 349
+#define FS 370
+#define G 392
+#define A 440
+#define BF 466
+#define B 493
+#define C2 523
+#define D2 587
+#define E2 659
+#define F2 698
+#define FS2 740
+#define G2 784
+#define A2 880
+#define P 0
+
+
 void musicPlayer(){
-
-	#define C 261
-	#define D 293
-	#define E 329
-	#define F 349
-	#define FS 370
-	#define G 392
-	#define A 440
-	#define B 466
-	#define BF 493
-	#define C2 523
-	#define D2 587
-	#define E2 659
-	#define F2 698
-	#define p 0;
-
 	#ifdef HAPPY
 	#define L 500
 	#define songLength 25
@@ -47,10 +53,50 @@ void musicPlayer(){
 	};
 	#endif
 
+	#ifdef SUN
+	#define songLength 37
+	#define L 400
+	int notes[songLength][2] = {
+		{P,L},{B,L},{A,L},{B,L},
+		{G,L},{B,L/2},{G,L/2},{A,L},{B,L},
+		{P,L},{B,L},{A,L},{B,L},
+		{G,L*(3/2)},{G,L/2},{A,L},{G,L},
+		{P,L},{B,L},{A,L},{G,L},
+		{E2,L/2},{G2,L/2},{A2,L/2},
+		{D2,L/2},{G2,L/2},{A2,L/2},
+		{C2,L/2},{G2,L/2},{A2,L/2},
+		{D2,L/2},{G2,L/2},{A2,L/2},
+		{G2,L/2},{FS2,L/2},{E2,L/2},{D2,L/2},
+	};
+	#endif
+
+	#ifdef Brahms
+	#define songLength 47
+	#define L 500
+	int notes[songLength][2] = {
+		{E,L/2},{E,L/2},{G,2*L},
+		{E,L/2},{E,L/2},{G,2*L},
+		{E,L/2},{G,L/2},{C2,L},{B,L},
+		{A,L},{A,L},{G,L},
+		{D,L/2},{E,L/2},{F,2*L},
+		{D,L/2},{F,L/2},{B,L/2},{A,L/2},{G,L},
+		{B,L},{C2,2*L},
+		{C,L/2},{C,L/2},{C2,2*L},
+		{A,L/2},{F,L/2},{G,2*L},
+		{E,L/2},{C,L/2},{F,L},{G,L},
+		{A,L},{G,2*L},
+		{C,L/2},{C,L/2},{C2,2*L},
+		{A,L/2},{F,L/2},{G,2*L},
+		{E,L/2},{C,L/2},{F,L},{E,L},
+		{D,L},{C,2*L}
+	};
+	#endif
+
+	//play the song stored in the array
 	int i = 0;
     for(i = 0; i < songLength; i++){
 		FA_PlayNote(notes[i][0],notes[i][1]);
-		FA_DelayMillis(20);
+		FA_DelayMillis(2);
 	}
 }
 
