@@ -8,9 +8,9 @@ unsigned long prevTime = 0;
 void broadcastLocation(struct RobotState * robotState){
     /**
     time = FA_ClockMS();
-    if(time - prevTime > 50){
+    if(time - prevTime > 100){
         prevTime = time;
-        if(FA_BTConnected()== 1){
+        
         char message[50];
         sprintf(message,"SR_%d_%d_%d_%d_%d_%d_%d_%d\n",
             robotState->location->frontLeftDistance,
@@ -30,9 +30,9 @@ void broadcastLocation(struct RobotState * robotState){
             robotState->REncoders
         );
         FA_BTSendString (message, 50);
+        FA_DelayMillis(2);
     }
-    }
-    **/
+    /**/
     robotState->next = masterControl;
 }
 

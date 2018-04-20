@@ -22,8 +22,8 @@ struct Instruction * searchDarkness(struct RobotState * robotState, struct Cell 
             return NULL;
         }
     } else {
-        FA_BTSendString ("atNest\n", 17);
-        FA_DelayMillis(5);
+        //FA_BTSendString ("atNest\n", 17);
+        //FA_DelayMillis(5);
         robotState->curCell = curCell;
         struct Instruction * instruction = malloc(sizeof(struct Instruction));
         if(instruction==NULL){
@@ -45,7 +45,8 @@ struct Instruction * westCheckD(struct RobotState * robotState, struct Cell * cu
             //FA_BTSendString ("TurnWest\n", 10);
             //FA_DelayMillis(5);
             instruction->nextInstruction = searchDarkness(robotState, curCell->wallWest->westCell,WEST);
-            if(instruction->nextInstruction->next == gotoCellEast){
+            if(instruction->nextInstruction->next == gotoCellEast){ //checks if doubling back on self
+                free(instruction);
                 return southCheckD(robotState, curCell, orientation);
             }
             instruction->next = gotoCellWest; 
@@ -65,7 +66,8 @@ struct Instruction * northCheckD(struct RobotState * robotState, struct Cell * c
             //FA_BTSendString ("TurnNorth\n", 11);
             //FA_DelayMillis(5);
             instruction->nextInstruction = searchDarkness(robotState, curCell->wallNorth->northCell,NORTH);
-            if(instruction->nextInstruction->next == gotoCellSouth){
+            if(instruction->nextInstruction->next == gotoCellSouth){ //checks if doubling back on self
+                free(instruction);
                 return westCheckD(robotState, curCell, orientation);
             }
             instruction->next = gotoCellNorth; 
@@ -85,7 +87,8 @@ struct Instruction * eastCheckD(struct RobotState * robotState, struct Cell * cu
             //FA_BTSendString ("TurnEast\n", 10);
             //FA_DelayMillis(5);
             instruction->nextInstruction = searchDarkness(robotState, curCell->wallEast->eastCell,EAST);
-            if(instruction->nextInstruction->next == gotoCellWest){
+            if(instruction->nextInstruction->next == gotoCellWest){ //checks if doubling back on self
+                free(instruction);
                 return northCheckD(robotState, curCell, orientation);
             }
             instruction->next = gotoCellEast; 
@@ -105,7 +108,8 @@ struct Instruction * southCheckD(struct RobotState * robotState, struct Cell * c
             //FA_BTSendString ("TurnSouth\n", 10);
             //FA_DelayMillis(5);
             instruction->nextInstruction = searchDarkness(robotState, curCell->wallSouth->southCell,SOUTH);
-            if(instruction->nextInstruction->next == gotoCellNorth){
+            if(instruction->nextInstruction->next == gotoCellNorth){ //checks if doubling back on self
+                free(instruction);
                 return eastCheckD(robotState, curCell, orientation);
             }
             instruction->next = gotoCellSouth; 

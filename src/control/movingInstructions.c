@@ -4,8 +4,10 @@
 #include "../lib/allcode_api.h"
 #include "stdlib.h"
 
-#define CM15 (145*3) 
+#define CM15 432
 #define TURNDURATION 155
+#define INITIALL 30
+#define INITIALR 35
 
 int goneForward = false;
 
@@ -45,7 +47,7 @@ void turnThenStraight(int direction, struct RobotState * robotState){
         if(goneForward != true){
             foreward(robotState);
         } else {
-            FA_DelaySecs(1);
+            FA_DelaySecs(1); //big delay after each movement so chance to correct robot.
             //must be done go to next instruction
             struct Instruction * i = robotState->instruction;
             robotState->instruction = robotState->instruction->nextInstruction;
@@ -67,8 +69,8 @@ void turnA(int orientation, struct RobotState * robotState){
         robotState->LSpeed = 0;
         robotState->RSpeed = 0;
     } else {
-        robotState->LSpeed = 30  + robotState->LEncoders - robotState->REncoders;
-        robotState->RSpeed = -35;
+        robotState->LSpeed = INITIALL;
+        robotState->RSpeed = -INITIALR - (robotState->REncoders - robotState->LEncoders) ;
     }
 }
 
@@ -85,8 +87,8 @@ void turn(int orientation, struct RobotState * robotState){
         robotState->LSpeed = 0;
         robotState->RSpeed = 0;
     } else {
-        robotState->LSpeed = -30;
-        robotState->RSpeed = 35 + robotState->REncoders - robotState->LEncoders;
+        robotState->LSpeed = -INITIALL;
+        robotState->RSpeed = INITIALR + robotState->REncoders - robotState->LEncoders;
     }
 }
 
@@ -100,11 +102,13 @@ void foreward(struct RobotState * robotState){
         goneForward = true;
     } else {
         if(robotState->LSpeed == 0){
-            robotState->LSpeed = 30;
-            robotState->RSpeed = 35;
+            robotState->LSpeed =  INITIALL;
+            robotState->RSpeed =  INITIALR;
         } else {
             //Go in a straight line.
-            robotState->RSpeed = 35 +  robotState->REncoders - robotState->LEncoders;
+            //if (robotState->location->leftDistance < 30 ) robotState->LSpeed = INITIALL + 2; else robotState->LSpeed = INITIALL;
+            //if (robotState->location->rightDistance < 30 ) robotState->RSpeed = INITIALR + 2; else robotState->RSpeed = INITIALR;
+            robotState->RSpeed = INITIALR +  robotState->REncoders - robotState->LEncoders;
             /**/
         }  
     }

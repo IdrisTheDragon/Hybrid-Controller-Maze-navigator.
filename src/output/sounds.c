@@ -6,44 +6,44 @@
    
 void musicPlayer(){
 
-	int c = 261;
-	int d = 293;
-	int e = 329;
-	int f = 349;
-	int fs = 370;
-	int g = 392;
-	int a = 440;
-	int bf = 466;
-	int b = 493;
-	int c2 = 523;
-	int d2 = 587;
-	int e2 = 659;
-	int f2 = 698;
-	int p = 0;
+	#define C 261
+	#define D 293
+	#define E 329
+	#define F 349
+	#define FS 370
+	#define G 392
+	#define A 440
+	#define B 466
+	#define BF 493
+	#define C2 523
+	#define D2 587
+	#define E2 659
+	#define F2 698
+	#define p 0;
 
 	#ifdef HAPPY
 	#define L 500
 	#define songLength 25
 	int notes[songLength][2] = {
-		{d,L/2},  {d,L/2},  {e,L},    {d,L},  {g,L},  {fs,2*L},
-		{d,L/2},  {d,L/2},  {e,L},    {d,L},  {a,L},  {g,2*L},
-		{d,L/2},  {d,L/2},  {d2,L},   {b,L},  {g,L},  {fs,L},
-		{e,L},    {c2,L/2}, {c2,L/2}, {b,L},  {g,L},  {a,L},  
-		{g,2*L}
+		{D,L/2},  {D,L/2},  {E,L},    {D,L},  {G,L},  {FS,2*L},
+		{D,L/2},  {D,L/2},  {E,L},    {D,L},  {A,L},  {G,2*L},
+		{D,L/2},  {D,L/2},  {D2,L},   {b,L},  {G,L},  {FS,L},
+		{E,L},    {C2,L/2}, {C2,L/2}, {b,L},  {G,L},  {A,L},  
+		{G,2*L}
 	};
 	#endif
 	#ifdef RAINBOW
 	#define songLength 23
 	#define L 300
 	int notes [songLength][2] = {
-		{f,2*L},{f2,2*L},
-		{e2,L},{c2,L/2},{d2,L/2},{e2,L},{f2,L},
-		{f,2*L},{d2,2*L},
-		{c2,4*L},
-		{d,L*2},{bf,2*L},
-		{a,L},{f,L/2},{g,L/2},{a,L},{bf,L},
-		{a,L},{e,L/2},{f,L/2},{g,L},{a,L},
-		{f,L*4}
+		{F,2*L},{F2,2*L},
+		{E2,L},{C2,L/2},{D2,L/2},{E2,L},{F2,L},
+		{F,2*L},{D2,2*L},
+		{C2,4*L},
+		{D,L*2},{BF,2*L},
+		{A,L},{F,L/2},{G,L/2},{A,L},{BF,L},
+		{A,L},{E,L/2},{F,L/2},{G,L},{A,L},
+		{F,L*4}
 	};
 	#endif
 
