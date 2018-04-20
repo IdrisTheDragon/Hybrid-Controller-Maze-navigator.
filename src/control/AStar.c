@@ -42,9 +42,12 @@ struct Instruction * westCheckD(struct RobotState * robotState, struct Cell * cu
             FA_BTSendString ("error\n", 7);
             FA_DelayMillis(5);
             }
-            FA_BTSendString ("TurnWest\n", 10);
-            FA_DelayMillis(5);
+            //FA_BTSendString ("TurnWest\n", 10);
+            //FA_DelayMillis(5);
             instruction->nextInstruction = searchDarkness(robotState, curCell->wallWest->westCell,WEST);
+            if(instruction->nextInstruction->next == gotoCellEast){
+                return southCheckD(robotState, curCell, orientation);
+            }
             instruction->next = gotoCellWest; 
             return instruction;
         } else {
@@ -59,9 +62,12 @@ struct Instruction * northCheckD(struct RobotState * robotState, struct Cell * c
             FA_BTSendString ("error\n", 7);
             FA_DelayMillis(5);
             }
-            FA_BTSendString ("TurnNorth\n", 11);
-            FA_DelayMillis(5);
+            //FA_BTSendString ("TurnNorth\n", 11);
+            //FA_DelayMillis(5);
             instruction->nextInstruction = searchDarkness(robotState, curCell->wallNorth->northCell,NORTH);
+            if(instruction->nextInstruction->next == gotoCellSouth){
+                return westCheckD(robotState, curCell, orientation);
+            }
             instruction->next = gotoCellNorth; 
             return instruction;
         } else {
@@ -76,9 +82,12 @@ struct Instruction * eastCheckD(struct RobotState * robotState, struct Cell * cu
             FA_BTSendString ("error\n", 7);
             FA_DelayMillis(5);
             }
-            FA_BTSendString ("TurnEast\n", 10);
-            FA_DelayMillis(5);
+            //FA_BTSendString ("TurnEast\n", 10);
+            //FA_DelayMillis(5);
             instruction->nextInstruction = searchDarkness(robotState, curCell->wallEast->eastCell,EAST);
+            if(instruction->nextInstruction->next == gotoCellWest){
+                return northCheckD(robotState, curCell, orientation);
+            }
             instruction->next = gotoCellEast; 
             return instruction;
         } else {
@@ -93,9 +102,12 @@ struct Instruction * southCheckD(struct RobotState * robotState, struct Cell * c
             FA_BTSendString ("error\n", 7);
             FA_DelayMillis(5);
             }
-            FA_BTSendString ("TurnSouth\n", 10);
-            FA_DelayMillis(5);
+            //FA_BTSendString ("TurnSouth\n", 10);
+            //FA_DelayMillis(5);
             instruction->nextInstruction = searchDarkness(robotState, curCell->wallSouth->southCell,SOUTH);
+            if(instruction->nextInstruction->next == gotoCellNorth){
+                return eastCheckD(robotState, curCell, orientation);
+            }
             instruction->next = gotoCellSouth; 
             return instruction;
         } else {
@@ -106,5 +118,6 @@ struct Instruction * southCheckD(struct RobotState * robotState, struct Cell * c
 
 void stop(struct RobotState * robotState){
     musicPlayer();
+    FA_BTSendString("Good Night, sleep well.\n",12);
     robotState->next = NULL;
 };
