@@ -3,81 +3,108 @@
 #include "AStar.h"
 #include "../RobotState.h"
 #include "../lib/allcode_api.h"
+#include "movingInstructions.h"
+#include "../output/sounds.h"
 
-int distance(int curX, int curY, int desX, int desY){
- int deltaX = curX-desX;
- if(deltaX < 0) deltaX =  deltaX *-1;
- int deltaY = curY-desX;
- if(deltaY < 0) deltaY = deltaY * -1;
- return deltaX+deltaY;
-}
-
-struct Data * get(struct Data * data, struct Cell * t, int dataStart, int dataEnd){
-    int i;
-    for(i = dataStart; i < dataEnd; i++){
-        if(data[i].cell == t){
-            return &data[i];
-        }
-    }
-    return NULL;
-}
-
-int contains(struct Data ** data, struct Cell * t,int dataStart, int dataEnd){
-    int i;
-    for(i = dataStart; i<dataEnd; i++){
-        if(data[i]->cell == t){
-            return true;
-        }
-    }
-    return false;
-}
-
-struct Data * getLowest(struct Data * data, int * dataStart, int * dataEnd){
-    struct Data * d = &data[*dataStart];
-    int i;
-    for(i = *dataStart; i < *dataEnd; i++){
-        if(data[i].scoreF <  d->scoreF){
-            d = &data[i];
-        }
-    }
-    i = dataStart;
-    while(d != &data[i]){
-        i++;
-    }
-    while(i<dataEnd-1){
-        data[i] = data[i+1];
-        i++;
-    }
-    *dataEnd = *dataEnd-1;
-    return d;
-}
-
-void AStar(struct Cell * t,struct Data * open,struct Data ** closed,struct RobotState * robotState,int * openStart,int * openEnd,int * closedStart,int * closedEnd){
-    if(contains(closed,t,*closedStart,*closedEnd)){ //if already closed
-        //ignore it
-    } else {
-        struct Data * d = get(open,t,*openStart,*openEnd);
-        char message[30];
-        sprintf(message, "cur_%d_%d\n",
-            d->cell->x,
-            d->cell->y
-        );
-        FA_BTSendString(message,30);
-        if(d == NULL){ //if not in open
-            open[*openEnd].cell = t; //add it and compute score
-            open[*openEnd].parent = closed[*closedEnd];
-            open[*openEnd].costG = closed[*closedEnd]->costG + 1;
-            open[*openEnd].costH = distance(t->x,t->y,robotState->nest->x,robotState->nest->y); 
-            open[*openEnd].scoreF = open[*openEnd].costG + open[*openEnd].costH;
-            *openEnd = *openEnd + 1;
+struct Instruction * searchDarkness(struct RobotState * robotState, struct Cell * curCell, int orientation){
+    if(curCell->x != robotState->nest->x || curCell->y != robotState->nest->y){
+        if(orientation == NORTH){
+            return eastCheckD(robotState, curCell, orientation);
+        } else if(orientation == EAST){
+            return southCheckD(robotState, curCell, orientation);
+        } else if(orientation == SOUTH){
+            return westCheckD(robotState, curCell, orientation);
+        } else if(orientation == WEST){
+            return northCheckD(robotState, curCell, orientation);
         } else {
-            int newF = closed[*closedEnd]->costG + 1 + d->costH;
-            if(newF < d->scoreF){
-                d->scoreF = newF;
-                d->costG = closed[*closedEnd]->costG + 1;
-                d->parent = closed[*closedEnd];
-            }
+            FA_BTSendString ("notValid\n", 11);
+            FA_DelayMillis(5); 
+            return NULL;
         }
-            
+    } else {
+        FA_BTSendString ("atNest\n", 17);
+        FA_DelayMillis(5);
+        robotState->curCell = curCell;
+        struct Instruction * instruction = malloc(sizeof(struct Instruction));
+        if(instruction==NULL){
+            FA_BTSendString ("error\n", 7);
+            FA_DelayMillis(5);
+        }
+        instruction->nextInstruction = NULL;
+        instruction->next = stop;
+        return instruction;
     }
 }
+struct Instruction * westCheckD(struct RobotState * robotState, struct Cell * curCell, int orientation){
+        if(curCell->wallWest != NULL && curCell->wallWest->wallExists > 100){
+            struct Instruction * instruction = malloc(sizeof(struct Instruction));
+            if(instruction==NULL){
+            FA_BTSendString ("error\n", 7);
+            FA_DelayMillis(5);
+            }
+            FA_BTSendString ("TurnWest\n", 10);
+            FA_DelayMillis(5);
+            instruction->nextInstruction = searchDarkness(robotState, curCell->wallWest->westCell,WEST);
+            instruction->next = gotoCellWest; 
+            return instruction;
+        } else {
+            return southCheckD(robotState, curCell, orientation);
+        }
+}
+
+struct Instruction * northCheckD(struct RobotState * robotState, struct Cell * curCell, int orientation){
+        if(curCell->wallNorth != NULL && curCell->wallNorth->wallExists > 100){
+            struct Instruction * instruction = malloc(sizeof(struct Instruction));
+            if(instruction==NULL){
+            FA_BTSendString ("error\n", 7);
+            FA_DelayMillis(5);
+            }
+            FA_BTSendString ("TurnNorth\n", 11);
+            FA_DelayMillis(5);
+            instruction->nextInstruction = searchDarkness(robotState, curCell->wallNorth->northCell,NORTH);
+            instruction->next = gotoCellNorth; 
+            return instruction;
+        } else {
+            return westCheckD(robotState, curCell, orientation);
+        }
+}
+
+struct Instruction * eastCheckD(struct RobotState * robotState, struct Cell * curCell, int orientation){ 
+        if(curCell->wallEast != NULL && curCell->wallEast->wallExists >100){
+            struct Instruction * instruction = malloc(sizeof(struct Instruction));
+            if(instruction==NULL){
+            FA_BTSendString ("error\n", 7);
+            FA_DelayMillis(5);
+            }
+            FA_BTSendString ("TurnEast\n", 10);
+            FA_DelayMillis(5);
+            instruction->nextInstruction = searchDarkness(robotState, curCell->wallEast->eastCell,EAST);
+            instruction->next = gotoCellEast; 
+            return instruction;
+        } else {
+            return northCheckD(robotState, curCell, orientation);
+        }
+}
+
+struct Instruction * southCheckD(struct RobotState * robotState, struct Cell * curCell, int orientation){
+        if(curCell->wallSouth != NULL && curCell->wallSouth->wallExists > 100){
+            struct Instruction * instruction = malloc(sizeof(struct Instruction));
+            if(instruction==NULL){
+            FA_BTSendString ("error\n", 7);
+            FA_DelayMillis(5);
+            }
+            FA_BTSendString ("TurnSouth\n", 10);
+            FA_DelayMillis(5);
+            instruction->nextInstruction = searchDarkness(robotState, curCell->wallSouth->southCell,SOUTH);
+            instruction->next = gotoCellSouth; 
+            return instruction;
+        } else {
+            return eastCheckD(robotState, curCell, orientation);
+        }
+}
+
+
+void stop(struct RobotState * robotState){
+    musicPlayer();
+    robotState->next = NULL;
+};

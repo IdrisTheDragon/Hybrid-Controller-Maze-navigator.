@@ -3,19 +3,13 @@
 
 #include "../RobotState.h"
 
-struct Data {
-    struct Cell * cell;
-    struct Data * parent;
-    int scoreF;
-    int costG;
-    int costH;
-} __attribute__ ((packed));
+struct Instruction * searchDarkness(struct RobotState * robotState, struct Cell * curCell, int orientation);
 
-int distance(int curX, int curY, int desX, int desY);
-struct Data * get(struct Data * data, struct Cell * t, int dataStart, int dataEnd);
-int contains(struct Data ** data, struct Cell * t,int dataStart, int dataEnd);
-struct Data * getLowest(struct Data * data, int *dataStart, int *dataEnd);
-void AStar(struct Cell * t,struct Data * open,struct Data ** closed,struct RobotState * robotState,int * openStart,int * openEnd,int * closedStart,int * closedEnd);
+struct Instruction * westCheckD(struct RobotState * robotState, struct Cell * curCell, int orientation);
+struct Instruction * northCheckD(struct RobotState * robotState, struct Cell * curCell, int orientation);
+struct Instruction * eastCheckD(struct RobotState * robotState, struct Cell * curCell, int orientation);
+struct Instruction * southCheckD(struct RobotState * robotState, struct Cell * curCell, int orientation);
 
+void stop(struct RobotState * robotState);
 
 #endif /* AStar_H*/
