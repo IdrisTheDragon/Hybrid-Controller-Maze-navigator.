@@ -75,6 +75,7 @@ void init(struct RobotState * robotState){
 	robotState->LEncoders = 0;
 	robotState->cellsVisited = 0;
 	robotState->instruction = NULL;
+	robotState->nest = NULL;
 	robotState->curCell = &map[1][0];       //set it's current cell location
 	struct Location * location = malloc(sizeof(struct Location));
 	if(location==NULL){

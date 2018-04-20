@@ -95,6 +95,7 @@ void updateCell(struct RobotState * robotState){
     }
     if(robotState->nest == NULL || robotState->curCell->lightLevel < robotState->nest->lightLevel){
          robotState->nest = robotState->curCell;
+         FA_BTSendString("new_Nest\n",10);
     }
     robotState->next = broadcastCell;
 }
