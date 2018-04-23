@@ -30,7 +30,7 @@ void musicPlayer(){
 	#ifdef HAPPY
 	#define L 500
 	#define songLength 25
-	int notes[songLength][2] = {
+	const int notes[songLength][2] = {
 		{D,L/2},  {D,L/2},  {E,L},    {D,L},  {G,L},  {FS,2*L},
 		{D,L/2},  {D,L/2},  {E,L},    {D,L},  {A,L},  {G,2*L},
 		{D,L/2},  {D,L/2},  {D2,L},   {b,L},  {G,L},  {FS,L},
@@ -41,7 +41,7 @@ void musicPlayer(){
 	#ifdef RAINBOW
 	#define songLength 23
 	#define L 300
-	int notes [songLength][2] = {
+	const int notes [songLength][2] = {
 		{F,2*L},{F2,2*L},
 		{E2,L},{C2,L/2},{D2,L/2},{E2,L},{F2,L},
 		{F,2*L},{D2,2*L},
@@ -56,7 +56,7 @@ void musicPlayer(){
 	#ifdef SUN
 	#define songLength 37
 	#define L 400
-	int notes[songLength][2] = {
+	const int notes[songLength][2] = {
 		{P,L},{B,L},{A,L},{B,L},
 		{G,L},{B,L/2},{G,L/2},{A,L},{B,L},
 		{P,L},{B,L},{A,L},{B,L},
@@ -73,7 +73,7 @@ void musicPlayer(){
 	#ifdef Brahms
 	#define songLength 47
 	#define L 500
-	int notes[songLength][2] = {
+	const int notes[songLength][2] = {
 		{E,L/2},{E,L/2},{G,2*L},
 		{E,L/2},{E,L/2},{G,2*L},
 		{E,L/2},{G,L/2},{C2,L},{B,L},
