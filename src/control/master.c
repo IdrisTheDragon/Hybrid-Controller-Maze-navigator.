@@ -26,6 +26,13 @@ void masterControl(struct RobotState * robotState){
     } else {
         //FA_BTSendString ("HeadToDarkness\n", 16);
         //FA_DelayMillis(10);
+        FA_LCDBacklight(50);
+        FA_PlayNote(523,200);
+        FA_LCDBacklight(0);
+        FA_PlayNote(784,200);
+        FA_DelayMillis(200);
+        FA_PlayNote(523,200);
+        FA_LCDBacklight(50);
         char message[30];
         sprintf(message,"nest_X_%d_Y_%d\n",
             robotState->nest->x,
