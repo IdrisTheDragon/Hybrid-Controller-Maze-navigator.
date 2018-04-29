@@ -1,0 +1,5 @@
+Please fine the source code in the src directory.
+The built hex and the bluetooth terminal in the out directory.
+
+If you would like to build the project the mpLab file have been included, just place the allcode_api.o in the lib folder.
+The robot does use the stack AND the heap at the sizes set in the mplab workspace.
