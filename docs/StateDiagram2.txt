@@ -1,6 +1,6 @@
 @startuml
 [*] --> init
-init : initialise the robot
+init : initialise the robot and map
 init -down-> updateSensorData
 
 
@@ -8,54 +8,50 @@ state updateSensorData {
   [*] --> getLocation
   getLocation -> getLight
   getLight -> getEncoder 
-  getEncoder -> readLine
-  readLine --> [*]
+  getEncoder --> [*]
 }
 
-updateSensorData -down-> control
+updateSensorData -down-> control :continue
 
 state control {
-  [*] -down-> updateCellData : cell not visited.
-  [*] -down-> headForDarkness : all cells visited.
-  [*] -down-> excecteRoute : Robot has instructions.
+  [*] -left-> updateCellData : cell not visited.
+  [*] -down-> headToNextCell : Not all cells visited and cell visited
+  [*] -down-> runInstruction : Robot has instructions.
+  [*] -right-> headForDarkness : all cells visited.
 
-  updateCellData -down-> moveToAnotherCell
-  updateCellData : mark as visited
-  updateCellData : identify walls
-  updateCellData : get a Light Reading
+  updateCellData --> [*]
 
-  moveToAnotherCell -down-> searchCells
+  headForDarkness : Builds set of instructions to head to nest.
+  headForDarkness --> [*]
+
+  headToNextCell : Builds set of instructions to the next unexplored 
+  headToNextCell : cell using left hand wall following.
+  headToNextCell --> [*]
+
+  runInstruction -down-> stop
+  runInstruction -down-> gotoCellNorth
+  runInstruction -down-> gotoCellSouth
+  runInstruction -down-> gotoCellWest
+  runInstruction -down-> gotoCellEast
   
-  searchCells -down-> [*] : cell notVisited
+  stop: plays a short tune.
 
-  searchCells : "Build set of instructions \n to next not searched cell, using recursion."
+  gotoCellEast --> [*]
+  gotoCellNorth --> [*]
+  gotoCellSouth --> [*]
+  gotoCellWest --> [*]
 
-  searchCells -down-> eastCheck : robot facing South
-  searchCells -down-> southCheck : robot facing West
-  searchCells -down-> westCheck : robot facing North  
-  searchCells -down-> northCheck : robot facing East 
-
-  eastCheck -> searchCells : wall doesn't exist
-  eastCheck -down-> southCheck : wall in way
-  southCheck -> searchCells : wall doesn't exist
-  southCheck -down-> westCheck : wall in way
-  westCheck -> searchCells :  wall doesn't exist
-  westCheck -down-> northCheck : wall in way
-  northCheck -> searchCells :  wall doesn't exist
-  northCheck -down-> eastCheck : wall in way
-
-  headForDarkness -down-> [*] : to darkest cell.
 }
 
-control -down-> updateHardware
+control -up-> updateHardware : continue
 
 state updateHardware {
   [*] --> setMotors
   setMotors -> updateDisplay
-  updateDisplay -> updateLED
-  updateLED -> updateSound 
-  updateSound --> [*]
+  updateDisplay --> [*]
 }
 
 updateHardware -> updateSensorData : continue
+
+stop -down-> [*]
 @enduml

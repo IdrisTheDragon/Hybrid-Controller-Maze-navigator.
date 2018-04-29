@@ -1,0 +1,19 @@
+\BOOKMARK [1][-]{section.1}{INTRODUCTION}{}% 1
+\BOOKMARK [1][-]{section.2}{DESIGN}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{State Machine}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Mapping the Maze}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Reactive behaviours}{section.2}% 5
+\BOOKMARK [3][-]{subsubsection.2.3.1}{Going foreword 15cm}{subsection.2.3}% 6
+\BOOKMARK [3][-]{subsubsection.2.3.2}{Turning 90 degree}{subsection.2.3}% 7
+\BOOKMARK [2][-]{subsection.2.4}{Navigating to the nest}{section.2}% 8
+\BOOKMARK [2][-]{subsection.2.5}{Bluetooth Serial}{section.2}% 9
+\BOOKMARK [1][-]{section.3}{INTERNAL MODEL}{}% 10
+\BOOKMARK [2][-]{subsection.3.1}{Maze}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.2}{Environment State\(robotState\)}{section.3}% 12
+\BOOKMARK [1][-]{section.4}{ISSUES AND PROBLEMS}{}% 13
+\BOOKMARK [2][-]{subsection.4.1}{Reactive Behaviours}{section.4}% 14
+\BOOKMARK [2][-]{subsection.4.2}{Deliberative Behaviours}{section.4}% 15
+\BOOKMARK [1][-]{section.5}{FURTURE IMPROVEMENTS}{}% 16
+\BOOKMARK [2][-]{subsection.5.1}{Reactive behaviours}{section.5}% 17
+\BOOKMARK [2][-]{subsection.5.2}{Deliberative behaviours}{section.5}% 18
+\BOOKMARK [1][-]{subsection.5.2}{REFERENCES}{}% 19
