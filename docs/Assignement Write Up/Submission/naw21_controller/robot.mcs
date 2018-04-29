@@ -1,0 +1,240 @@
+[Header]
+MagicCookie={0b13fe8c-dfe0-40eb-8900-6712719559a7}
+Version=1.0
+[File000]
+Location=C:\Users\Nathan\Documents\Git Hub\robotCode\out\robo.o
+Folder=Intermediary
+DeviceName=dsPIC33EP256MU810
+LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
+LanguageToolID={B1442D91-FF1F-4E60-9714-C39C1BA9DB62}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-gcc.exe
+PPAD=$(BINDIR)|out||$(TMPDIR)|out||$(AINDIR)|C:\Program Files (x86)\Microchip\xc16\v1.33\src\libm||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|src\robo.c|src\input\Location.c|src\control\ObstacleDetection.c|src\control\WallFollow.c|src\RobotState.c|src\control\RobotCalibrate.c|src\input\dataCollect.c|src\input\Light.c|src\input\Encoders.c|src\Cell.c|src\output\bluetooth.c|src\control\master.c|src\control\movingInstructions.c|src\output\setMotors.c|src\control\AStar.c|src\output\sounds.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=-g -Wall -mno-eds-warn
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File001]
+Location=C:\Users\Nathan\Documents\Git Hub\robotCode\out\Location.o
+Folder=Intermediary
+DeviceName=dsPIC33EP256MU810
+LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
+LanguageToolID={B1442D91-FF1F-4E60-9714-C39C1BA9DB62}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-gcc.exe
+PPAD=$(BINDIR)|out||$(TMPDIR)|out||$(AINDIR)|C:\Program Files (x86)\Microchip\xc16\v1.33\src\libm||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|src\robo.c|src\input\Location.c|src\control\ObstacleDetection.c|src\control\WallFollow.c|src\RobotState.c|src\control\RobotCalibrate.c|src\input\dataCollect.c|src\input\Light.c|src\input\Encoders.c|src\Cell.c|src\output\bluetooth.c|src\control\master.c|src\control\movingInstructions.c|src\output\setMotors.c|src\control\AStar.c|src\output\sounds.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=-g -Wall -mno-eds-warn
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File002]
+Location=C:\Users\Nathan\Documents\Git Hub\robotCode\out\ObstacleDetection.o
+Folder=Intermediary
+DeviceName=dsPIC33EP256MU810
+LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
+LanguageToolID={B1442D91-FF1F-4E60-9714-C39C1BA9DB62}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-gcc.exe
+PPAD=$(BINDIR)|out||$(TMPDIR)|out||$(AINDIR)|C:\Program Files (x86)\Microchip\xc16\v1.33\src\libm||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|src\robo.c|src\input\Location.c|src\control\ObstacleDetection.c|src\control\WallFollow.c|src\RobotState.c|src\control\RobotCalibrate.c|src\input\dataCollect.c|src\input\Light.c|src\input\Encoders.c|src\Cell.c|src\output\bluetooth.c|src\control\master.c|src\control\movingInstructions.c|src\output\setMotors.c|src\control\AStar.c|src\output\sounds.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=-g -Wall -mno-eds-warn
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File003]
+Location=C:\Users\Nathan\Documents\Git Hub\robotCode\out\WallFollow.o
+Folder=Intermediary
+DeviceName=dsPIC33EP256MU810
+LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
+LanguageToolID={B1442D91-FF1F-4E60-9714-C39C1BA9DB62}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-gcc.exe
+PPAD=$(BINDIR)|out||$(TMPDIR)|out||$(AINDIR)|C:\Program Files (x86)\Microchip\xc16\v1.33\src\libm||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|src\robo.c|src\input\Location.c|src\control\ObstacleDetection.c|src\control\WallFollow.c|src\RobotState.c|src\control\RobotCalibrate.c|src\input\dataCollect.c|src\input\Light.c|src\input\Encoders.c|src\Cell.c|src\output\bluetooth.c|src\control\master.c|src\control\movingInstructions.c|src\output\setMotors.c|src\control\AStar.c|src\output\sounds.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=-g -Wall -mno-eds-warn
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File004]
+Location=C:\Users\Nathan\Documents\Git Hub\robotCode\out\RobotState.o
+Folder=Intermediary
+DeviceName=dsPIC33EP256MU810
+LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
+LanguageToolID={B1442D91-FF1F-4E60-9714-C39C1BA9DB62}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-gcc.exe
+PPAD=$(BINDIR)|out||$(TMPDIR)|out||$(AINDIR)|C:\Program Files (x86)\Microchip\xc16\v1.33\src\libm||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|src\robo.c|src\input\Location.c|src\control\ObstacleDetection.c|src\control\WallFollow.c|src\RobotState.c|src\control\RobotCalibrate.c|src\input\dataCollect.c|src\input\Light.c|src\input\Encoders.c|src\Cell.c|src\output\bluetooth.c|src\control\master.c|src\control\movingInstructions.c|src\output\setMotors.c|src\control\AStar.c|src\output\sounds.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=-g -Wall -mno-eds-warn
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File005]
+Location=C:\Users\Nathan\Documents\Git Hub\robotCode\out\RobotCalibrate.o
+Folder=Intermediary
+DeviceName=dsPIC33EP256MU810
+LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
+LanguageToolID={B1442D91-FF1F-4E60-9714-C39C1BA9DB62}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-gcc.exe
+PPAD=$(BINDIR)|out||$(TMPDIR)|out||$(AINDIR)|C:\Program Files (x86)\Microchip\xc16\v1.33\src\libm||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|src\robo.c|src\input\Location.c|src\control\ObstacleDetection.c|src\control\WallFollow.c|src\RobotState.c|src\control\RobotCalibrate.c|src\input\dataCollect.c|src\input\Light.c|src\input\Encoders.c|src\Cell.c|src\output\bluetooth.c|src\control\master.c|src\control\movingInstructions.c|src\output\setMotors.c|src\control\AStar.c|src\output\sounds.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=-g -Wall -mno-eds-warn
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File006]
+Location=C:\Users\Nathan\Documents\Git Hub\robotCode\out\dataCollect.o
+Folder=Intermediary
+DeviceName=dsPIC33EP256MU810
+LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
+LanguageToolID={B1442D91-FF1F-4E60-9714-C39C1BA9DB62}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-gcc.exe
+PPAD=$(BINDIR)|out||$(TMPDIR)|out||$(AINDIR)|C:\Program Files (x86)\Microchip\xc16\v1.33\src\libm||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|src\robo.c|src\input\Location.c|src\control\ObstacleDetection.c|src\control\WallFollow.c|src\RobotState.c|src\control\RobotCalibrate.c|src\input\dataCollect.c|src\input\Light.c|src\input\Encoders.c|src\Cell.c|src\output\bluetooth.c|src\control\master.c|src\control\movingInstructions.c|src\output\setMotors.c|src\control\AStar.c|src\output\sounds.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=-g -Wall -mno-eds-warn
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File007]
+Location=C:\Users\Nathan\Documents\Git Hub\robotCode\out\Light.o
+Folder=Intermediary
+DeviceName=dsPIC33EP256MU810
+LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
+LanguageToolID={B1442D91-FF1F-4E60-9714-C39C1BA9DB62}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-gcc.exe
+PPAD=$(BINDIR)|out||$(TMPDIR)|out||$(AINDIR)|C:\Program Files (x86)\Microchip\xc16\v1.33\src\libm||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|src\robo.c|src\input\Location.c|src\control\ObstacleDetection.c|src\control\WallFollow.c|src\RobotState.c|src\control\RobotCalibrate.c|src\input\dataCollect.c|src\input\Light.c|src\input\Encoders.c|src\Cell.c|src\output\bluetooth.c|src\control\master.c|src\control\movingInstructions.c|src\output\setMotors.c|src\control\AStar.c|src\output\sounds.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=-g -Wall -mno-eds-warn
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File008]
+Location=C:\Users\Nathan\Documents\Git Hub\robotCode\out\Encoders.o
+Folder=Intermediary
+DeviceName=dsPIC33EP256MU810
+LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
+LanguageToolID={B1442D91-FF1F-4E60-9714-C39C1BA9DB62}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-gcc.exe
+PPAD=$(BINDIR)|out||$(TMPDIR)|out||$(AINDIR)|C:\Program Files (x86)\Microchip\xc16\v1.33\src\libm||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|src\robo.c|src\input\Location.c|src\control\ObstacleDetection.c|src\control\WallFollow.c|src\RobotState.c|src\control\RobotCalibrate.c|src\input\dataCollect.c|src\input\Light.c|src\input\Encoders.c|src\Cell.c|src\output\bluetooth.c|src\control\master.c|src\control\movingInstructions.c|src\output\setMotors.c|src\control\AStar.c|src\output\sounds.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=-g -Wall -mno-eds-warn
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File009]
+Location=C:\Users\Nathan\Documents\Git Hub\robotCode\out\Cell.o
+Folder=Intermediary
+DeviceName=dsPIC33EP256MU810
+LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
+LanguageToolID={B1442D91-FF1F-4E60-9714-C39C1BA9DB62}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-gcc.exe
+PPAD=$(BINDIR)|out||$(TMPDIR)|out||$(AINDIR)|C:\Program Files (x86)\Microchip\xc16\v1.33\src\libm||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|src\robo.c|src\input\Location.c|src\control\ObstacleDetection.c|src\control\WallFollow.c|src\RobotState.c|src\control\RobotCalibrate.c|src\input\dataCollect.c|src\input\Light.c|src\input\Encoders.c|src\Cell.c|src\output\bluetooth.c|src\control\master.c|src\control\movingInstructions.c|src\output\setMotors.c|src\control\AStar.c|src\output\sounds.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=-g -Wall -mno-eds-warn
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File010]
+Location=C:\Users\Nathan\Documents\Git Hub\robotCode\out\bluetooth.o
+Folder=Intermediary
+DeviceName=dsPIC33EP256MU810
+LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
+LanguageToolID={B1442D91-FF1F-4E60-9714-C39C1BA9DB62}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-gcc.exe
+PPAD=$(BINDIR)|out||$(TMPDIR)|out||$(AINDIR)|C:\Program Files (x86)\Microchip\xc16\v1.33\src\libm||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|src\robo.c|src\input\Location.c|src\control\ObstacleDetection.c|src\control\WallFollow.c|src\RobotState.c|src\control\RobotCalibrate.c|src\input\dataCollect.c|src\input\Light.c|src\input\Encoders.c|src\Cell.c|src\output\bluetooth.c|src\control\master.c|src\control\movingInstructions.c|src\output\setMotors.c|src\control\AStar.c|src\output\sounds.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=-g -Wall -mno-eds-warn
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File011]
+Location=C:\Users\Nathan\Documents\Git Hub\robotCode\out\master.o
+Folder=Intermediary
+DeviceName=dsPIC33EP256MU810
+LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
+LanguageToolID={B1442D91-FF1F-4E60-9714-C39C1BA9DB62}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-gcc.exe
+PPAD=$(BINDIR)|out||$(TMPDIR)|out||$(AINDIR)|C:\Program Files (x86)\Microchip\xc16\v1.33\src\libm||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|src\robo.c|src\input\Location.c|src\control\ObstacleDetection.c|src\control\WallFollow.c|src\RobotState.c|src\control\RobotCalibrate.c|src\input\dataCollect.c|src\input\Light.c|src\input\Encoders.c|src\Cell.c|src\output\bluetooth.c|src\control\master.c|src\control\movingInstructions.c|src\output\setMotors.c|src\control\AStar.c|src\output\sounds.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=-g -Wall -mno-eds-warn
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File012]
+Location=C:\Users\Nathan\Documents\Git Hub\robotCode\out\movingInstructions.o
+Folder=Intermediary
+DeviceName=dsPIC33EP256MU810
+LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
+LanguageToolID={B1442D91-FF1F-4E60-9714-C39C1BA9DB62}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-gcc.exe
+PPAD=$(BINDIR)|out||$(TMPDIR)|out||$(AINDIR)|C:\Program Files (x86)\Microchip\xc16\v1.33\src\libm||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|src\robo.c|src\input\Location.c|src\control\ObstacleDetection.c|src\control\WallFollow.c|src\RobotState.c|src\control\RobotCalibrate.c|src\input\dataCollect.c|src\input\Light.c|src\input\Encoders.c|src\Cell.c|src\output\bluetooth.c|src\control\master.c|src\control\movingInstructions.c|src\output\setMotors.c|src\control\AStar.c|src\output\sounds.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=-g -Wall -mno-eds-warn
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File013]
+Location=C:\Users\Nathan\Documents\Git Hub\robotCode\out\setMotors.o
+Folder=Intermediary
+DeviceName=dsPIC33EP256MU810
+LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
+LanguageToolID={B1442D91-FF1F-4E60-9714-C39C1BA9DB62}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-gcc.exe
+PPAD=$(BINDIR)|out||$(TMPDIR)|out||$(AINDIR)|C:\Program Files (x86)\Microchip\xc16\v1.33\src\libm||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|src\robo.c|src\input\Location.c|src\control\ObstacleDetection.c|src\control\WallFollow.c|src\RobotState.c|src\control\RobotCalibrate.c|src\input\dataCollect.c|src\input\Light.c|src\input\Encoders.c|src\Cell.c|src\output\bluetooth.c|src\control\master.c|src\control\movingInstructions.c|src\output\setMotors.c|src\control\AStar.c|src\output\sounds.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=-g -Wall -mno-eds-warn
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File014]
+Location=C:\Users\Nathan\Documents\Git Hub\robotCode\out\AStar.o
+Folder=Intermediary
+DeviceName=dsPIC33EP256MU810
+LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
+LanguageToolID={B1442D91-FF1F-4E60-9714-C39C1BA9DB62}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-gcc.exe
+PPAD=$(BINDIR)|out||$(TMPDIR)|out||$(AINDIR)|C:\Program Files (x86)\Microchip\xc16\v1.33\src\libm||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|src\robo.c|src\input\Location.c|src\control\ObstacleDetection.c|src\control\WallFollow.c|src\RobotState.c|src\control\RobotCalibrate.c|src\input\dataCollect.c|src\input\Light.c|src\input\Encoders.c|src\Cell.c|src\output\bluetooth.c|src\control\master.c|src\control\movingInstructions.c|src\output\setMotors.c|src\control\AStar.c|src\output\sounds.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=-g -Wall -mno-eds-warn
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File015]
+Location=C:\Users\Nathan\Documents\Git Hub\robotCode\out\sounds.o
+Folder=Intermediary
+DeviceName=dsPIC33EP256MU810
+LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
+LanguageToolID={B1442D91-FF1F-4E60-9714-C39C1BA9DB62}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-gcc.exe
+PPAD=$(BINDIR)|out||$(TMPDIR)|out||$(AINDIR)|C:\Program Files (x86)\Microchip\xc16\v1.33\src\libm||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|src\robo.c|src\input\Location.c|src\control\ObstacleDetection.c|src\control\WallFollow.c|src\RobotState.c|src\control\RobotCalibrate.c|src\input\dataCollect.c|src\input\Light.c|src\input\Encoders.c|src\Cell.c|src\output\bluetooth.c|src\control\master.c|src\control\movingInstructions.c|src\output\setMotors.c|src\control\AStar.c|src\output\sounds.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=-g -Wall -mno-eds-warn
+TraceCmdString=
+DebugOptions=-D__DEBUG
+[File016]
+Location=C:\Users\Nathan\Documents\Git Hub\robotCode\out\robot.cof
+Folder=Output
+DeviceName=dsPIC33EP256MU810
+LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
+LanguageToolID={6836D8CA-42BB-48FB-9E77-3F0AA8005073}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-ld.exe
+PPAD=$(BINDIR)|out||$(TMPDIR)|out||$(AINDIR)|C:\Program Files (x86)\Microchip\xc16\v1.33\src\libm||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|src\robo.c|src\input\Location.c|src\control\ObstacleDetection.c|src\control\WallFollow.c|src\RobotState.c|src\control\RobotCalibrate.c|src\input\dataCollect.c|src\input\Light.c|src\input\Encoders.c|src\Cell.c|src\output\bluetooth.c|src\control\master.c|src\control\movingInstructions.c|src\output\setMotors.c|src\control\AStar.c|src\output\sounds.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=--heap=12000 -Map="$(BINDIR_)$(TARGETBASE).map" --report-mem -o"$(BINDIR_)$(TARGETBASE).$(TARGETSUFFIX)"
+TraceCmdString=
+DebugOptions=--defsym=__MPLAB_DEBUG=1
+[File017]
+Location=C:\Users\Nathan\Documents\Git Hub\robotCode\out\robot.hex
+Folder=Output
+DeviceName=dsPIC33EP256MU810
+LanguageToolSuiteID={9BCCB495-CD65-480A-BA76-63D8E78B117F}
+LanguageToolID={6836D8CA-42BB-48FB-9E77-3F0AA8005073}
+LanguageToolLocation=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-ld.exe
+PPAD=$(BINDIR)|out||$(TMPDIR)|out||$(AINDIR)|C:\Program Files (x86)\Microchip\xc16\v1.33\src\libm||$(INCDIR)||$(LIBDIR)||$(LKRDIR)||
+SOLK=<src>|src\robo.c|src\input\Location.c|src\control\ObstacleDetection.c|src\control\WallFollow.c|src\RobotState.c|src\control\RobotCalibrate.c|src\input\dataCollect.c|src\input\Light.c|src\input\Encoders.c|src\Cell.c|src\output\bluetooth.c|src\control\master.c|src\control\movingInstructions.c|src\output\setMotors.c|src\control\AStar.c|src\output\sounds.c||<obj>|src\lib\allcode_api.o||<lib>||<lkr>||
+SuiteArgsString=
+ToolArgsString=--heap=12000 -Map="$(BINDIR_)$(TARGETBASE).map" --report-mem -o"$(BINDIR_)$(TARGETBASE).$(TARGETSUFFIX)"
+TraceCmdString=
+DebugOptions=--defsym=__MPLAB_DEBUG=1
+[TOOL_LOC_STAMPS]
+tool_loc{B1442D91-FF1F-4E60-9714-C39C1BA9DB62}=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-gcc.exe
+tool_loc{6836D8CA-42BB-48FB-9E77-3F0AA8005073}=C:\Program Files (x86)\Microchip\xc16\v1.33\bin\xc16-ld.exe

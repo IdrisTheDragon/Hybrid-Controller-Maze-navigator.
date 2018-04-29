@@ -21,14 +21,22 @@
     \maketitle
     \tableofcontents
     \listoffigures
+    \newpage
     \section{INTRODUCTION}
         This document describes the design, internal model and issues I came across while writing the Hybrid Controller. 
         I completed the whole task of navigating and mapping the maze. 
-        I also completed the bonus parts to navigate the robot back to the nest and streaming the maze building over a Bluetooth serial connection to a custom built serial terminal in Java.
+        I also completed the bonus parts to navigate the robot back to the nest and streaming the maze over a Bluetooth serial connection to a custom built serial terminal in Java.
+        The controller preformed as expected during my demo, even with the wheel catching on a wall as I hadn't added any features to avoid this rare problem.
+        
         For this assignment I used the Formula allcode robot \cite{Formula all-code} and an in-robot API\cite{in-robot api}, I also used a couple of C standard libraries.
+        The full project will be available at:
+
+        \url{https://github.com/IdrisTheDragon/Hybrid-Controller-Maze-navigator.}
+
+        but is currently a private repository.
     \section{DESIGN}
         \subsection{State Machine}
-            I built my robot around a state machine which I designed before I started writing the code.
+            I built my robot controller around a state machine which I designed before I even started writing the code.
             The state machine is split into 3 main parts:
             \begin{itemize}
                 \item[Control] This part of the machine looks at the internal model of the robot and controls the next steps that the robot should take.
@@ -84,14 +92,15 @@
 
             You will also find a compiled version along with my source and hex file in the code zip file.
 
-            The terminal allowed me to also send detailed debug information from the robot. 
+            I built the terminal in the early stages of my robot controllers development.
+            The terminal allowed me to send detailed debug information from the robot. 
             Which massively helped in debugging and viewing the code while it was running.
 
             But the main feature is the JavaFx map which updates as I send formatted strings to the terminal allowing a visual representation of the map to be built. 
             Here is a screenshot of the map built by my assessed run of the maze.
             \begin{figure}[H]
                 \caption{Assessed run Bluetooth serial terminal output}
-                \includegraphics[width=14cm,keepaspectratio]{assessedRun}
+                \includegraphics[width=17cm,keepaspectratio]{assessedRun}
             \end{figure}
     \section{INTERNAL MODEL}
         \subsection{Maze}
@@ -108,7 +117,7 @@
             As the robot maps the maze it navigates the model through the pointers, looking for unexplored cells.
             \begin{figure}[H]
                 \caption{Internal model of the maze visualized}
-                \includegraphics[width=14cm,keepaspectratio]{mazeModel}
+                \includegraphics[width=17cm,keepaspectratio]{mazeModel}
             \end{figure}
         \subsection{Environment State(robotState)}
             The information about the robots current state and environment is stored in the robotState struct.
